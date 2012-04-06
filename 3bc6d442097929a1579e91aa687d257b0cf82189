@@ -1,0 +1,8 @@
+Change-Id: I3bc6d442097929a1579e91aa687d257b0cf82189
+Code-Review+2: Kenny Root <kroot@android.com>
+Verified+1: Kenny Root <kroot@android.com>
+Submitted-by: Kenny Root <kroot@android.com>
+Submitted-at: Fri, 06 Apr 2012 11:00:41 -0700
+Reviewed-on: https://android-review.googlesource.com/34961
+Project: platform/external/libselinux
+Branch: refs/heads/master
