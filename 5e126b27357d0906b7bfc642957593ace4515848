@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAHtX///b4\u003d",
+        "filename": "include/selinux/android.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2012-07-20T22:23:45Z",
+      "side": 1,
+      "message": "Please document each of the parameters and their expected values.\n\nIs there a better name than selinux_android_setfilecon2? I have no idea why I\u0027d want to use this vs selinux_android_setfilecon.",
+      "revId": "5e126b27357d0906b7bfc642957593ace4515848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
