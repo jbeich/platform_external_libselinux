@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAJQH///Hw\u003d",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1002975
+      },
+      "writtenOn": "2012-09-19T21:48:34Z",
+      "side": 1,
+      "message": "might want to make this an enum in the future.",
+      "revId": "895b446e8b4844f2da7354e74d5d96cc7f4418f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
