@@ -33,6 +33,24 @@
       "revId": "895b446e8b4844f2da7354e74d5d96cc7f4418f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAJRH///6o\u003d",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2012-09-19T22:05:55Z",
+      "side": 1,
+      "message": "AFAIK It\u0027s 1024 and yes your right aving a large MLS value really bloats the policy and thus uses too much kernel memory.",
+      "parentUuid": "AAAJQH///HY\u003d",
+      "revId": "895b446e8b4844f2da7354e74d5d96cc7f4418f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
