@@ -51,6 +51,24 @@
       "revId": "895b446e8b4844f2da7354e74d5d96cc7f4418f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAJRH///3A\u003d",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2012-09-20T12:53:13Z",
+      "side": 1,
+      "message": "Presently MLS_CATS is 1024.  Actually, policy size is mostly affected by the number of allow rules (and thus number of domains/types), not by the number of MLS categories, but increasing the number of categories does have some impact. If I build sepolicy with MLS_CATS set to 1024, 2048, and 4096, I get the following sizes (per ls -lh):\n 72K sepolicy.1024   88K sepolicy.2048  124K sepolicy.4096\nI think we could reduce that impact fairly easily, but it would require some changes to the policy representation (so at least a kernel change, and optimally a change to both kernel and libsepol/checkpolicy with a new policy format version).\nI\u0027m not sure that is necessary though.  I was splitting the category space between the regular app UIDs and the isolated service UIDs, but with this patch we go back to using the full category space for either one, and instead differentiate by the username key (\"app_\" vs \"isolated\").\nI\u0027m not clear yet whether we even want the categories for the isolated service UIDs or exactly what those need to access.  I haven\u0027t seen any real apps using them as of yet?",
+      "parentUuid": "AAAJRH///6o\u003d",
+      "revId": "895b446e8b4844f2da7354e74d5d96cc7f4418f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
