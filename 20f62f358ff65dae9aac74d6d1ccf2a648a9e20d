@@ -16,6 +16,24 @@
       "revId": "20f62f358ff65dae9aac74d6d1ccf2a648a9e20d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAALO3///lA\u003d",
+        "filename": "src/policy.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2012-11-06T16:27:55Z",
+      "side": 0,
+      "message": "Just a cleanup.  That definition isn\u0027t even used by the upstream libselinux; it is ancient history (Fedora Core 2?).",
+      "parentUuid": "AAALQH///+s\u003d",
+      "revId": "20f62f358ff65dae9aac74d6d1ccf2a648a9e20d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
