@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAALQH///+s\u003d",
+        "filename": "src/policy.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2012-11-06T14:10:49Z",
+      "side": 0,
+      "message": "Is this just a cleanup or did this change somehow affect this?",
+      "revId": "20f62f358ff65dae9aac74d6d1ccf2a648a9e20d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
