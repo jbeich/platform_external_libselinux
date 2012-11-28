@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAMBn///3A\u003d",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2012-11-28T20:28:02Z",
+      "side": 1,
+      "message": "Noticing that their is a mix of camel case and underscores. Looks like the existing selinux code prefers underscores. Just something to consider.",
+      "revId": "d7aa3c257f8d721cdc7a7af77a8abe9aaad6c9af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
