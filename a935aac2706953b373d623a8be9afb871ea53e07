@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "M1UG0ooM",
+        "filename": "src/label_android_property.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2012-12-08T00:41:14Z",
+      "side": 1,
+      "message": "Doesn\u0027t the fopen conditional already catch this, it would return NULL?",
+      "revId": "a935aac2706953b373d623a8be9afb871ea53e07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "M1WGrniE",
+        "filename": "src/label_file.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2012-12-08T00:41:14Z",
+      "side": 1,
+      "message": "Same thing here.",
+      "revId": "a935aac2706953b373d623a8be9afb871ea53e07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
