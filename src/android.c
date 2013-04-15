@@ -31,7 +31,7 @@
 static char const * const seapp_contexts_file[] = {
 	"/data/system/seapp_contexts",
 	"/seapp_contexts",
-	0 };
+	NULL };
 
 static const struct selinux_opt seopts[] = {
 	{ SELABEL_OPT_PATH, "/data/system/file_contexts" },
