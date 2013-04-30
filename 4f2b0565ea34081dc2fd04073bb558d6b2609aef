@@ -1,0 +1,8 @@
+Code-Review+2: Geremy Condra <gcondra@google.com>
+Verified+1: Geremy Condra <gcondra@google.com>
+Code-Review+1: William Roberts <w.roberts@sta.samsung.com>
+Submitted-by: Geremy Condra <gcondra@google.com>
+Submitted-at: Tue, 30 Apr 2013 05:02:36 +0000
+Reviewed-on: https://android-review.googlesource.com/57000
+Project: platform/external/libselinux
+Branch: refs/heads/master
