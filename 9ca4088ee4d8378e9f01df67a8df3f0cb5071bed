@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "27b2905c_f429165f",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2013-07-12T15:42:46Z",
+      "side": 1,
+      "message": "This was mainly done because of paranoia on my part, and future proofing against other potential uninitialized variable bugs.",
+      "parentUuid": "87aa5cea_8c67e7fb",
+      "revId": "9ca4088ee4d8378e9f01df67a8df3f0cb5071bed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87aa5cea_ec5cab31",
         "filename": "src/android.c",
         "patchSetId": 1
@@ -47,6 +65,24 @@
       "writtenOn": "2013-07-12T14:52:32Z",
       "side": 1,
       "message": "Concur with this one, except again ret is already set on every path AFAICS.",
+      "revId": "9ca4088ee4d8378e9f01df67a8df3f0cb5071bed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27b2905c_34343eb2",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2013-07-12T15:42:46Z",
+      "side": 1,
+      "message": "ya, the ret change wasn\u0027t strictly necessary.  Just more paranoia.\n\nThe real bug here is in the oldcontext / newcontext lines, and that was the primary purpose of this change.",
+      "parentUuid": "87aa5cea_cc61efe7",
       "revId": "9ca4088ee4d8378e9f01df67a8df3f0cb5071bed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
