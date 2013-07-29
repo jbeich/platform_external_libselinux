@@ -1,0 +1,9 @@
+Code-Review+2: Geremy Condra <gcondra@google.com>
+Code-Review+1: William Roberts <wroberts@tresys.com>
+Code-Review+1: Alex Klyubin <klyubin@google.com>
+Verified+1: Alex Klyubin <klyubin@google.com>
+Submitted-by: Alex Klyubin <klyubin@google.com>
+Submitted-at: Mon, 29 Jul 2013 19:03:11 +0000
+Reviewed-on: https://android-review.googlesource.com/62613
+Project: platform/external/libselinux
+Branch: refs/heads/master
