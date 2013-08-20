@@ -1,0 +1,10 @@
+Code-Review+1: Stephen Smalley <sds@tycho.nsa.gov>
+Code-Review+2: Geremy Condra <gcondra@google.com>
+Verified+1: Geremy Condra <gcondra@google.com>
+Code-Review+1: T.O. Radzy Radzykewycz <tim.radzykewycz@windriver.com>
+Code-Review+1: William Roberts <wroberts@tresys.com>
+Submitted-by: Geremy Condra <gcondra@google.com>
+Submitted-at: Tue, 20 Aug 2013 22:22:58 +0000
+Reviewed-on: https://android-review.googlesource.com/55742
+Project: platform/external/libselinux
+Branch: refs/heads/master
