@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1967556_3254e828",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2013-10-07T22:24:49Z",
+      "side": 1,
+      "message": "Will \"com.tester.foo.bar\" also match?\n\nAlso, Android package names don\u0027t have any namespace restrictions, so it may be possible for a third party app to create a com.test.* package. Is this something we should worry about? (i.e., a third party package picking up more privileges because it managed to match a package name pattern?)",
+      "revId": "e3615f9d90e9b37c84b00d1830121fb21e6981f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
