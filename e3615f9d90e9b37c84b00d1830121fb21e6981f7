@@ -16,6 +16,24 @@
       "revId": "e3615f9d90e9b37c84b00d1830121fb21e6981f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41c5b977_d90cd355",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2013-10-07T23:32:10Z",
+      "side": 1,
+      "message": "1. Yes\n\n2. Yes it would match\n\nIn general matching only on package name especially prefix matching is wrong....you should always use seinfo. However package name is nice for refining ones selection.",
+      "parentUuid": "a1967556_3254e828",
+      "revId": "e3615f9d90e9b37c84b00d1830121fb21e6981f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
