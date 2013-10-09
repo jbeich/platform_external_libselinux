@@ -34,6 +34,24 @@
       "revId": "e3615f9d90e9b37c84b00d1830121fb21e6981f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8126d14d_594ea372",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2013-10-09T17:56:17Z",
+      "side": 1,
+      "message": "It might be nice to enforce this best practice in code. I\u0027m worried that someone will use the name prefix matching incorrectly, which will result in an app having more privileges.\n\nCould we add some additional restrictions on the use of the name\u003d parameter, perhaps in a future change?",
+      "parentUuid": "41c5b977_d90cd355",
+      "revId": "e3615f9d90e9b37c84b00d1830121fb21e6981f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
