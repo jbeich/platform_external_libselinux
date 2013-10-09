@@ -643,6 +643,8 @@ static spec_t *lookup_common(struct selabel_handle *rec,
 
 			if (rc == PCRE_ERROR_NOMATCH)
 				continue;
+
+			errno = ENOENT;
 			/* else it's an error */
 			goto finish;
 		}
@@ -654,6 +656,7 @@ static spec_t *lookup_common(struct selabel_handle *rec,
 		goto finish;
 	}
 
+	errno = 0;
 	ret = &spec_arr[i];
 
 finish:
