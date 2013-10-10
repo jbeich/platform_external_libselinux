@@ -52,6 +52,24 @@
       "revId": "e3615f9d90e9b37c84b00d1830121fb21e6981f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e13ceda4_2e6167ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2013-10-10T12:16:25Z",
+      "side": 1,
+      "message": "I think best practice is name and seinfo...why don\u0027t I make check seapp verify?\n\nDuring initial testing leaving keys out is handy. We could make the check in libselinux as well.",
+      "parentUuid": "8126d14d_594ea372",
+      "revId": "e3615f9d90e9b37c84b00d1830121fb21e6981f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
