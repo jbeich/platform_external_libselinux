@@ -70,6 +70,24 @@
       "revId": "e3615f9d90e9b37c84b00d1830121fb21e6981f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "414e9957_a5b3b6fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2013-10-10T21:41:49Z",
+      "side": 1,
+      "message": "yes, let\u0027s do that.",
+      "parentUuid": "e13ceda4_2e6167ab",
+      "revId": "e3615f9d90e9b37c84b00d1830121fb21e6981f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
