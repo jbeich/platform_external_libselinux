@@ -1,0 +1,9 @@
+Code-Review+2: Nick Kralevich <nnk@google.com>
+Verified+1: Nick Kralevich <nnk@google.com>
+Code-Review+1: Stephen Smalley <sds@tycho.nsa.gov>
+Code-Review+1: William Roberts <wroberts@tresys.com>
+Submitted-by: Nick Kralevich <nnk@google.com>
+Submitted-at: Wed, 20 Nov 2013 16:48:41 +0000
+Reviewed-on: https://android-review.googlesource.com/70371
+Project: platform/external/libselinux
+Branch: refs/heads/master
