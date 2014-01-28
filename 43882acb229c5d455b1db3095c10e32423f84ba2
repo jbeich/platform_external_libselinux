@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7220d6de_715f6a60",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-01-28T20:54:36Z",
+      "side": 1,
+      "message": "no space before comma.",
+      "revId": "43882acb229c5d455b1db3095c10e32423f84ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7220d6de_3155f240",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-01-28T20:54:36Z",
+      "side": 1,
+      "message": "can you please merge this to the previous line?",
+      "revId": "43882acb229c5d455b1db3095c10e32423f84ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b226cef6_7ee57947",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-01-28T20:54:36Z",
+      "side": 1,
+      "message": "Can you please merge this to the previous line?",
+      "revId": "43882acb229c5d455b1db3095c10e32423f84ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
