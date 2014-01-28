@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "12eebac6_4cd292f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-01-28T17:04:39Z",
+      "side": 1,
+      "message": "In a future change (not now), you may want to merge system/core/restorecon.c also.",
+      "revId": "4634b2846fefd286c02db0cb50e07b45b351e191",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12eebac6_8c663aab",
         "filename": "include/selinux/android.h",
         "patchSetId": 2
