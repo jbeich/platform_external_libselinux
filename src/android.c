@@ -630,6 +630,15 @@ oom:
 	goto out;
 }
 
+static int nochange;
+static int verbose;
+
+void selinux_android_restorecon_set_options(unsigned int options)
+{
+    nochange = (options & SELINUX_ANDROID_RESTORECON_NOCHANGE);
+    verbose = (options & SELINUX_ANDROID_RESTORECON_VERBOSE);
+}
+
 static struct selabel_handle *sehandle = NULL;
 #define FC_DIGEST_SIZE SHA_DIGEST_SIZE
 static uint8_t fc_digest[FC_DIGEST_SIZE];
@@ -721,13 +730,18 @@ static int restorecon_sb(const char *pathname, const struct stat *sb, bool setre
     }
 
     if (strcmp(oldsecontext, secontext) != 0) {
-        if (lsetfilecon(pathname, secontext) < 0) {
-            selinux_log(SELINUX_ERROR,
-                        "SELinux: Could not set context for %s to %s:  %s\n",
-                        pathname, secontext, strerror(errno));
-            freecon(oldsecontext);
-            freecon(secontext);
-            return -errno;
+        if (verbose)
+            selinux_log(SELINUX_INFO,
+                        "SELinux:  Relabeling %s from %s to %s.\n", pathname, oldsecontext, secontext);
+        if (!nochange) {
+            if (lsetfilecon(pathname, secontext) < 0) {
+                selinux_log(SELINUX_ERROR,
+                            "SELinux: Could not set context for %s to %s:  %s\n",
+                            pathname, secontext, strerror(errno));
+                freecon(oldsecontext);
+                freecon(secontext);
+                return -errno;
+            }
         }
     }
     freecon(oldsecontext);
