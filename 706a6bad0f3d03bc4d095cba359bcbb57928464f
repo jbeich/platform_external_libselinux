@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2e2061a_72829074",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-01-31T23:15:36Z",
+      "side": 1,
+      "message": "Using global variables is really ugly.\n\nI\u0027d really prefer if we modify selinux_android_restorecon / selinux_android_restorecon_recursive to take an additional \"flags\" argument, instead of relying on global variables.",
+      "revId": "706a6bad0f3d03bc4d095cba359bcbb57928464f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
