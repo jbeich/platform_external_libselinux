@@ -16,6 +16,24 @@
       "revId": "706a6bad0f3d03bc4d095cba359bcbb57928464f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "520d92ba_aa33efd5",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-02-03T19:19:20Z",
+      "side": 1,
+      "message": "Seems problematic for restorecon_recursive() to avoid their use altogether\nunless we replace use of nftw with direct use of fts and thus eliminate the need for a callback function.",
+      "parentUuid": "f2e2061a_72829074",
+      "revId": "706a6bad0f3d03bc4d095cba359bcbb57928464f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
