@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f29846f7_9c0705e6",
+        "filename": "include/selinux/android.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-02-06T18:18:09Z",
+      "side": 1,
+      "message": "Is it possible to get rid of the existing selinux_android_restorecon() and selinux_android_restorecon_recursive() calls, and only use this method?\n\nPerhaps something like:\n\n#define selinux_android_restorecon(fn) selinux_android_restorecon(fn, SELINUX_ANDROID_RESTORECON_FORCE)\n\n#define selinux_android_restorecon_recursive(fn) selinux_android_restorecon(fn, SELINUX_ANDROID_RESTORECON_RECURSIVE)\n\nextern int selinux_android_restorecon(const char *file, unsigned int flags);\n\nThat way, we don\u0027t have to have 3 exposed methods which all basically do the same thing.\n\nIt would also be nice if we could fix up all the callers, so that we only have one method which takes flags.",
+      "revId": "08587cfbf9de7d89a3d2d4e87aecd82a478e3289",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2640ec9_ba0cd10a",
+        "filename": "src/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-02-06T18:18:09Z",
+      "side": 1,
+      "message": "shouldn\u0027t FLAGS be SELINUX_ANDROID_RESTORECON_FORCE, not 0?",
+      "revId": "08587cfbf9de7d89a3d2d4e87aecd82a478e3289",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
