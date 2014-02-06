@@ -16,6 +16,24 @@
       "revId": "e183cec077891371542a5f2e164fcb9ddd745fd8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2d6ce80_5ec8f58f",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-02-06T21:43:08Z",
+      "side": 1,
+      "message": "No, didn\u0027t test that case or know about this issue (used the run-as code as reference but obviously it doesn\u0027t have to worry about this situation).\nI guess the best we can do in that situation is accept the line and map all entries to the same seinfo value, likely just default, in which case everything will get labeled with app_data_file.  That\u0027s accessible to all app domains currently, whereas platform_app_data_file or radio_data_file or nfc_data_file are only accessible to their respective domains, so I guess it will work but just be less secure.\nWe may also need to incorporate a hash of seapp_contexts into the hash used to decide whether to perform the restorecon_recursive as we are relying upon that in the /data/data case and not just file_contexts.",
+      "parentUuid": "b2640ec9_bd884bc7",
+      "revId": "e183cec077891371542a5f2e164fcb9ddd745fd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
