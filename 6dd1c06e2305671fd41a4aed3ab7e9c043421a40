@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d29502be_1ba5bb2d",
+        "filename": "include/selinux/android.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-02-06T19:29:39Z",
+      "side": 1,
+      "message": "Is there any reason we can\u0027t use \"selinux_android_restorecon\" as the name, instead of \"selinux_android_restorecon_flags\"? The \"_flags\" at the end seem awkward.\n\nThe macros below should only apply if 1 argument is used, so there *shouldn\u0027t* be any naming conflict.",
+      "revId": "6dd1c06e2305671fd41a4aed3ab7e9c043421a40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
