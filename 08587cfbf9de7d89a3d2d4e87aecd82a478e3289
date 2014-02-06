@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "32cadede_ecbadf52",
+        "filename": "include/selinux/android.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-02-06T18:51:43Z",
+      "side": 1,
+      "message": "Ok, so do you want me to re-spin this one (requires re-basing the app data directory relabeling one on top again) or just do a follow-on change on top of both of them?  I guess we\u0027ll add macros for them initially for API compatibility, then hunt down the callers and update them, then drop the macros.",
+      "parentUuid": "b2640ec9_9ab62ddf",
+      "revId": "08587cfbf9de7d89a3d2d4e87aecd82a478e3289",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2640ec9_ba0cd10a",
         "filename": "src/android.c",
         "patchSetId": 5
