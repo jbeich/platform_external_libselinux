@@ -88,6 +88,24 @@
       "revId": "e183cec077891371542a5f2e164fcb9ddd745fd8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f29846f7_ffbf1b40",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-02-06T22:15:42Z",
+      "side": 1,
+      "message": "But the boot restorecon is only run if /file_context (and maybe /seapp_contexts) changes, which will never occur for most normal devices. I doubt we want to incorporate the hash of packages.list when deciding when to run the restorecon...\n\nMaybe trying to do this on boot for /data/data isn\u0027t a good idea, and like you suggested, we should defer all of this to installd/PMS.",
+      "parentUuid": "b2d6ce80_bee011eb",
+      "revId": "e183cec077891371542a5f2e164fcb9ddd745fd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
