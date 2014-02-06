@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "32cadede_4cfe931b",
+        "filename": "include/selinux/android.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-02-06T18:29:06Z",
+      "side": 1,
+      "message": "API/ABI compatibility requires maintaining at least selinux_android_restorecon() as an actual library function unless Android plays by different rules than Linux.\nWe could likely get rid of selinux_android_restorecon_recursive() since that has only been in AOSP master thus far and not in any Android release.",
+      "parentUuid": "f29846f7_9c0705e6",
+      "revId": "08587cfbf9de7d89a3d2d4e87aecd82a478e3289",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2640ec9_ba0cd10a",
         "filename": "src/android.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2014-02-06T18:18:09Z",
       "side": 1,
       "message": "shouldn\u0027t FLAGS be SELINUX_ANDROID_RESTORECON_FORCE, not 0?",
+      "revId": "08587cfbf9de7d89a3d2d4e87aecd82a478e3289",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2a7c221_74a23ebe",
+        "filename": "src/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-02-06T18:29:06Z",
+      "side": 1,
+      "message": "force only matters if recurse is set, as we only apply the restorecon_last optimization in the recursive case.",
+      "parentUuid": "b2640ec9_ba0cd10a",
       "revId": "08587cfbf9de7d89a3d2d4e87aecd82a478e3289",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
