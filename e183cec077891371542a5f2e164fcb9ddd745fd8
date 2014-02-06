@@ -52,6 +52,24 @@
       "revId": "e183cec077891371542a5f2e164fcb9ddd745fd8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f29846f7_9f09b78d",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-02-06T22:04:29Z",
+      "side": 1,
+      "message": "Sorry, I may have been wrong about the format of packages.list. It looks like a 6th column was added, but it\u0027s not relevant from SELinux\u0027s point of view.\n\nIncorporating the seapp_context hash when determining when to relabel makes sense to me.\n\nMy biggest concern at this point is packages.list. As it represents the SELinux context from the *previous* boot, not the SELinux context the app should *currently* be in. This feels problematic for accepting something like https://android-review.googlesource.com/80871 , where we\u0027re moving SELinux domains.\n\nIs this a real concern or just my imagination?",
+      "parentUuid": "b2d6ce80_7e485949",
+      "revId": "e183cec077891371542a5f2e164fcb9ddd745fd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
