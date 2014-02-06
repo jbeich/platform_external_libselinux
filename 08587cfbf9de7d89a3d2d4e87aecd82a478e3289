@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b2640ec9_9ab62ddf",
+        "filename": "include/selinux/android.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-02-06T18:31:35Z",
+      "side": 1,
+      "message": "This isn\u0027t an NDK exposed API. We don\u0027t have compatibility requirement for this function.",
+      "parentUuid": "32cadede_4cfe931b",
+      "revId": "08587cfbf9de7d89a3d2d4e87aecd82a478e3289",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2640ec9_ba0cd10a",
         "filename": "src/android.c",
         "patchSetId": 5
