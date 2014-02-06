@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2640ec9_bd884bc7",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-02-06T21:28:13Z",
+      "side": 1,
+      "message": "Did you check this on an upgrade from an Android 4.3 device? On Android 4.3, the format of /data/system/packages.list is different. \n\nSince this code will be executed early on boot, before system_server has had a chance to fixup packages.list, we need to assume it can be in any previously released format.",
+      "revId": "e183cec077891371542a5f2e164fcb9ddd745fd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
