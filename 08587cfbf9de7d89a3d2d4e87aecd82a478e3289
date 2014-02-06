@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "b2640ec9_fa9c895b",
+        "filename": "include/selinux/android.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-02-06T18:53:41Z",
+      "side": 1,
+      "message": "We can do this as a followup change. Sounds good to me!",
+      "parentUuid": "32cadede_ecbadf52",
+      "revId": "08587cfbf9de7d89a3d2d4e87aecd82a478e3289",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2640ec9_ba0cd10a",
         "filename": "src/android.c",
         "patchSetId": 5
