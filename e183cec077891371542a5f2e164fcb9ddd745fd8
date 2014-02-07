@@ -106,6 +106,24 @@
       "revId": "e183cec077891371542a5f2e164fcb9ddd745fd8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2a7c221_3f4a4fe4",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1010099
+      },
+      "writtenOn": "2014-02-07T00:57:11Z",
+      "side": 1,
+      "message": "I think we still need this support in the restorecon core logic since ultimately PMS/installd would just call restorecon_recursive on the package directories for seinfo value changes.  Also, I think this will handle the upgrade case for unlabeled userdata (more or less; may leave files in app_data_file rather than platform_app_data_file but at least they won\u0027t be unlabeled), and will prevent erroneously relabeling the /data/data directories during the restorecon_recursive /data by init.rc, which we want in order to fix up labels elsewhere even aside from /data/data.  I suppose we could eventually have PMS/installd take over restorecon_recursive /data/data entirely and have init pass some flag to skip it on its restorecon_recursive /data, but until we have such support in PMS/installd, I think this is useful.  It will still happen on each upgrade at least.",
+      "parentUuid": "f29846f7_ffbf1b40",
+      "revId": "e183cec077891371542a5f2e164fcb9ddd745fd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
