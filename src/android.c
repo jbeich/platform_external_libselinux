@@ -973,6 +973,7 @@ int selinux_android_restorecon(const char* pathname, unsigned int flags)
     bool verbose = (flags & SELINUX_ANDROID_RESTORECON_VERBOSE) ? true : false;
     bool recurse = (flags & SELINUX_ANDROID_RESTORECON_RECURSE) ? true : false;
     bool force = (flags & SELINUX_ANDROID_RESTORECON_FORCE) ? true : false;
+    bool datadata = (flags & SELINUX_ANDROID_RESTORECON_DATADATA) ? true : false;
     struct stat sb;
     FTS *fts;
     FTSENT *ftsent;
@@ -1035,6 +1036,14 @@ int selinux_android_restorecon(const char* pathname, unsigned int flags)
                         "SELinux:  Error on %s: %s.\n", ftsent->fts_path, strerror(errno));
             fts_set(fts, ftsent, FTS_SKIP);
             continue;
+        case FTS_D:
+            if (!datadata &&
+                (!strncmp(ftsent->fts_path, DATA_DATA_PREFIX, sizeof(DATA_DATA_PREFIX)-2) ||
+                 !strncmp(ftsent->fts_path, DATA_USER_PREFIX, sizeof(DATA_USER_PREFIX)-2))) {
+                fts_set(fts, ftsent, FTS_SKIP);
+                continue;
+            }
+            /* fall through */
         default:
             (void) restorecon_sb(ftsent->fts_path, ftsent->fts_statp, true, nochange, verbose);
             break;
