@@ -16,6 +16,24 @@
       "revId": "83aa3a8ad6f696ec633c6617b2628eb98376f3a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f696973_2d7a99ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-02-19T14:28:43Z",
+      "side": 1,
+      "message": "Willing to do that, but wondering if it ought to be a separate change on top in case we find it breaks too many things.  Likely would leave at least the typedef even if we remove all uses from libselinux for external user API compatibility.",
+      "parentUuid": "0ff0510e_0005686c",
+      "revId": "83aa3a8ad6f696ec633c6617b2628eb98376f3a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
