@@ -16,6 +16,24 @@
       "revId": "8561d051ccd22f78c21edcebfa35b421c4997350",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f5bf1e1_ae20bb80",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1041,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-02-19T20:44:26Z",
+      "side": 1,
+      "message": "Can\u0027t use strcmp because DATA_DATA_PREFIX is \"/data/data/\" rather than \"/data/data\".  Which was what I wanted for the earlier restorecon logic because I only want to label entries under /data/data, not /data/data itself, based on package info, and I want to skip that entire prefix to get the package name.  But yes, I see your point - I guess I need another definition here or adjust the old definition and logic.",
+      "parentUuid": "0ff0510e_2ceb3b1b",
+      "revId": "8561d051ccd22f78c21edcebfa35b421c4997350",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
