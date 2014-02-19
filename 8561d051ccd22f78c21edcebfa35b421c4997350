@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ff0510e_2ceb3b1b",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1041,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-02-19T20:28:11Z",
+      "side": 1,
+      "message": "What happens if ftsent-\u003efts_path is \"/data/datafoo\" ? Is there any reason why this couldn\u0027t be strcmp() instead of strncmp() ?",
+      "revId": "8561d051ccd22f78c21edcebfa35b421c4997350",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
