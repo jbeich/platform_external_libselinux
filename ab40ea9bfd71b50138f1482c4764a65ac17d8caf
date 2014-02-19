@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0f5bf1e1_6e788397",
+        "filename": "include/selinux/selinux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-02-19T20:10:13Z",
+      "side": 1,
+      "message": "Yes, it is an ASCII text representation of the security attributes of the process or object.   ps -Z or ls -Z will show some examples on Android or Linux.",
+      "parentUuid": "effcddee_704fd8a7",
+      "revId": "ab40ea9bfd71b50138f1482c4764a65ac17d8caf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ff0510e_b125e83b",
         "filename": "src/avc_sidtab.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-02-19T19:55:56Z",
       "side": 1,
       "message": "strdup already returns char*.",
+      "revId": "ab40ea9bfd71b50138f1482c4764a65ac17d8caf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f5ef5cf_1a458dd0",
+        "filename": "src/avc_sidtab.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-02-19T20:10:13Z",
+      "side": 1,
+      "message": "The joys of search-and-replace.  Can drop in a subsequent change.",
+      "parentUuid": "0ff0510e_b125e83b",
       "revId": "ab40ea9bfd71b50138f1482c4764a65ac17d8caf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
