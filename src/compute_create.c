@@ -10,8 +10,8 @@
 #include "policy.h"
 #include "mapping.h"
 
-int security_compute_create(const security_context_t scon,
-				const security_context_t tcon,
+int security_compute_create(const_security_context_t scon,
+				const_security_context_t tcon,
 				security_class_t tclass,
 				security_context_t * newcon)
 {

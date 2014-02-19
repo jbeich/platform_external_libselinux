@@ -73,7 +73,7 @@ static int getprocattrcon(security_context_t * context,
 	return ret;
 }
 
-static int setprocattrcon(security_context_t context,
+static int setprocattrcon(const_security_context_t context,
 			  pid_t pid, const char *attr)
 {
 	char *path;
@@ -119,7 +119,7 @@ static int setprocattrcon(security_context_t context,
 	}
 
 #define setselfattr_def(fn, attr) \
-	int set##fn(const security_context_t c) \
+	int set##fn(const_security_context_t c) \
 	{ \
 		return setprocattrcon(c, 0, #attr); \
 	}
