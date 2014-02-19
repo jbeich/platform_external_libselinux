@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ff0510e_0005686c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-02-19T14:25:42Z",
+      "side": 1,
+      "message": "I\u0027d tend to agree with this statement. Is there any reason we wouldn\u0027t just get rid of security_context_t entirely?",
+      "revId": "83aa3a8ad6f696ec633c6617b2628eb98376f3a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
