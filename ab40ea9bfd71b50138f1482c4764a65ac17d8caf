@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "effcddee_704fd8a7",
+        "filename": "include/selinux/selinux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-02-19T19:55:56Z",
+      "side": 1,
+      "message": "i\u0027m still not sure what a \"security context\" is. is it actually ASCII text? is there some documentation you could link to?",
+      "revId": "ab40ea9bfd71b50138f1482c4764a65ac17d8caf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ff0510e_b125e83b",
+        "filename": "src/avc_sidtab.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-02-19T19:55:56Z",
+      "side": 1,
+      "message": "strdup already returns char*.",
+      "revId": "ab40ea9bfd71b50138f1482c4764a65ac17d8caf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
