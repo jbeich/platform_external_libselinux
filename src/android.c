@@ -977,8 +977,9 @@ static int restorecon_sb(const char *pathname, const struct stat *sb, bool setre
     if (lgetfilecon(pathname, &oldsecontext) < 0)
         goto err;
 
-    if (!strncmp(pathname, DATA_DATA_PREFIX, sizeof(DATA_DATA_PREFIX)-1) ||
-        !strncmp(pathname, DATA_USER_PREFIX, sizeof(DATA_USER_PREFIX)-1)) {
+    if (!strncmp(pathname, DATA_DATA_PATH, sizeof(DATA_DATA_PATH)-1) ||
+        !strncmp(pathname, DATA_USER_PATH, sizeof(DATA_USER_PATH)-1)) {
+        setrestoreconlast = false;
         if (pkgdir_selabel_lookup(pathname, &secontext) < 0)
             goto err;
     }
