@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c58ad41_cbfa298e",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-02-28T00:21:08Z",
+      "side": 1,
+      "message": "Doesn\u0027t this have the problem we talked about earlier? Specifically, this breaks relabeling of a directory like /data/datafoo ?",
+      "revId": "c02c53b206328d5d2a3d52d3ce95211908c579e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
