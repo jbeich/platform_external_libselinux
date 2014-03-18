@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5cf4c9d0_f2d9e6c3",
+        "filename": "include/selinux/android.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-03-18T14:21:29Z",
+      "side": 1,
+      "message": "Use (void) not ().",
+      "revId": "ee789b4f8e357bcc965d26b09a6d647718d75f31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7cefcdff_96b4ccfb",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-03-18T14:21:29Z",
+      "side": 1,
+      "message": "I\u0027d move the /data paths to index 1 and switch the default index to 0.",
+      "revId": "ee789b4f8e357bcc965d26b09a6d647718d75f31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7cefcdff_76aa889b",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-03-18T14:21:29Z",
+      "side": 1,
+      "message": "Default to index 0, i.e. the non-/data path.",
+      "revId": "ee789b4f8e357bcc965d26b09a6d647718d75f31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7cefcdff_36a400c9",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1204,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-03-18T14:21:29Z",
+      "side": 1,
+      "message": "(void) not ()",
+      "revId": "ee789b4f8e357bcc965d26b09a6d647718d75f31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7cefcdff_56a784cf",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1223,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-03-18T14:21:29Z",
+      "side": 1,
+      "message": "I\u0027d tend to open+fstat the two files, compare length first, if equal, then mmap both, then memcmp the two byte arrays.",
+      "revId": "ee789b4f8e357bcc965d26b09a6d647718d75f31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cf4c9d0_d2dee2a9",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1233,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-03-18T14:21:29Z",
+      "side": 1,
+      "message": "(void) not ()\nAlso I don\u0027t think we should export this implementation detail to users of the library.  Instead, provide a bool API indicating whether /data or non-/data policy should be used, and have the caller use that to decide?  Because the caller may not even be using an array or the same ordering.",
+      "revId": "ee789b4f8e357bcc965d26b09a6d647718d75f31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
