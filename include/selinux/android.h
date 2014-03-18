@@ -37,6 +37,9 @@ extern int selinux_android_restorecon(const char *file, unsigned int flags);
 
 extern int selinux_android_seapp_context_reload(void);
 
+extern void selinux_set_policy_index();
+extern int selinux_get_policy_index();
+
 #ifdef __cplusplus
 }
 #endif
