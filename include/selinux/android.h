@@ -1,6 +1,7 @@
 #ifndef _SELINUX_ANDROID_H_
 #define _SELINUX_ANDROID_H_
 
+#include <stdbool.h>
 #include <sys/types.h>
 #include <unistd.h>
 
@@ -36,6 +37,9 @@ extern int selinux_android_setfilecon(const char *pkgdir,
 extern int selinux_android_restorecon(const char *file, unsigned int flags);
 
 extern int selinux_android_seapp_context_reload(void);
+
+extern void selinux_android_set_policy_index(void);
+extern bool selinux_android_use_data_policy(void);
 
 #ifdef __cplusplus
 }
