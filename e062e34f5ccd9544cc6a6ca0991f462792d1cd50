@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cd6d13f_e7ad9e6c",
+        "filename": "src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1203,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-03-18T18:52:21Z",
+      "side": 1,
+      "message": "Should we just call this from selinux_android_reload_policy() and avoid the need for any external calls to it?  Then it can just be a static function only used within libselinux.",
+      "revId": "e062e34f5ccd9544cc6a6ca0991f462792d1cd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
