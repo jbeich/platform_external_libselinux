@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcca7990_bce22541",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1167,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-03-19T18:14:33Z",
+      "side": 1,
+      "message": "You want to compare sb_base.st_size bytes here.",
+      "revId": "a7beaffe36c8b7a47bf1f257c541ff2dd9c24dd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cf4c9d0_f5567049",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-03-19T18:14:33Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this log message since we already log the policy files being loaded elsewhere.  Which gets rid of the need for a centralized exit path, and you can just return; above and probably even get rid of the err: path and just inline the two close() calls or at least rename the goto label to be clear in its purpose (e.g. closeboth).",
+      "revId": "a7beaffe36c8b7a47bf1f257c541ff2dd9c24dd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
