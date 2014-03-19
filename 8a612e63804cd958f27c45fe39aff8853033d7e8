@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5cf4c9d0_d815e125",
+        "filename": "src/android.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1183,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-03-19T20:39:25Z",
+      "side": 1,
+      "message": "Lost the close(fd_base); close(fd_override); on the normal exit path.",
+      "revId": "8a612e63804cd958f27c45fe39aff8853033d7e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
