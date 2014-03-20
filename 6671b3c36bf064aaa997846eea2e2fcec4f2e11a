@@ -16,6 +16,24 @@
       "revId": "6671b3c36bf064aaa997846eea2e2fcec4f2e11a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc81454e_f2a3084e",
+        "filename": "src/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1134,
+      "author": {
+        "id": 1013157
+      },
+      "writtenOn": "2014-03-20T17:26:56Z",
+      "side": 1,
+      "message": "Agreed. Makes sense. \n\n-- resetting policy_index to 0 :\nI was always working under the assumption that policy reload was only ever going to be triggered once and that was on boot and from the init.rc file. Are we actually going to support a dynamic reload of policy without rebooting the phone? If so that changes my thinking on some of these things.",
+      "parentUuid": "bc81454e_b2cee048",
+      "revId": "6671b3c36bf064aaa997846eea2e2fcec4f2e11a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
