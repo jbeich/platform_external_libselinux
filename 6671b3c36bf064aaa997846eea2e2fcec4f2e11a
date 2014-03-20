@@ -34,6 +34,24 @@
       "revId": "6671b3c36bf064aaa997846eea2e2fcec4f2e11a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc81454e_b2efc069",
+        "filename": "src/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1134,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-03-20T17:36:05Z",
+      "side": 1,
+      "message": "It can already happen via setprop selinux.reload_policy 1 at any time, which is done by SELinuxPolicyInstallReceiver upon policy update.  So we\u0027ll do it once from init.rc on boot after /data is mounted, and then at any time upon a policy update being installed.",
+      "parentUuid": "bc81454e_f2a3084e",
+      "revId": "6671b3c36bf064aaa997846eea2e2fcec4f2e11a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
