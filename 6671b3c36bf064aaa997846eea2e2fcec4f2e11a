@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc81454e_b2cee048",
+        "filename": "src/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1134,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-03-20T16:15:48Z",
+      "side": 1,
+      "message": "Need to reset policy_index to 0 on entry.  Otherwise if init ever loads a policy from /data, it will continue loading policy from /data even if /data/security/current/selinux_version changes or is removed.\n\nAlso, we either need to validate the existence and readability (e.g. access(path, R_OK) for each of the policy file paths) of all of the /data policy files in this function or we need to still provide a fallback in the functions that open the policy files so that we won\u0027t fallover completely if for some reason we have a selinux_version without the policy files present or we have an incomplete set of policy files.",
+      "revId": "6671b3c36bf064aaa997846eea2e2fcec4f2e11a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
