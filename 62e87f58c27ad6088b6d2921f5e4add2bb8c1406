@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcf999ff_9b70cbf2",
+        "filename": "src/android.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-03-21T13:27:53Z",
+      "side": 1,
+      "message": "Reset to 0 on each call so that we always fall back to base policy on any error or version mismatch below.",
+      "revId": "62e87f58c27ad6088b6d2921f5e4add2bb8c1406",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc0865da_1deaf718",
+        "filename": "src/android.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-03-21T13:27:53Z",
+      "side": 1,
+      "message": "Recheck on each call so that we reflect any change to the /data selinux_version since the last call.  Intentionally not using __selinux_once() here since we want it done on every call.",
+      "revId": "62e87f58c27ad6088b6d2921f5e4add2bb8c1406",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c0d61ec_19cb2bea",
+        "filename": "src/android.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-03-21T13:27:53Z",
+      "side": 1,
+      "message": "Ditto.  Required to ensure installd loads the correct policy file upon a reload.",
+      "revId": "62e87f58c27ad6088b6d2921f5e4add2bb8c1406",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcf999ff_3b80976b",
+        "filename": "src/android.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-03-21T13:27:53Z",
+      "side": 1,
+      "message": "Ditto.  Redundant but harmless for init since we will have already done this upon selinux_android_reload_policy() but required for ueventd or other users of file_contexts only.",
+      "revId": "62e87f58c27ad6088b6d2921f5e4add2bb8c1406",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc0865da_bdff8bd2",
+        "filename": "src/android.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1206,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-03-21T13:27:53Z",
+      "side": 1,
+      "message": "Ditto.  Required for init policy reload upon setprop selinux.reload_policy 1 in init.rc for initial reload from /data after mounting or for SELinuxPolicyInstallReceiver policy update.",
+      "revId": "62e87f58c27ad6088b6d2921f5e4add2bb8c1406",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
