@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c850d89_e0ea225b",
+        "filename": "src/android.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-03-25T14:50:50Z",
+      "side": 1,
+      "message": "This does not work presently - always returns 0.\nNeed to investigate when this property value is available/set.",
+      "revId": "84ee995ce9bae49f4dd6fabc37af9d24905708e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
