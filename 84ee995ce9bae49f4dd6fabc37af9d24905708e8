@@ -16,6 +16,24 @@
       "revId": "84ee995ce9bae49f4dd6fabc37af9d24905708e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc9519be_bb5127a3",
+        "filename": "src/android.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-03-25T14:55:21Z",
+      "side": 1,
+      "message": "Ok, property_service_init occurs after post-fs-data (necessarily since it needs /data available), and we presently do the setprop selinux.reload_policy 1 from post-fs-data in init.rc.  Not sure how to resolve.\nCould move the setprop selinux.reload_policy 1 later, e.g. to early-boot or boot, but then we\u0027d need to also move the restorecon_recursive /data if we want it to use any /data/security/file_contexts file.",
+      "parentUuid": "7c850d89_e0ea225b",
+      "revId": "84ee995ce9bae49f4dd6fabc37af9d24905708e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
