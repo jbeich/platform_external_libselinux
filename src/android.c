@@ -918,8 +918,9 @@ static int pkgdir_selabel_lookup(const char *pathname, char **secontextp)
 
     pkgInfo = package_info_lookup(pkgname);
     if (!pkgInfo) {
+        errno = ENOENT;
         free(pkgname);
-        return 0;
+        return -1;
     }
 
     ctx = context_new(secontext);
