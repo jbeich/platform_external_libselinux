@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99e49352_3b21b784",
+        "filename": "src/android.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-04-14T13:20:14Z",
+      "side": 1,
+      "message": "Just noting again that this test will never return true presently even if safemode is enabled because properties have not been loaded at the point this is called.  Would require moving setprop selinux.reload_policy reload 1 from post-fs-data to boot or directly reloading right after property_service_init in the init code, and would mean that restorecon_recursive /data either needs to also be moved or will only ever work for the /file_contexts file, not any /data/security/file_contexts file.",
+      "revId": "1ce40c1c9221eef0f322385ddbc576a0d7c79a5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
