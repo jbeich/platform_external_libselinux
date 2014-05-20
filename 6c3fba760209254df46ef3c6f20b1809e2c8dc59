@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa1c9852_e0759b50",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-05-20T14:11:52Z",
+      "side": 1,
+      "message": "I think we can drop the above if statement in its entirety as well.",
+      "revId": "6c3fba760209254df46ef3c6f20b1809e2c8dc59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f3504d1_78cc3949",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-05-20T14:11:52Z",
+      "side": 1,
+      "message": "Wondering if we should actually save/propagate errors from restorecon_sb() and not set the attribute if we did not fully relabel all entries but that would require further reworking of the logic.",
+      "revId": "6c3fba760209254df46ef3c6f20b1809e2c8dc59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
