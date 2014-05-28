@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bfe85ccc_1ccc5548",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-05-28T12:28:30Z",
+      "side": 1,
+      "message": "Actually, this needs to become !strncmp(pathname, DATA_DATA_PREFIX, sizeof(DATA_DATA_PREFIX)-1) || !strncmp(pathname, DATA_USER_PREFIX, sizeof(DATA_USER_PREFIX)-1)), unless we disable setting of the attribute below in that case.  Otherwise we won\u0027t descend into the package directories upon the restorecon calls by installd if seapp_contexts has changed but file_contexts has not.",
+      "parentUuid": "aa1c9852_e0759b50",
+      "revId": "6c3fba760209254df46ef3c6f20b1809e2c8dc59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f3504d1_78cc3949",
         "filename": "src/android.c",
         "patchSetId": 3
@@ -30,6 +48,23 @@
       "writtenOn": "2014-05-20T14:11:52Z",
       "side": 1,
       "message": "Wondering if we should actually save/propagate errors from restorecon_sb() and not set the attribute if we did not fully relabel all entries but that would require further reworking of the logic.",
+      "revId": "6c3fba760209254df46ef3c6f20b1809e2c8dc59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfe85ccc_3cd111dd",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1192,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-05-28T12:28:30Z",
+      "side": 1,
+      "message": "This is wrong; we should reset errno to sverrno and return error (0 or -1) unchanged.",
       "revId": "6c3fba760209254df46ef3c6f20b1809e2c8dc59",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
