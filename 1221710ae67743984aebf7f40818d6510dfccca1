@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9f6e38af_bce5a071",
+        "filename": "src/label.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-06-16T14:29:34Z",
+      "side": 1,
+      "message": "Yes, errno setting is handled by the label backend when there is a method provided.  lookup_common in label_file.c will set it if there is no match.",
+      "parentUuid": "df74307d_2c2cf0ba",
+      "revId": "1221710ae67743984aebf7f40818d6510dfccca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f4e8057_4bb4d90c",
         "filename": "src/label_file.c",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "9f6e38af_5cd72c7d",
+        "filename": "src/label_file.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-06-16T14:29:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f4e8057_4bb4d90c",
+      "revId": "1221710ae67743984aebf7f40818d6510dfccca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f4e8057_cbc7e979",
         "filename": "src/label_file.c",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2014-06-15T18:02:51Z",
       "side": 1,
       "message": "log a warning on an out of memory condition?",
+      "revId": "1221710ae67743984aebf7f40818d6510dfccca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f6e38af_fcdf1897",
+        "filename": "src/label_file.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-06-16T14:29:34Z",
+      "side": 1,
+      "message": "We don\u0027t do this elsewhere on the lookup path, only during init.",
+      "parentUuid": "5f4e8057_cbc7e979",
       "revId": "1221710ae67743984aebf7f40818d6510dfccca1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
