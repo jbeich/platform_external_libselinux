@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4a70589_795f6b52",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-06-19T21:58:09Z",
+      "side": 1,
+      "message": "can you refactor this and eliminate all the common code?",
+      "range": {
+        "startLine": 875,
+        "startChar": 0,
+        "endLine": 910,
+        "endChar": 1
+      },
+      "revId": "c095fe3377352779e9ff5438c9ff0522d8c5547d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6471f9c6_d6a5152c",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1472,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-06-19T21:58:09Z",
+      "side": 1,
+      "message": "This feels fragile... I don\u0027t know how to solve it though...",
+      "revId": "c095fe3377352779e9ff5438c9ff0522d8c5547d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
