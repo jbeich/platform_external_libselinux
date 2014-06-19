@@ -75,6 +75,24 @@
       "revId": "c095fe3377352779e9ff5438c9ff0522d8c5547d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e43fa9e6_c6b5d80c",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1472,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2014-06-19T22:17:47Z",
+      "side": 1,
+      "message": "Is there a reason why this whole function is here rather than in keystore.cpp?",
+      "parentUuid": "c4a70589_cb01e6d2",
+      "revId": "c095fe3377352779e9ff5438c9ff0522d8c5547d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
