@@ -55,6 +55,12 @@ static const struct selinux_opt seopts_service[] = {
     { 0, NULL }
 };
 
+static const struct selinux_opt seopts_keystore[] = {
+    { SELABEL_OPT_PATH, "/keystore_contexts" },
+    { SELABEL_OPT_PATH, "/data/security/current/keystore_contexts" },
+    { 0, NULL }
+};
+
 enum levelFrom {
 	LEVELFROM_NONE,
 	LEVELFROM_APP,
@@ -885,6 +891,24 @@ static struct selabel_handle *service_context_open(void)
     return handle;
 }
 
+static struct selabel_handle *keystore_context_open(void)
+{
+    struct selabel_handle *handle = NULL;
+
+    set_policy_index();
+    handle = selabel_open(SELABEL_CTX_ANDROID_PROP,
+            &seopts_keystore[policy_index], 1);
+
+    if (!handle) {
+        selinux_log(SELINUX_ERROR, "%s: Error getting keystore context handle (%s)\n",
+                __FUNCTION__, strerror(errno));
+    } else {
+        selinux_log(SELINUX_INFO, "SELinux: Loaded keystore contexts from %s.\n",
+                seopts_keystore[policy_index].value);
+    }
+    return handle;
+}
+
 static pthread_once_t fc_once = PTHREAD_ONCE_INIT;
 
 struct pkgInfo {
@@ -1313,6 +1337,12 @@ struct selabel_handle* selinux_android_service_context_handle(void)
     return service_context_open();
 }
 
+
+struct selabel_handle* selinux_android_keystore_context_handle(void)
+{
+    return keystore_context_open();
+}
+
 void selinux_android_set_sehandle(const struct selabel_handle *hndl)
 {
     sehandle = (struct selabel_handle *) hndl;
@@ -1427,4 +1457,33 @@ int selinux_log_callback(int type, const char *fmt, ...)
     LOG_PRI_VA(priority, "SELinux", fmt, ap);
     va_end(ap);
     return 0;
+}
+
+bool selinux_android_mac_check(const char *sctx, const char *selinux_class,
+        const char *perm, const char *key, struct selabel_handle *handle)
+{
+
+    /* Get the target context. */
+    char *tctx;
+    if (selabel_lookup(handle, &tctx, key, 0) != 0) {
+        ALOGE("SELinux: Failed to find target context.\n");
+        return false;
+    }
+    int result = selinux_check_access(sctx, tctx, selinux_class, perm, (void *)key);
+    freecon(tctx);
+    return (result == 0);
+}
+
+bool selinux_android_mac_check_from_pid(pid_t spid, const char *selinux_class,
+        const char *perm, const char *key, struct selabel_handle *handle)
+{
+    char *sctx;
+    if (getpidcon(spid, &sctx) != 0) {
+        ALOGE("SELinux: Failed to get source pid context.\n");
+        return false;
+    }
+
+    bool result = selinux_android_mac_check(sctx, selinux_class, perm, key, handle);
+    freecon(sctx);
+    return result;
 }

@@ -15,6 +15,8 @@ extern struct selabel_handle* selinux_android_file_context_handle(void);
 
 extern struct selabel_handle* selinux_android_service_context_handle(void);
 
+extern struct selabel_handle* selinux_android_keystore_context_handle(void);
+
 extern void selinux_android_set_sehandle(const struct selabel_handle *hndl);
 
 extern int selinux_android_load_policy(void);
@@ -49,6 +51,12 @@ extern int selinux_android_restorecon_pkgdir(const char *pkgdir,
 extern int selinux_android_seapp_context_reload(void);
 
 extern bool selinux_android_use_data_policy(void);
+
+extern bool selinux_android_mac_check(const char *sctx, const char *selinux_class,
+        const char *perm, const char *key, struct selabel_handle *handle);
+
+extern bool selinux_android_mac_check_from_pid(pid_t spid, const char *selinux_class,
+        const char *perm, const char *key, struct selabel_handle *handle);
 
 #ifdef __cplusplus
 }
