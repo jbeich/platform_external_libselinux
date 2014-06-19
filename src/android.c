@@ -55,6 +55,12 @@ static const struct selinux_opt seopts_service[] = {
     { 0, NULL }
 };
 
+static const struct selinux_opt seopts_keystore[] = {
+    { SELABEL_OPT_PATH, "/keystore_contexts" },
+    { SELABEL_OPT_PATH, "/data/security/current/keystore_contexts" },
+    { 0, NULL }
+};
+
 enum levelFrom {
 	LEVELFROM_NONE,
 	LEVELFROM_APP,
@@ -885,6 +891,24 @@ static struct selabel_handle *service_context_open(void)
     return handle;
 }
 
+static struct selabel_handle *keystore_context_open(void)
+{
+    struct selabel_handle *handle = NULL;
+
+    set_policy_index();
+    handle = selabel_open(SELABEL_CTX_ANDROID_PROP,
+            &seopts_keystore[policy_index], 1);
+
+    if (!handle) {
+        selinux_log(SELINUX_ERROR, "%s: Error getting keystore context handle (%s)\n",
+                __FUNCTION__, strerror(errno));
+    } else {
+        selinux_log(SELINUX_INFO, "SELinux: Loaded keystore contexts from %s.\n",
+                seopts_keystore[policy_index].value);
+    }
+    return handle;
+}
+
 static pthread_once_t fc_once = PTHREAD_ONCE_INIT;
 
 struct pkgInfo {
@@ -1313,6 +1337,12 @@ struct selabel_handle* selinux_android_service_context_handle(void)
     return service_context_open();
 }
 
+
+struct selabel_handle* selinux_android_keystore_context_handle(void)
+{
+    return keystore_context_open();
+}
+
 void selinux_android_set_sehandle(const struct selabel_handle *hndl)
 {
     sehandle = (struct selabel_handle *) hndl;
@@ -1427,4 +1457,123 @@ int selinux_log_callback(int type, const char *fmt, ...)
     LOG_PRI_VA(priority, "SELinux", fmt, ap);
     va_end(ap);
     return 0;
+}
+
+bool selinux_android_keystore_check_mac_perms(unsigned int perm,
+                                              pid_t spid,
+                                              const char *key_name)
+{
+    char *sctx;
+    char *tctx;
+    const char *str_perm;
+    const char *class = "keystore_key";
+    struct selable_handle *handle;
+
+    /* This must be kept in sync with permissions in keystore.cpp. */
+    switch(perm){
+        case (1 << 0):
+            str_perm = "test";
+            break;
+        case (1 << 1):
+            str_perm = "get";
+            break;
+        case (1 << 2):
+            str_perm = "insert";
+            break;
+        case (1 << 3):
+            str_perm = "delete";
+            break;
+        case (1 << 4):
+            str_perm = "exist";
+            break;
+        case (1 << 5):
+            str_perm = "saw";
+            break;
+        case (1 << 6):
+            str_perm = "reset";
+            break;
+        case (1 << 7):
+            str_perm = "password";
+            break;
+        case (1 << 8):
+            str_perm = "lock";
+            break;
+        case (1 << 9):
+            str_perm = "unlock";
+            break;
+        case (1 << 10):
+            str_perm = "zero";
+            break;
+        case (1 << 11):
+            str_perm = "sign";
+            break;
+        case (1 << 12):
+            str_perm = "verify";
+            break;
+        case (1 << 13):
+            str_perm = "grant";
+            break;
+        case (1 << 14):
+            str_perm = "duplicate";
+            break;
+        case (1 << 15):
+            str_perm = "clear_uid";
+            break;
+        default:
+            str_perm = "unknown";
+    }
+
+    handle = NULL;
+    handle = selinux_android_keystore_context_handle();
+
+    if (!handle) {
+        ALOGE("SELinux: Keystore failed to get handle.\n");
+        return false;
+    }
+
+    if (getpidcon(spid, &sctx) != 0) {
+        ALOGE("SELinux: Keystore getpidcon failed: %d.\n", errno);
+        return false;
+    }
+
+    if (!sctx) {
+        ALOGE("SELinux: Keystore failed to get sctx.\n");
+        return false;
+    }
+
+    if (selabel_lookup(handle, &tctx, "name", 1) != 0) {
+        ALOGE("SELinux: Keystore failed to lookup target label.\n");
+        freecon(sctx);
+        return false;
+    }
+
+    if (!tctx) {
+        ALOGE("SELinux: Keystore failed to find tctx.\n");
+        freecon(sctx);
+        return false;
+    }
+
+    errno = 0;
+    int result = selinux_check_access(sctx, tctx, class, str_perm, (void *) key_name);
+
+    freecon(sctx);
+    freecon(tctx);
+    return (result == 0);
+}
+
+static int selinux_android_keystore_audit_callback(void *data,
+                                                   security_class_t cls,
+                                                   char *buf, size_t len)
+{
+    snprintf(buf, len, "keystore_key=%s", !data ? "NULL" : (char *)data);
+    return 0;
+}
+
+void selinux_android_keystore_init()
+{
+    union selinux_callback cb;
+    cb.func_audit = selinux_android_keystore_audit_callback;
+    selinux_set_callback(SELINUX_CB_AUDIT, cb);
+    cb.func_log = selinux_log_callback;
+    selinux_set_callback(SELINUX_CB_LOG, cb);
 }
