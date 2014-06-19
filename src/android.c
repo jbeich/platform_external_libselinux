@@ -1428,3 +1428,33 @@ int selinux_log_callback(int type, const char *fmt, ...)
     va_end(ap);
     return 0;
 }
+
+bool selinux_android_mac_check(const char *scon, const char *tclass,
+        const char *perm, const char *aux, struct selabel_handle *handle)
+{
+
+    /* Get the target context. */
+    char *tcon;
+    if (selabel_lookup(handle, &tcon, aux, 0) != 0) {
+        ALOGE("SELinux: Failed to find target context.\n");
+        return false;
+    }
+
+    int result = selinux_check_access(scon, tcon, tclass, perm, (void *)aux);
+    freecon(tcon);
+    return (result == 0);
+}
+
+bool selinux_android_mac_check_from_pid(pid_t spid, const char *tclass,
+        const char *perm, const char *aux, struct selabel_handle *handle)
+{
+    char *scon;
+    if (getpidcon(spid, &scon) != 0) {
+        ALOGE("SELinux: Failed to get source pid context.\n");
+        return false;
+    }
+
+    bool result = selinux_android_mac_check(scon, tclass, perm, aux, handle);
+    freecon(scon);
+    return result;
+}
