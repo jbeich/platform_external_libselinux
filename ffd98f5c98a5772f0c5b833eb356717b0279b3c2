@@ -16,6 +16,142 @@
       "revId": "ffd98f5c98a5772f0c5b833eb356717b0279b3c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04f11da2_4e1e13f5",
+        "filename": "src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1462,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-06-20T13:45:32Z",
+      "side": 1,
+      "message": "Why do we pass perm here?",
+      "revId": "ffd98f5c98a5772f0c5b833eb356717b0279b3c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4ede9ca_ed5d45a5",
+        "filename": "src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1469,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-06-20T13:45:32Z",
+      "side": 1,
+      "message": "Remove.",
+      "revId": "ffd98f5c98a5772f0c5b833eb356717b0279b3c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "240c6177_d23902ec",
+        "filename": "src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1471,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-06-20T13:45:32Z",
+      "side": 1,
+      "message": "s/selable/selabel/",
+      "revId": "ffd98f5c98a5772f0c5b833eb356717b0279b3c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4ede9ca_8d50018f",
+        "filename": "src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1473,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-06-20T13:45:32Z",
+      "side": 1,
+      "message": "dup initialization",
+      "revId": "ffd98f5c98a5772f0c5b833eb356717b0279b3c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04f11da2_ae1217e5",
+        "filename": "src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1486,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-06-20T13:45:32Z",
+      "side": 1,
+      "message": "Shouldn\u0027t be possible if getpidcon() returned 0.",
+      "revId": "ffd98f5c98a5772f0c5b833eb356717b0279b3c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "240c6177_f23c06de",
+        "filename": "src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1491,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-06-20T13:45:32Z",
+      "side": 1,
+      "message": "s/\"name\"/key_name/\ns/1/0/",
+      "revId": "ffd98f5c98a5772f0c5b833eb356717b0279b3c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4ede9ca_cd5a09ab",
+        "filename": "src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1498,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-06-20T13:45:32Z",
+      "side": 1,
+      "message": "Shouldn\u0027t be possible if selabel_lookup() returned 0.",
+      "revId": "ffd98f5c98a5772f0c5b833eb356717b0279b3c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4ede9ca_2d290d14",
+        "filename": "src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1503,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-06-20T13:45:32Z",
+      "side": 1,
+      "message": "Shouldn\u0027t be needed.",
+      "revId": "ffd98f5c98a5772f0c5b833eb356717b0279b3c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
