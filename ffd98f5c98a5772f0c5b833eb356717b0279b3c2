@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "240c6177_12542a0d",
+        "filename": "src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1461,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-06-20T13:31:08Z",
+      "side": 1,
+      "message": "I think everything below this line can stay in the keystore code.  Open to argument, but it doesn\u0027t feel like libselinux code, e.g. this function won\u0027t be reused by any other program, right?",
+      "revId": "ffd98f5c98a5772f0c5b833eb356717b0279b3c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
