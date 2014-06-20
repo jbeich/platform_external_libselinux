@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "442075de_32c32dd2",
+        "filename": "src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1461,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-06-20T22:59:03Z",
+      "side": 1,
+      "message": "Refactored into a generic MAC check function.",
+      "parentUuid": "240c6177_12542a0d",
+      "revId": "ffd98f5c98a5772f0c5b833eb356717b0279b3c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04f11da2_4e1e13f5",
         "filename": "src/android.c",
         "patchSetId": 2
