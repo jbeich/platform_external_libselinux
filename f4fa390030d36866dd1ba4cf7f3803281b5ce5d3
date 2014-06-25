@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a46cd148_cc094393",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1010099
+      },
+      "writtenOn": "2014-06-25T19:56:34Z",
+      "side": 1,
+      "message": "Unless I am missing something, only the last sentence is still true of this change; it is no longer relevant to keystore at all.  And until we have a corresponding code change to init property service and/or servicemanager to use it, it is hard to evaluate whether it is correct / optimal.",
+      "revId": "f4fa390030d36866dd1ba4cf7f3803281b5ce5d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
