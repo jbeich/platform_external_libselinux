@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24bf01e0_0bcd4d43",
+        "filename": "src/android.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1433,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-06-25T23:07:36Z",
+      "side": 1,
+      "message": "Maybe better for \"aux\" to be a void*, instead of a char*? That seems to be the format preferred by selinux_check_access.",
+      "revId": "6d4d636f9b97dfdc616d98896ade1db00d6ea2e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
