@@ -34,6 +34,24 @@
       "revId": "6d4d636f9b97dfdc616d98896ade1db00d6ea2e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a46cd148_12a1b29c",
+        "filename": "src/android.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1433,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-06-26T12:50:11Z",
+      "side": 1,
+      "message": "Comparing with check_mac_perms() in init/property_service.c, differences are:\n- check_mac_perms() checks is_selinux_enabled() and returns 1/true in that case.\n- check_mac_perms() checks for a NULL scon and handle and treats either one as an error.\n- check_mac_perms() does not call ALOGE() on anything.  I\u0027m wondering how useful the error message below is given that it tells us nothing about the call chain, the class or perm in question, etc.  Should either augment to at least report the class/perm or drop altogether and leave it to the caller.\n\nOne other observation: presently (both in the existing property_service and servicemanager code and here) a non-existent or corrupted *_contexts configuration will lead to denials on all checks even if the device is put into permissive mode due to the error handling path on !sehandle or selabel_lookup() failure.  One possible alternative would be to check security_getenforce() in the error path and only fail the permission check if 1, otherwise just log an error but proceed.",
+      "parentUuid": "a4ca118f_2234b062",
+      "revId": "6d4d636f9b97dfdc616d98896ade1db00d6ea2e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
