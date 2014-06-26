@@ -52,6 +52,24 @@
       "revId": "6d4d636f9b97dfdc616d98896ade1db00d6ea2e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8497cd5d_cb6abdfe",
+        "filename": "src/android.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1433,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-06-26T14:02:21Z",
+      "side": 1,
+      "message": "BTW, rather than calling is_selinux_enabled() on each call, we can just follow the example in src/checkAccess.c and call it once and save the result in a static, as it will not change.  Or maybe this test is completely irrelevant now in Android since SELinux is required.",
+      "parentUuid": "a46cd148_12a1b29c",
+      "revId": "6d4d636f9b97dfdc616d98896ade1db00d6ea2e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
