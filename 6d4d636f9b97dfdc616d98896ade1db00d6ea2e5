@@ -70,6 +70,24 @@
       "revId": "6d4d636f9b97dfdc616d98896ade1db00d6ea2e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4fb85cc_2ad5bb74",
+        "filename": "src/android.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1433,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-06-26T22:16:08Z",
+      "side": 1,
+      "message": "My intention is to keep the is_selinux_enabled check and the check for scon in property service addressing the first two differences. To address the third difference I will to the logs, class, perm and contexts where available.\n\nI\u0027ll add functionality to correctly handle corrupted or missing *_context files in permissive mode.",
+      "parentUuid": "8497cd5d_cb6abdfe",
+      "revId": "6d4d636f9b97dfdc616d98896ade1db00d6ea2e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
