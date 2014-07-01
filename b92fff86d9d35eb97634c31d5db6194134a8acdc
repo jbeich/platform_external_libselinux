@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "24ee2135_08a58bd6",
+        "filename": "src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-07-01T19:58:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04f3dd1b_c7ed54e1",
+      "range": {
+        "startLine": 1430,
+        "startChar": 0,
+        "endLine": 1431,
+        "endChar": 37
+      },
+      "revId": "b92fff86d9d35eb97634c31d5db6194134a8acdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4efa930_860d10c8",
         "filename": "src/android.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2014-07-01T19:52:19Z",
       "side": 1,
       "message": "If you go to the trouble to do a vasprintf into strp, why not use strp directly (\"%s\", strp) in the LOG_PRI_VA? I expect that formatting and conversion is more expensive than the re-use.",
+      "range": {
+        "startLine": 1427,
+        "startChar": 0,
+        "endLine": 1433,
+        "endChar": 5
+      },
+      "revId": "b92fff86d9d35eb97634c31d5db6194134a8acdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4efa930_869070f6",
+        "filename": "src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1433,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-07-01T19:58:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4efa930_860d10c8",
       "range": {
         "startLine": 1427,
         "startChar": 0,
