@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04f3dd1b_c7ed54e1",
+        "filename": "src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-07-01T19:47:40Z",
+      "side": 1,
+      "message": "If only ... in logd I used Android.mk too \u0027look up\u0027 the tag and pass it as an argument. Not easy to do from here without a lot of .. or odd file references. I would recommend placing the hard-coding at the top of this file or use Android.mk for -DAUDITD_LOG_TAG\u003d1003 instead of a number here.",
+      "range": {
+        "startLine": 1430,
+        "startChar": 0,
+        "endLine": 1431,
+        "endChar": 37
+      },
+      "revId": "b92fff86d9d35eb97634c31d5db6194134a8acdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
