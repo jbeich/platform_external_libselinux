@@ -1410,6 +1410,7 @@ int selinux_log_callback(int type, const char *fmt, ...)
 {
     va_list ap;
     int priority;
+    char *strp;
 
     switch(type) {
     case SELINUX_WARNING:
@@ -1425,6 +1426,11 @@ int selinux_log_callback(int type, const char *fmt, ...)
 
     va_start(ap, fmt);
     LOG_PRI_VA(priority, "SELinux", fmt, ap);
+    if (vasprintf(&strp, fmt, ap) != -1) {
+      // 1003 corresponds to auditd, from system/core/logd/event.logtags
+      LOG_EVENT_STRING(1003, strp);
+      free(strp);
+    }
     va_end(ap);
     return 0;
 }
