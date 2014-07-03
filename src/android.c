@@ -1184,6 +1184,7 @@ static int selinux_android_restorecon_common(const char* pathname,
     bool recurse = (flags & SELINUX_ANDROID_RESTORECON_RECURSE) ? true : false;
     bool force = (flags & SELINUX_ANDROID_RESTORECON_FORCE) ? true : false;
     bool datadata = (flags & SELINUX_ANDROID_RESTORECON_DATADATA) ? true : false;
+    bool quiet = (flags & SELINUX_ANDROID_RESTORECON_QUIET) ? true : false;
     bool issys = strcmp(pathname, "/sys") == 0 ? true : false;
     bool setrestoreconlast = true;
     struct stat sb;
@@ -1223,9 +1224,11 @@ static int selinux_android_restorecon_common(const char* pathname,
     if (setrestoreconlast) {
         size = getxattr(pathname, RESTORECON_LAST, xattr_value, sizeof fc_digest);
         if (!force && size == sizeof fc_digest && memcmp(fc_digest, xattr_value, sizeof fc_digest) == 0) {
-            selinux_log(SELINUX_INFO,
-                        "SELinux: Skipping restorecon_recursive(%s)\n",
-                        pathname);
+            if (!quiet) {
+                selinux_log(SELINUX_INFO,
+                            "SELinux: Skipping restorecon_recursive(%s)\n",
+                            pathname);
+            }
             return 0;
         }
     }
@@ -1238,26 +1241,34 @@ static int selinux_android_restorecon_common(const char* pathname,
     while ((ftsent = fts_read(fts)) != NULL) {
         switch (ftsent->fts_info) {
         case FTS_DC:
-            selinux_log(SELINUX_ERROR,
-                        "SELinux:  Directory cycle on %s.\n", ftsent->fts_path);
+            if (!quiet) {
+                selinux_log(SELINUX_ERROR,
+                            "SELinux:  Directory cycle on %s.\n", ftsent->fts_path);
+            }
             errno = ELOOP;
             error = -1;
             goto out;
         case FTS_DP:
             continue;
         case FTS_DNR:
-            selinux_log(SELINUX_ERROR,
-                        "SELinux:  Could not read %s: %s.\n", ftsent->fts_path, strerror(errno));
+            if (!quiet) {
+                selinux_log(SELINUX_ERROR,
+                            "SELinux:  Could not read %s: %s.\n", ftsent->fts_path, strerror(errno));
+            }
             fts_set(fts, ftsent, FTS_SKIP);
             continue;
         case FTS_NS:
-            selinux_log(SELINUX_ERROR,
-                        "SELinux:  Could not stat %s: %s.\n", ftsent->fts_path, strerror(errno));
+            if (!quiet) {
+                selinux_log(SELINUX_ERROR,
+                            "SELinux:  Could not stat %s: %s.\n", ftsent->fts_path, strerror(errno));
+            }
             fts_set(fts, ftsent, FTS_SKIP);
             continue;
         case FTS_ERR:
-            selinux_log(SELINUX_ERROR,
-                        "SELinux:  Error on %s: %s.\n", ftsent->fts_path, strerror(errno));
+            if (!quiet) {
+                selinux_log(SELINUX_ERROR,
+                            "SELinux:  Error on %s: %s.\n", ftsent->fts_path, strerror(errno));
+            }
             fts_set(fts, ftsent, FTS_SKIP);
             continue;
         case FTS_D:
