@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7037fbc3_929522f1",
+        "filename": "Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-09-28T02:21:01Z",
+      "side": 1,
+      "message": "as far as I can tell, this line has no effect.",
+      "revId": "4f0abd4aabc448dd39391a15c5c392b5a3b9dd41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
