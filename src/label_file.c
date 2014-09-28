@@ -17,6 +17,7 @@
 #include <unistd.h>
 #include "callbacks.h"
 #include "label_internal.h"
+#include <pcre.h>
 
 /*
  * Internals, mostly moved over from matchpathcon.c
@@ -569,6 +570,36 @@ static void closef(struct selabel_handle *rec)
 	free(data);
 }
 
+/**
+ * Partial match checking using PCRE. We can't use posix regular
+ * expressions because it doesn't support partial matching.
+ */
+static bool is_partial_match(const char *key, const char *regex) {
+	const char *errorStr;
+	int errorOff;
+	pcre *re;
+	int result;
+
+	re = pcre_compile(regex, PCRE_ANCHORED, &errorStr, &errorOff, NULL);
+
+	if (re == NULL) {
+		/* should never happen */
+		selinux_log(SELINUX_ERROR,
+			"Error: regex %s failed to compile: error=\"%s\" offset=%d\n",
+			regex, errorStr, errorOff);
+		/*
+		 * If we see an error, return true, to allow recursion to continue.
+		 * Returning false would cut short recursion, which could result
+		 * in us not visiting every directory.
+		 */
+		return true;
+	}
+	result = pcre_exec(re, NULL, key, strlen(key), 0,
+			PCRE_ANCHORED | PCRE_PARTIAL_SOFT, NULL, 0);
+	pcre_free(re);
+	return (result == PCRE_ERROR_PARTIAL);
+}
+
 static spec_t *lookup_common(struct selabel_handle *rec,
 			     const char *key,
 			     int type,
@@ -583,7 +614,6 @@ static spec_t *lookup_common(struct selabel_handle *rec,
 	char *clean_key = NULL;
 	const char *prev_slash, *next_slash;
 	unsigned int sofar = 0;
-	size_t keylen = strlen(key);
 
 	if (!data->nspec) {
 		errno = ENOENT;
@@ -635,26 +665,13 @@ static spec_t *lookup_common(struct selabel_handle *rec,
 				break;
 			}
 
-			if (partial) {
-				/*
-				 * We already checked above to see if the
-				 * key has any direct match.  Now we just need
-				 * to check for partial matches.
-				 * Since POSIX regex functions do not support
-				 * partial match, we crudely approximate it
-				 * via a prefix match.
-				 * This is imprecise and could yield
-				 * false positives or negatives but
-				 * appears to work with our current set of
-				 * regex strings.
-				 * Convert to using pcre partial match
-				 * if/when pcre becomes available in Android.
-				 */
-				if (spec_arr[i].prefix_len > 1 &&
-				    !strncmp(key, spec_arr[i].regex_str,
-					     keylen < spec_arr[i].prefix_len ?
-					     keylen : spec_arr[i].prefix_len))
-					break;
+			/*
+			 * We already checked above to see if the
+			 * key has any direct match.  Now we just need
+			 * to check for partial matches.
+			 */
+			if (partial && is_partial_match(key, spec_arr[i].regex_str)) {
+				break;
 			}
 
 			if (rc == REG_NOMATCH)
