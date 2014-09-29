@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1026bf9c_4ce873c6",
+        "filename": "src/label_file.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-09-29T18:54:59Z",
+      "side": 1,
+      "message": "Still needed to anchor the end of the pattern, although could omit the beginning ^.  Not clear on what the difference is between using leading ^ versus PCRE_ANCHORED, or why/whether it has to be passed both at _compile and _exec.",
+      "parentUuid": "b0f17452_20fb0a8c",
+      "revId": "dd807f26ba2459c0d052cd1a7c01ee8cd1e75b4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7069bba1_3bdd1af2",
         "filename": "src/label_file.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2014-09-29T17:26:07Z",
       "side": 1,
       "message": "My gut reaction is that this is a case of premature optimization. These routines aren\u0027t used often enough where studying the regex will make a huge performance impact. The downside is more code, more things which could go wrong, and (mildly) more memory usage from having to store all of this in memory.\n\nAre you seeing a real performance boost here?",
+      "revId": "dd807f26ba2459c0d052cd1a7c01ee8cd1e75b4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0c347c9_19016da2",
+        "filename": "src/label_file.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-09-29T18:54:59Z",
+      "side": 1,
+      "message": "Not sure, can drop.  Just copied from upstream libselinux.\nUpstream libselinux also has further optimizations to precompile the regexes to a file_contexts.bin file that is mmapped and used at runtime to avoid the need to pcre_compile() at all at runtime in the typical case.",
+      "parentUuid": "7069bba1_3bdd1af2",
       "revId": "dd807f26ba2459c0d052cd1a7c01ee8cd1e75b4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
