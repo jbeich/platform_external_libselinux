@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1026bf9c_6991a1fb",
+        "filename": "src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-09-29T13:55:02Z",
+      "side": 1,
+      "message": "Isn\u0027t it too expensive to compile this every time?\nI assumed we would switch all of label_file.c over to using pcre, not just the partial matching code.  Upstream libselinux has already done so.  Then we would just compile it once in compile_regex() and cache it in spec-\u003eregex.",
+      "revId": "1dbe87a924a0c523708f1e4a53aab0a175fb3541",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
