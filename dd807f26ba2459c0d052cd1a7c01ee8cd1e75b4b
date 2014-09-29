@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "1026bf9c_cca9c367",
+        "filename": "src/label_file.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-09-29T20:38:29Z",
+      "side": 1,
+      "message": "ah, good point about the trailing $. Didn\u0027t think about that... If all we\u0027re doing is deleting the initial \"^\", then it doesn\u0027t seem like as much of a win.  :-(",
+      "parentUuid": "1026bf9c_4ce873c6",
+      "revId": "dd807f26ba2459c0d052cd1a7c01ee8cd1e75b4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7069bba1_3bdd1af2",
         "filename": "src/label_file.c",
         "patchSetId": 3
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Not sure, can drop.  Just copied from upstream libselinux.\nUpstream libselinux also has further optimizations to precompile the regexes to a file_contexts.bin file that is mmapped and used at runtime to avoid the need to pcre_compile() at all at runtime in the typical case.",
       "parentUuid": "7069bba1_3bdd1af2",
+      "revId": "dd807f26ba2459c0d052cd1a7c01ee8cd1e75b4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0c347c9_3941c973",
+        "filename": "src/label_file.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-09-29T20:38:29Z",
+      "side": 1,
+      "message": "How far are we diverging from upstream? If this code is in upstream and we delete it, it could make patching hard in the future.",
+      "parentUuid": "d0c347c9_19016da2",
       "revId": "dd807f26ba2459c0d052cd1a7c01ee8cd1e75b4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
