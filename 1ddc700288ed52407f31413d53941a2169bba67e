@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f47cdec_58730555",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2014-12-03T23:27:55Z",
+      "side": 1,
+      "message": "As with the service_context_open, this could just be collapsed into selinux_android_file_context_handle()",
+      "range": {
+        "startLine": 860,
+        "startChar": 0,
+        "endLine": 860,
+        "endChar": 53
+      },
+      "revId": "1ddc700288ed52407f31413d53941a2169bba67e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f44c9e8_d7d4c47d",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1336,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2014-12-03T23:27:55Z",
+      "side": 1,
+      "message": "Tried to make the selinux_android_*_handle() functions similar, in case we eventually want to remove the duplicate code with something more clever.",
+      "range": {
+        "startLine": 1320,
+        "startChar": 0,
+        "endLine": 1336,
+        "endChar": 1
+      },
+      "revId": "1ddc700288ed52407f31413d53941a2169bba67e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
