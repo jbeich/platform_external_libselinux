@@ -13,6 +13,8 @@ extern "C" {
 
 extern struct selabel_handle* selinux_android_file_context_handle(void);
 
+extern struct selabel_handle* selinux_android_prop_context_handle(void);
+
 extern struct selabel_handle* selinux_android_service_context_handle(void);
 
 extern void selinux_android_set_sehandle(const struct selabel_handle *hndl);
