@@ -2,6 +2,92 @@
   "comments": [
     {
       "key": {
+        "uuid": "1f4ed10c_1b76db45",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-12-04T00:08:05Z",
+      "side": 1,
+      "message": "bool",
+      "range": {
+        "startLine": 828,
+        "startChar": 7,
+        "endLine": 828,
+        "endChar": 10
+      },
+      "revId": "1ddc700288ed52407f31413d53941a2169bba67e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f4ed10c_db1cf3d7",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-12-04T00:08:05Z",
+      "side": 1,
+      "message": "while you\u0027re here, can you please add O_CLOEXEC?",
+      "revId": "1ddc700288ed52407f31413d53941a2169bba67e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f47cdec_18957da1",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-12-04T00:08:05Z",
+      "side": 1,
+      "message": "false",
+      "range": {
+        "startLine": 838,
+        "startChar": 15,
+        "endLine": 838,
+        "endChar": 17
+      },
+      "revId": "1ddc700288ed52407f31413d53941a2169bba67e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f44c9e8_32b896e7",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-12-04T00:08:05Z",
+      "side": 1,
+      "message": "true",
+      "range": {
+        "startLine": 857,
+        "startChar": 11,
+        "endLine": 857,
+        "endChar": 12
+      },
+      "revId": "1ddc700288ed52407f31413d53941a2169bba67e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f47cdec_58730555",
         "filename": "src/android.c",
         "patchSetId": 1
@@ -25,6 +111,23 @@
     },
     {
       "key": {
+        "uuid": "1f4ed10c_bb3fa74a",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-12-04T00:08:05Z",
+      "side": 1,
+      "message": "use spaces instead of tabs",
+      "revId": "1ddc700288ed52407f31413d53941a2169bba67e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f44c9e8_d7d4c47d",
         "filename": "src/android.c",
         "patchSetId": 1
@@ -42,6 +145,23 @@
         "endLine": 1336,
         "endChar": 1
       },
+      "revId": "1ddc700288ed52407f31413d53941a2169bba67e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f47cdec_3860792a",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1374,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-12-04T00:08:05Z",
+      "side": 1,
+      "message": "tab instead of spaces, for consistency with surrounding code.\n\n(we need to standardize on spaces, but as a different change...)",
       "revId": "1ddc700288ed52407f31413d53941a2169bba67e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
