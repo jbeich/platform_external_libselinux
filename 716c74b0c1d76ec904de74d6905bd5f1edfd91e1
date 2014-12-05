@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f19292f_b8cb15b0",
+        "filename": "src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-12-05T15:01:11Z",
+      "side": 0,
+      "message": "Need to also remove function prototype from include/selinux/android.h.",
+      "revId": "716c74b0c1d76ec904de74d6905bd5f1edfd91e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
