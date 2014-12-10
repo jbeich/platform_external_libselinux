@@ -16,6 +16,24 @@
       "revId": "c242f0b5f789b30c638a4c25eddb0ca12a662bde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4b9ced9_797e47a0",
+        "filename": "src/android.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1305,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2014-12-10T20:36:56Z",
+      "side": 1,
+      "message": "Yep.  This caused some pain and will fix in a new CL.",
+      "parentUuid": "44c5de5b_55d5cc4c",
+      "revId": "c242f0b5f789b30c638a4c25eddb0ca12a662bde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
