@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77d53b78_07f5968a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-02-02T22:08:38Z",
+      "side": 1,
+      "message": "this is so broken. *sigh*",
+      "range": {
+        "startLine": 10,
+        "startChar": 47,
+        "endLine": 11,
+        "endChar": 70
+      },
+      "revId": "f74bc4e9ae72f60e9d1173802fcc275a9339c261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
