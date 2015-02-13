@@ -370,6 +370,8 @@ int selinux_android_seapp_context_reload(void)
 					goto err;
 				}
 			} else if (!strcasecmp(name, "user")) {
+				if (cur->user.str)
+					goto err;
 				cur->user.str = strdup(value);
 				if (!cur->user.str) {
 					free_seapp_context(cur);
@@ -379,12 +381,16 @@ int selinux_android_seapp_context_reload(void)
 				if (cur->user.str[cur->user.len-1] == '*')
 					cur->user.is_prefix = 1;
 			} else if (!strcasecmp(name, "seinfo")) {
+				if (cur->seinfo)
+					goto err;
 				cur->seinfo = strdup(value);
 				if (!cur->seinfo) {
 					free_seapp_context(cur);
 					goto oom;
 				}
 			} else if (!strcasecmp(name, "name")) {
+				if (cur->name.str)
+					goto err;
 				cur->name.str = strdup(value);
 				if (!cur->name.str) {
 					free_seapp_context(cur);
@@ -394,18 +400,24 @@ int selinux_android_seapp_context_reload(void)
 				if (cur->name.str[cur->name.len-1] == '*')
 					cur->name.is_prefix = 1;
 			} else if (!strcasecmp(name, "domain")) {
+				if (cur->domain)
+					goto err;
 				cur->domain = strdup(value);
 				if (!cur->domain) {
 					free_seapp_context(cur);
 					goto oom;
 				}
 			} else if (!strcasecmp(name, "type")) {
+				if (cur->type)
+					goto err;
 				cur->type = strdup(value);
 				if (!cur->type) {
 					free_seapp_context(cur);
 					goto oom;
 				}
 			} else if (!strcasecmp(name, "levelFromUid")) {
+				if (cur->levelFrom)
+					goto err;
 				if (!strcasecmp(value, "true"))
 					cur->levelFrom = LEVELFROM_APP;
 				else if (!strcasecmp(value, "false"))
@@ -415,6 +427,8 @@ int selinux_android_seapp_context_reload(void)
 					goto err;
 				}
 			} else if (!strcasecmp(name, "levelFrom")) {
+				if (cur->levelFrom)
+					goto err;
 				if (!strcasecmp(value, "none"))
 					cur->levelFrom = LEVELFROM_NONE;
 				else if (!strcasecmp(value, "app"))
@@ -428,12 +442,16 @@ int selinux_android_seapp_context_reload(void)
 					goto err;
 				}
 			} else if (!strcasecmp(name, "level")) {
+				if (cur->level)
+					goto err;
 				cur->level = strdup(value);
 				if (!cur->level) {
 					free_seapp_context(cur);
 					goto oom;
 				}
 			} else if (!strcasecmp(name, "path")) {
+				if (cur->path.str)
+					goto err;
 				cur->path.str = strdup(value);
 				if (!cur->path.str) {
 					free_seapp_context(cur);
@@ -443,6 +461,8 @@ int selinux_android_seapp_context_reload(void)
 				if (cur->path.str[cur->path.len-1] == '*')
 					cur->path.is_prefix = 1;
 			} else if (!strcasecmp(name, "sebool")) {
+				if (cur->sebool)
+					goto err;
 				cur->sebool = strdup(value);
 				if (!cur->sebool) {
 					free_seapp_context(cur);
