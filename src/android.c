@@ -1362,12 +1362,11 @@ static int selinux_android_load_policy_helper(bool reload)
 
 	/*
 	 * If reloading policy and there is no /data policy or
-	 * that /data policy has the wrong version or the /data
-	 * policy is disabled via safe mode, then just return.
+	 * that /data policy has the wrong version, then just return.
 	 * There is no point in reloading policy from / a second time.
 	 */
 	set_policy_index();
-	if (reload && policy_index)
+	if (reload && !policy_index)
 		return 0;
 
 	fd = open(sepolicy_file[policy_index], O_RDONLY | O_NOFOLLOW);
