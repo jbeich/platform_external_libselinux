@@ -39,6 +39,24 @@
       "revId": "adb57d0dcb51f845a4aed764d0e4a375fc272cbb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a88836e3_816bdad4",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-02-19T18:43:35Z",
+      "side": 1,
+      "message": "Yes, but it is better than not checking at all.",
+      "parentUuid": "081ea259_d7d2de5b",
+      "revId": "adb57d0dcb51f845a4aed764d0e4a375fc272cbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
