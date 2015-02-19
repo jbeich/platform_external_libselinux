@@ -123,14 +123,31 @@ static void set_policy_index(void)
 		return;
 	}
 
-	if (memcmp(map_base, map_override, sb_base.st_size) == 0)
-		policy_index = 1;
+	if (memcmp(map_base, map_override, sb_base.st_size) != 0)
+		goto out;
 
+	if (access(sepolicy_file[1], R_OK) != 0)
+		goto out;
 
+	if (access(seopts[1].value, R_OK) != 0)
+		goto out;
+
+	if (access(seopts_prop[1].value, R_OK) != 0)
+		goto out;
+
+	if (access(seopts_service[1].value, R_OK) != 0)
+		goto out;
+
+	if (access(seapp_contexts_file[1], R_OK) != 0)
+		goto out;
+
+	policy_index = 1;
+out:
 	close(fd_base);
 	close(fd_override);
 	munmap(map_base, sb_base.st_size);
 	munmap(map_override, sb_override.st_size);
+	return;
 }
 
 #if DEBUG
