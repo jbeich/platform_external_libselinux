@@ -1,0 +1,9 @@
+Code-Review+2: Nick Kralevich <nnk@google.com>
+Code-Review+1: William Roberts <bill.c.roberts@gmail.com>
+Code-Review+1: Stephen Smalley <sds@tycho.nsa.gov>
+Verified+1: Daniel Cashman <dcashman@google.com>
+Submitted-by: Daniel Cashman <dcashman@google.com>
+Submitted-at: Tue, 03 Mar 2015 17:29:01 +0000
+Reviewed-on: https://android-review.googlesource.com/137400
+Project: platform/external/libselinux
+Branch: refs/heads/master
