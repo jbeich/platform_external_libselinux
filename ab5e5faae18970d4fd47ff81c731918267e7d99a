@@ -16,6 +16,24 @@
       "revId": "ab5e5faae18970d4fd47ff81c731918267e7d99a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9271e61d_c5d2fa7d",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2015-03-03T15:49:50Z",
+      "side": 1,
+      "message": "I\u0027ll defer to nnk@ on the bytes v. readability decision.",
+      "parentUuid": "72e9d2ce_7cb2b94e",
+      "revId": "ab5e5faae18970d4fd47ff81c731918267e7d99a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
