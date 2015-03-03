@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72e9d2ce_7cb2b94e",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-03-03T06:19:24Z",
+      "side": 1,
+      "message": "This has been bothering me all day and its a small nit. I\u0027d bitfield all the bools together:\n\nstruct seapp_context {\n    struct {\n        uint8_t isSystemServer : 1;\n        uint8_t isOwnerSet     : 1;\n        uint8_t isOwner        : 1;\n        uint8_t unused         : 5;\n    };\n    struct prefix_str user;\n    \u003csnip\u003e\n};\n\nThe rest of the code stays the same, and we save a couple of bytes. Also, sets precedence for new additions.\n\nAlthough I am sure their will be some response over simplicitly, readability...although if you can\u0027t read the above code, id say get out of C land :-P",
+      "revId": "ab5e5faae18970d4fd47ff81c731918267e7d99a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
