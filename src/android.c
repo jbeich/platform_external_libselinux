@@ -587,6 +587,7 @@ enum seapp_kind {
 
 static int seapp_context_lookup(enum seapp_kind kind,
 				uid_t uid,
+                uid_t profOwner,
 				bool isSystemServer,
 				const char *seinfo,
 				const char *pkgname,
@@ -605,6 +606,10 @@ static int seapp_context_lookup(enum seapp_kind kind,
 
 	userid = uid / AID_USER;
 	isOwner = (userid == 0);
+    if (profOwner != -1)
+        userid = profOwner;
+    else
+        selinux_log(SELINUX_WARNING, "No profile owner specified for context lookup of %s\n", pkgname);
 	appid = uid % AID_USER;
 	if (appid < AID_APP) {
 		for (n = 0; n < android_id_count; n++) {
@@ -745,7 +750,7 @@ oom:
 int selinux_android_setfilecon(const char *pkgdir,
 				const char *pkgname,
 				const char *seinfo,
-				uid_t uid)
+                uid_t uid, uid_t profOwner)
 {
 	char *orig_ctx_str = NULL;
 	char *ctx_str = NULL;
@@ -764,7 +769,7 @@ int selinux_android_setfilecon(const char *pkgdir,
 	if (!ctx)
 		goto oom;
 
-	rc = seapp_context_lookup(SEAPP_TYPE, uid, 0, seinfo, pkgname, NULL, ctx);
+	rc = seapp_context_lookup(SEAPP_TYPE, uid, profOwner, false, seinfo, pkgname, NULL, ctx);
 	if (rc == -1)
 		goto err;
 	else if (rc == -2)
@@ -800,10 +805,10 @@ oom:
 	goto out;
 }
 
-int selinux_android_setcontext(uid_t uid,
+int selinux_android_setcontext(uid_t uid, uid_t profOwner,
 			       bool isSystemServer,
 			       const char *seinfo,
-			       const char *pkgname)
+                   const char *pkgname)
 {
 	char *orig_ctx_str = NULL, *ctx_str;
 	context_t ctx = NULL;
@@ -821,7 +826,7 @@ int selinux_android_setcontext(uid_t uid,
 	if (!ctx)
 		goto oom;
 
-	rc = seapp_context_lookup(SEAPP_DOMAIN, uid, isSystemServer, seinfo, pkgname, NULL, ctx);
+	rc = seapp_context_lookup(SEAPP_DOMAIN, uid, profOwner, isSystemServer, seinfo, pkgname, NULL, ctx);
 	if (rc == -1)
 		goto err;
 	else if (rc == -2)
@@ -1060,7 +1065,7 @@ struct pkgInfo *package_info_lookup(const char *name)
 
 static int pkgdir_selabel_lookup(const char *pathname,
                                  const char *seinfo,
-                                 uid_t uid,
+                                 uid_t uid, uid_t profOwner,
                                  char **secontextp)
 {
     char *pkgname = NULL, *end = NULL;
@@ -1098,6 +1103,10 @@ static int pkgdir_selabel_lookup(const char *pathname,
     *end = '\0';
 
     if (!seinfo) {
+        if (uid != -1 || uid != 0) {
+            selinux_log(SELINUX_ERROR, "Attempting package lookup with a non-owner uid specified!\n");
+            return -1;
+        }
         pkgInfo = package_info_lookup(pkgname);
         if (!pkgInfo) {
             selinux_log(SELINUX_WARNING, "SELinux:  Could not look up information for package %s, cannot restorecon %s.\n",
@@ -1111,7 +1120,8 @@ static int pkgdir_selabel_lookup(const char *pathname,
     if (!ctx)
         goto err;
 
-    rc = seapp_context_lookup(SEAPP_TYPE, pkgInfo ? pkgInfo->uid : uid, 0,
+    rc = seapp_context_lookup(SEAPP_TYPE, pkgInfo ? pkgInfo->uid : uid,
+                              pkgInfo ? (pkgInfo->uid/AID_USER) : profOwner, false,
                               pkgInfo ? pkgInfo->seinfo : seinfo, pkgInfo ? pkgInfo->name : pkgname, pathname, ctx);
     if (rc < 0)
         goto err;
@@ -1149,7 +1159,7 @@ err:
 
 static int restorecon_sb(const char *pathname, const struct stat *sb,
                          bool nochange, bool verbose,
-                         const char *seinfo, uid_t uid)
+                         const char *seinfo, uid_t uid, uid_t profOwner)
 {
     char *secontext = NULL;
     char *oldsecontext = NULL;
@@ -1169,7 +1179,7 @@ static int restorecon_sb(const char *pathname, const struct stat *sb,
      */
     if (!strncmp(pathname, DATA_DATA_PREFIX, sizeof(DATA_DATA_PREFIX)-1) ||
         !strncmp(pathname, DATA_USER_PREFIX, sizeof(DATA_USER_PREFIX)-1)) {
-        if (pkgdir_selabel_lookup(pathname, seinfo, uid, &secontext) < 0)
+        if (pkgdir_selabel_lookup(pathname, seinfo, uid, profOwner,&secontext) < 0)
             goto err;
     }
 
@@ -1203,7 +1213,7 @@ err:
 
 static int selinux_android_restorecon_common(const char* pathname,
                                              const char *seinfo,
-                                             uid_t uid,
+                                             uid_t uid, uid_t profOwner,
                                              unsigned int flags)
 {
     bool nochange = (flags & SELINUX_ANDROID_RESTORECON_NOCHANGE) ? true : false;
@@ -1234,7 +1244,7 @@ static int selinux_android_restorecon_common(const char* pathname,
         if (lstat(pathname, &sb) < 0)
             return -1;
 
-        return restorecon_sb(pathname, &sb, nochange, verbose, seinfo, uid);
+        return restorecon_sb(pathname, &sb, nochange, verbose, seinfo, uid, profOwner);
     }
 
     /*
@@ -1305,7 +1315,7 @@ static int selinux_android_restorecon_common(const char* pathname,
             }
             /* fall through */
         default:
-            error |= restorecon_sb(ftsent->fts_path, ftsent->fts_statp, nochange, verbose, seinfo, uid);
+            error |= restorecon_sb(ftsent->fts_path, ftsent->fts_statp, nochange, verbose, seinfo, uid, profOwner);
             break;
         }
     }
@@ -1323,15 +1333,15 @@ out:
 
 int selinux_android_restorecon(const char *file, unsigned int flags)
 {
-    return selinux_android_restorecon_common(file, NULL, -1, flags);
+    return selinux_android_restorecon_common(file, NULL, -1, -1, flags);
 }
 
 int selinux_android_restorecon_pkgdir(const char *pkgdir,
                                       const char *seinfo,
-                                      uid_t uid,
+                                      uid_t uid, uid_t profOwner,
                                       unsigned int flags)
 {
-    return selinux_android_restorecon_common(pkgdir, seinfo, uid, flags | SELINUX_ANDROID_RESTORECON_DATADATA);
+    return selinux_android_restorecon_common(pkgdir, seinfo, uid, profOwner, flags | SELINUX_ANDROID_RESTORECON_DATADATA);
 }
 
 struct selabel_handle* selinux_android_file_context_handle(void)
