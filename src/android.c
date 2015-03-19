@@ -585,6 +585,114 @@ enum seapp_kind {
 	SEAPP_DOMAIN
 };
 
+/*
+ * The dir containing the user information on the system
+ */
+#define USER_INFO_DIR "/data/system/users/"
+
+struct managedInfo {
+    uid_t managed_user;
+    uid_t owning_user;
+    struct managedInfo *next;
+};
+
+#define MNGDTAB_SIZE 8
+static struct managedInfo *mngdTab[MNGDTAB_SIZE];
+
+static pthread_once_t mngd_once = PTHREAD_ONCE_INIT;
+
+static unsigned int managedhash(uid_t user)
+{
+    return user & (MNGDTAB_SIZE - 1);
+}
+
+/* The file containing the list of managed profile mappings on the system */
+#define MANAGED_PROFILES_LIST_FILE  "/data/system/users/managed_profiles.list"
+
+static void managed_info_init(void)
+{
+    char *buf = NULL;
+    size_t buflen = 0;
+    ssize_t bytesread;
+    FILE *fp;
+    char *cur, *next;
+    struct managedInfo *mngdInfo = NULL;
+    unsigned int hash;
+    unsigned long lineno = 1;
+
+    fp = fopen(MANAGED_PROFILES_LIST_FILE, "r");
+    if (!fp) {
+        selinux_log(SELINUX_ERROR, "SELinux:  Could not open %s:  %s.\n",
+                    MANAGED_PROFILES_LIST_FILE, strerror(errno));
+        return;
+    }
+    while ((bytesread = getline(&buf, &buflen, fp)) > 0) {
+        mngdInfo = calloc(1, sizeof(*mngdInfo));
+        if (!mngdInfo)
+            goto err;
+        next = buf;
+        cur = strsep(&next, " \t\n");
+        if (!cur)
+            goto err;
+        mngdInfo->managed_user= atoi(cur);
+        cur = strsep(&next, " \t\n");
+        if (!cur)
+            goto err;
+        mngdInfo->owning_user = atoi(cur);
+        hash = managedhash(mngdInfo->managed_user);
+        if (mngdTab[hash])
+            mngdInfo->next = mngdTab[hash];
+        mngdTab[hash] = mngdInfo;
+
+        lineno++;
+    }
+out:
+    free(buf);
+    fclose(fp);
+    return;
+
+err:
+    selinux_log(SELINUX_ERROR, "SELinux:  Error reading %s on line %lu.\n",
+                MANAGED_PROFILES_LIST_FILE, lineno);
+    if (mngdInfo)
+        free(mngdInfo);
+    goto out;
+}
+
+struct managedInfo *managed_info_lookup(uid_t user)
+{
+    struct managedInfo *mngdInfo;
+    unsigned int hash;
+
+    __selinux_once(mngd_once, managed_info_init);
+
+    hash = managedhash(user);
+    for (mngdInfo = mngdTab[hash]; mngdInfo; mngdInfo = mngdInfo->next) {
+        if (user == mngdInfo->managed_user)
+            return mngdInfo;
+    }
+    return NULL;
+}
+
+/*
+ * Parses the user info xml file in USER_INFO_DIR to see if a "profileGroupId"
+ * attribute is present.
+ *
+ * populates the owner param with the profileGroupId if present, otherwise with
+ * userid.
+ */
+static bool get_profile_owner(uid_t userid, uid_t *owner)
+{
+    struct managedInfo *mngdInfo;
+
+    mngdInfo = managed_info_lookup(userid);
+    if (mngdInfo) {
+        *owner = mngdInfo->owning_user;
+        return true;
+    }
+    return false;
+}
+
 static int seapp_context_lookup(enum seapp_kind kind,
 				uid_t uid,
 				bool isSystemServer,
@@ -593,18 +701,22 @@ static int seapp_context_lookup(enum seapp_kind kind,
 				const char *path,
 				context_t ctx)
 {
-	bool isOwner;
+    bool isOwner;
 	const char *username = NULL;
 	struct seapp_context *cur = NULL;
 	int i;
 	size_t n;
 	uid_t userid;
+    uid_t mngdOwnerid;
 	uid_t appid;
+
 
 	__selinux_once(once, seapp_context_init);
 
 	userid = uid / AID_USER;
 	isOwner = (userid == 0);
+    if(get_profile_owner(userid, &mngdOwnerid))
+        userid = mngdOwnerid;
 	appid = uid % AID_USER;
 	if (appid < AID_APP) {
 		for (n = 0; n < android_id_count; n++) {
