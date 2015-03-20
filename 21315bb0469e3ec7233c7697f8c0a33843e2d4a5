@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "867fec20_0f4a29b2",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-03-20T13:32:40Z",
+      "side": 1,
+      "message": "I don\u0027t think you can use this one-time initialization approach for this file, as it won\u0027t be refreshed for updates at runtime (managed profile creation w/o reboot) and installd isn\u0027t restarted for each package install.  packages.list differs in that it is only used by installd/libselinux for restorecon_data during initialization, not for new package install, and we moved the invocation of the restorecon_data calls after packages.list has been updated by the PMS IIRC.  You would either need to load it and free it each time, or provide a reload interface similar to seapp_context_reload() and have UMS tell installd when to reload via a new socket command triggered after each update.",
+      "revId": "21315bb0469e3ec7233c7697f8c0a33843e2d4a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
