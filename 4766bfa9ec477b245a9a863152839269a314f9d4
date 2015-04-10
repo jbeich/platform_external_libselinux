@@ -1,0 +1,8 @@
+Code-Review+1: Daniel Cashman <dcashman@google.com>
+Code-Review+2: Nick Kralevich <nnk@google.com>
+Verified+1: Jeff Sharkey <jsharkey@android.com>
+Submitted-by: Jeff Sharkey <jsharkey@android.com>
+Submitted-at: Fri, 10 Apr 2015 21:00:41 +0000
+Reviewed-on: https://android-review.googlesource.com/146263
+Project: platform/external/libselinux
+Branch: refs/heads/master
