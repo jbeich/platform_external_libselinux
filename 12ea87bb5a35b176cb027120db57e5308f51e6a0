@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0242aae_c0a54c2a",
+        "filename": "Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-04-14T22:09:08Z",
+      "side": 1,
+      "message": "it seems odd that you\u0027re including libpcre as a static library within this shared library, but I guess it works for now...",
+      "revId": "12ea87bb5a35b176cb027120db57e5308f51e6a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
