@@ -40,15 +40,13 @@ common_HOST_FILES := \
 	src/label_android_property.c
 
 
-common_COPY_HEADERS_TO := selinux
-common_COPY_HEADERS := include/selinux/selinux.h include/selinux/label.h include/selinux/context.h include/selinux/avc.h include/selinux/android.h 
-
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES := $(common_SRC_FILES) $(common_HOST_FILES) src/android.c
 LOCAL_MODULE:= libselinux
 LOCAL_MODULE_TAGS := eng
 LOCAL_STATIC_LIBRARIES := libmincrypt
 LOCAL_C_INCLUDES := external/pcre
+LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/include
 LOCAL_WHOLE_STATIC_LIBRARIES := libpcre
 # 1003 corresponds to auditd, from system/core/logd/event.logtags
 LOCAL_CFLAGS := -DAUDITD_LOG_TAG=1003
@@ -67,8 +65,7 @@ endif
 LOCAL_SRC_FILES := $(common_HOST_FILES)
 LOCAL_MODULE:= libselinux
 LOCAL_MODULE_TAGS := eng
-LOCAL_COPY_HEADERS_TO := $(common_COPY_HEADERS_TO)
-LOCAL_COPY_HEADERS := $(common_COPY_HEADERS)
+LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/include
 LOCAL_WHOLE_STATIC_LIBRARIES := libpcre
 LOCAL_C_INCLUDES := external/pcre
 include $(BUILD_HOST_STATIC_LIBRARY)
@@ -77,10 +74,9 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := $(common_SRC_FILES) $(common_HOST_FILES) src/android.c
 LOCAL_MODULE:= libselinux
 LOCAL_MODULE_TAGS := eng
-LOCAL_COPY_HEADERS_TO := $(common_COPY_HEADERS_TO)
-LOCAL_COPY_HEADERS := $(common_COPY_HEADERS)
 LOCAL_STATIC_LIBRARIES := libmincrypt
 LOCAL_C_INCLUDES := external/pcre
+LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/include
 LOCAL_SHARED_LIBRARIES := liblog libpcre
 # 1003 corresponds to auditd, from system/core/logd/event.logtags
 LOCAL_CFLAGS := -DAUDITD_LOG_TAG=1003
@@ -99,8 +95,7 @@ endif
 LOCAL_SRC_FILES := $(common_HOST_FILES)
 LOCAL_MODULE:= libselinux
 LOCAL_MODULE_TAGS := eng
-LOCAL_COPY_HEADERS_TO := $(common_COPY_HEADERS_TO)
-LOCAL_COPY_HEADERS := $(common_COPY_HEADERS)
+LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/include
 LOCAL_WHOLE_STATIC_LIBRARIES := libpcre
 LOCAL_C_INCLUDES := external/pcre
 include $(BUILD_HOST_SHARED_LIBRARY)
