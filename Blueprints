@@ -1,0 +1,70 @@
+
+
+common_SRC_FILES = [
+    "src/booleans.c",
+    "src/canonicalize_context.c",
+    "src/disable.c",
+    "src/enabled.c",
+    "src/fgetfilecon.c",
+    "src/fsetfilecon.c",
+    "src/getenforce.c",
+    "src/getfilecon.c",
+    "src/getpeercon.c",
+    "src/lgetfilecon.c",
+    "src/load_policy.c",
+    "src/lsetfilecon.c",
+    "src/policyvers.c",
+    "src/procattr.c",
+    "src/setenforce.c",
+    "src/setfilecon.c",
+    "src/context.c",
+    "src/mapping.c",
+    "src/stringrep.c",
+    "src/compute_create.c",
+    "src/compute_av.c",
+    "src/avc.c",
+    "src/avc_internal.c",
+    "src/avc_sidtab.c",
+    "src/get_initial_context.c",
+    "src/checkAccess.c",
+    "src/sestatus.c",
+    "src/deny_unknown.c",
+]
+
+common_HOST_FILES = [
+    "src/callbacks.c",
+    "src/check_context.c",
+    "src/freecon.c",
+    "src/init.c",
+    "src/label.c",
+    "src/label_file.c",
+    "src/label_android_property.c",
+]
+
+cc_library {
+    srcs: common_HOST_FILES,
+    name: "libselinux",
+    host_supported: true,
+    tags: ["eng"],
+    include_dirs: ["external/pcre"],
+    whole_static_libs: ["libpcre"],
+    // 1003 corresponds to auditd, from system/core/logd/event.logtags
+    cflags: ["-DAUDITD_LOG_TAG=1003"],
+    // mapping.c has redundant check of array p_in->perms.
+    clang_cflags: ["-Wno-pointer-bool-conversion"],
+    target: {
+        android: {
+            srcs: common_SRC_FILES + ["src/android.c"],
+            static_libs: ["libmincrypt"],
+            shared_libs: ["liblog"],
+        },
+        host: {
+            cflags: ["-DHOST"],
+        },
+        darwin: {
+            cflags: ["-DDARWIN"],
+        },
+    },
+    local_include_dirs: ["include"],
+    export_include_dirs: ["include"],
+}
