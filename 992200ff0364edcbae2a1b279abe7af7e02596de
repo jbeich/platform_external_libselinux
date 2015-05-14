@@ -1,0 +1,7 @@
+Code-Review+2: Daniel Cashman <dcashman@google.com>
+Verified+1: Jeffrey Vander Stoep <jeffv@google.com>
+Submitted-by: Jeffrey Vander Stoep <jeffv@google.com>
+Submitted-at: Thu, 14 May 2015 15:26:35 +0000
+Reviewed-on: https://android-review.googlesource.com/150497
+Project: platform/external/libselinux
+Branch: refs/heads/master
