@@ -58,7 +58,10 @@ static int fd = -1;
 int avc_netlink_open(int blocking)
 {
 	int len, rc = 0;
-	struct sockaddr_nl addr;
+	union {
+		struct sockaddr sa;
+		struct sockaddr_nl nl;
+	} addr;
 
 	fd = socket(PF_NETLINK, SOCK_RAW | SOCK_CLOEXEC, NETLINK_SELINUX);
 	if (fd < 0) {
@@ -76,10 +79,10 @@ int avc_netlink_open(int blocking)
 	len = sizeof(addr);
 
 	memset(&addr, 0, len);
-	addr.nl_family = AF_NETLINK;
-	addr.nl_groups = SELNL_GRP_AVC;
+	addr.nl.nl_family = AF_NETLINK;
+	addr.nl.nl_groups = SELNL_GRP_AVC;
 
-	if (bind(fd, (struct sockaddr *)&addr, len) < 0) {
+	if (bind(fd, &addr.sa, len) < 0) {
 		close(fd);
 		fd = -1;
 		rc = -1;
@@ -100,8 +103,11 @@ static int avc_netlink_receive(char *buf, unsigned buflen, int blocking)
 {
 	int rc;
 	struct pollfd pfd = { fd, POLLIN | POLLPRI, 0 };
-	struct sockaddr_nl nladdr;
-	socklen_t nladdrlen = sizeof nladdr;
+	union {
+		struct sockaddr sa;
+		struct sockaddr_nl nl;
+	} addr;
+	socklen_t nladdrlen = sizeof addr.nl;
 	struct nlmsghdr *nlh = (struct nlmsghdr *)buf;
 
 	do {
@@ -118,22 +124,22 @@ static int avc_netlink_receive(char *buf, unsigned buflen, int blocking)
 		return rc;
 	}
 
-	rc = recvfrom(fd, buf, buflen, 0, (struct sockaddr *)&nladdr,
+	rc = recvfrom(fd, buf, buflen, 0, &addr.sa,
 		      &nladdrlen);
 	if (rc < 0)
 		return rc;
 
-	if (nladdrlen != sizeof nladdr) {
+	if (nladdrlen != sizeof addr.nl) {
 		avc_log(SELINUX_WARNING,
 			"%s:  warning: netlink address truncated, len %d?\n",
 			avc_prefix, nladdrlen);
 		return -1;
 	}
 
-	if (nladdr.nl_pid) {
+	if (addr.nl.nl_pid) {
 		avc_log(SELINUX_WARNING,
 			"%s:  warning: received spoofed netlink packet from: %d\n",
-			avc_prefix, nladdr.nl_pid);
+			avc_prefix, addr.nl.nl_pid);
 		return -1;
 	}
 
