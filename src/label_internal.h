@@ -63,15 +63,26 @@ struct selabel_handle {
 	/* supports backend-specific state information */
 	void *data;
 
+	/*
+	 * The main spec file used. Note for file contexts the local and/or
+	 * homedirs could also have been used to resolve a context.
+	 */
+	char *spec_file;
+
 	/* substitution support */
+	struct selabel_sub *dist_subs;
 	struct selabel_sub *subs;
 };
-
 /*
  * Validation function
  */
 extern int
 selabel_validate(struct selabel_handle *rec,
 		 struct selabel_lookup_rec *contexts) hidden;
+
+/*
+ * Obtain entries from spec files (file and property).
+ */
+extern int read_spec_entries(char *line_buf, int num_args, ...);
 
 #endif				/* _SELABEL_INTERNAL_H_ */
