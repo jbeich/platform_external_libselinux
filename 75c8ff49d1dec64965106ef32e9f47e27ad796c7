@@ -46,6 +46,29 @@
       "revId": "75c8ff49d1dec64965106ef32e9f47e27ad796c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9a690c2_b291be5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-06-05T16:59:48Z",
+      "side": 1,
+      "message": "are these changes uploaded anywhere?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 73
+      },
+      "revId": "75c8ff49d1dec64965106ef32e9f47e27ad796c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
