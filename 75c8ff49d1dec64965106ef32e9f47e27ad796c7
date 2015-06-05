@@ -93,6 +93,30 @@
       "revId": "75c8ff49d1dec64965106ef32e9f47e27ad796c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19afe490_2cf48b83",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1021859
+      },
+      "writtenOn": "2015-06-05T17:38:16Z",
+      "side": 1,
+      "message": "These are the changes I made for testing:\nexternal/sepolicy/Android.mk\nAdd the following to build the file_contexts.bin file:\ninclude $(CLEAR_VARS)\n\nLOCAL_MODULE :\u003d file_contexts.bin\nLOCAL_MODULE_CLASS :\u003d ETC\nLOCAL_MODULE_TAGS :\u003d optional\nLOCAL_MODULE_PATH :\u003d $(TARGET_ROOT_OUT)\n\ninclude $(BUILD_SYSTEM)/base_rules.mk\n\nALL_FC_FILES :\u003d $(call build_policy, file_contexts)\n\n$(LOCAL_BUILT_MODULE): PRIVATE_SEPOLICY :\u003d $(built_sepolicy)\n$(LOCAL_BUILT_MODULE):  $(ALL_FC_FILES) $(built_sepolicy) $(HOST_OUT_EXECUTABLES)/checkfc $(HOST_OUT_EXECUTABLES)/sefcontext_compile\n\t@mkdir -p $(dir $@)\n\t$(hide) m4 -s $(ALL_FC_FILES) \u003e $@\n\t$(HOST_OUT_EXECUTABLES)/checkfc $(PRIVATE_SEPOLICY) $@\n\t$(HOST_OUT_EXECUTABLES)/sefcontext_compile $@\n\t@mv $@.bin $@\n\nbuild/target/product/embedded.mk\nAdd new entry to install file:\nfile_contexts.bin \\",
+      "parentUuid": "39b828d4_e2c8dcb6",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 73
+      },
+      "revId": "75c8ff49d1dec64965106ef32e9f47e27ad796c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
