@@ -117,6 +117,30 @@
       "revId": "75c8ff49d1dec64965106ef32e9f47e27ad796c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9b130f2_409d04eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-06-05T17:41:09Z",
+      "side": 1,
+      "message": "Please upload these as separate changes. Use the same Change-Id (manually edit it in the commit message) for all three changes so that they are applied together for deckard.",
+      "parentUuid": "19afe490_2cf48b83",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 73
+      },
+      "revId": "75c8ff49d1dec64965106ef32e9f47e27ad796c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
