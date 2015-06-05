@@ -141,6 +141,57 @@
       "revId": "75c8ff49d1dec64965106ef32e9f47e27ad796c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39b828d4_2d2645c3",
+        "filename": "src/label_file.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-06-05T18:24:14Z",
+      "side": 1,
+      "message": "Not relevant to this change and not entirely accurate anyway.  Just omit it please.  Meant to fix it upstream when I did the Android port but forgot.",
+      "revId": "75c8ff49d1dec64965106ef32e9f47e27ad796c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9da5833_631f761c",
+        "filename": "src/label_file.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-06-05T18:24:14Z",
+      "side": 1,
+      "message": "unused",
+      "revId": "75c8ff49d1dec64965106ef32e9f47e27ad796c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9b130f2_0be96df3",
+        "filename": "src/label_file.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-06-05T18:24:14Z",
+      "side": 1,
+      "message": "This seems like a bug (upstream too); we\u0027ll lose the result of sort_specs.",
+      "revId": "75c8ff49d1dec64965106ef32e9f47e27ad796c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
