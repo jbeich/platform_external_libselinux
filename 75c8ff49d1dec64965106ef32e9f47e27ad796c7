@@ -192,6 +192,91 @@
       "revId": "75c8ff49d1dec64965106ef32e9f47e27ad796c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9b130f2_eb70b9d3",
+        "filename": "utils/sefcontext_compile.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-06-05T18:43:48Z",
+      "side": 1,
+      "message": "No different than upstream, but would be nice if we shared all of this code with ../src/label_file.c.  Maybe factoring it out into ../src/label_file.h.",
+      "revId": "75c8ff49d1dec64965106ef32e9f47e27ad796c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9b130f2_cb4a1576",
+        "filename": "utils/sefcontext_compile.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-06-05T18:43:48Z",
+      "side": 1,
+      "message": "This should just be void (upstream too).",
+      "revId": "75c8ff49d1dec64965106ef32e9f47e27ad796c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9b130f2_8b39fd03",
+        "filename": "utils/sefcontext_compile.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-06-05T18:43:48Z",
+      "side": 1,
+      "message": "Should this be strlen(stack_path)+7?",
+      "revId": "75c8ff49d1dec64965106ef32e9f47e27ad796c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39b828d4_8dd671bc",
+        "filename": "utils/sefcontext_compile.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-06-05T18:43:48Z",
+      "side": 1,
+      "message": "No error checking (upstream too)?",
+      "revId": "75c8ff49d1dec64965106ef32e9f47e27ad796c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39b828d4_2dee4584",
+        "filename": "utils/sefcontext_compile.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-06-05T18:43:48Z",
+      "side": 1,
+      "message": "Maybe unlink tmp here?",
+      "revId": "75c8ff49d1dec64965106ef32e9f47e27ad796c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
