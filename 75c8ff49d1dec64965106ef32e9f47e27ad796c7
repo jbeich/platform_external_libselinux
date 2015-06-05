@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99e914d2_90ba042d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-06-05T16:34:21Z",
+      "side": 1,
+      "message": "Do we have to fallback? Seems like extra complexity for something which should never occur...",
+      "range": {
+        "startLine": 14,
+        "startChar": 20,
+        "endLine": 15,
+        "endChar": 48
+      },
+      "revId": "75c8ff49d1dec64965106ef32e9f47e27ad796c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
