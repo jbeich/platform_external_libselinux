@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39c4a87c_ff81b7d6",
+        "filename": "src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-06-08T16:23:08Z",
+      "side": 1,
+      "message": "Sorry, my prior comment was not just for that one line but rather the entire change to the comment header - it isn\u0027t relevant to this code change and isn\u0027t quite right anyway.",
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39c4a87c_7fdb67e6",
+        "filename": "src/label_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-06-08T16:23:08Z",
+      "side": 1,
+      "message": "Logic change.   Previously we would only call compile_regex() up front if rec-\u003evalidating, and would always report an error if it failed.  I understand you are changing this because sefcontext_compile needs to compile the regex always (vs label_file, which defers compiling to first use unless validating on open), but perhaps you ought to set rec-\u003evalidating in sefcontext_compile instead.  That however will also enable context validation, so you might need to override/set the selinux_validate callback to a function that just always succeeds.",
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
