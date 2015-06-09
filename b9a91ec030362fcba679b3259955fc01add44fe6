@@ -51,6 +51,24 @@
       "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99ce74a2_7aa6d10f",
+        "filename": "src/label_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1021859
+      },
+      "writtenOn": "2015-06-09T12:19:19Z",
+      "side": 1,
+      "message": "Ignore my last comment, I\u0027ll add -v -p and -o options to sefcontext_compile. -p for policy, -v verify, -o output file path.",
+      "parentUuid": "b9cfb89d_3b817f98",
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
