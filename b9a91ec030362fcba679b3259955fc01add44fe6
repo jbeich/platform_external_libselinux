@@ -87,6 +87,24 @@
       "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79c9c09b_79afff6b",
+        "filename": "src/label_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1021859
+      },
+      "writtenOn": "2015-06-09T12:36:31Z",
+      "side": 1,
+      "message": "Okay I\u0027ll just override the selinux_validate.",
+      "parentUuid": "39c4a87c_e819fb38",
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
