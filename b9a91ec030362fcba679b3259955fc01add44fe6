@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "796b8031_beddfb53",
+        "filename": "src/label_android_property.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-06-09T21:57:28Z",
+      "side": 1,
+      "message": "nit: whitespace",
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39c4a87c_ff81b7d6",
         "filename": "src/label_file.c",
         "patchSetId": 2
@@ -13,6 +30,69 @@
       "writtenOn": "2015-06-08T16:23:08Z",
       "side": 1,
       "message": "Sorry, my prior comment was not just for that one line but rather the entire change to the comment header - it isn\u0027t relevant to this code change and isn\u0027t quite right anyway.",
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "796b8031_248d7e04",
+        "filename": "src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-06-09T21:57:28Z",
+      "side": 1,
+      "message": "Why did you get rid of the sub-second time check? It\u0027s certainly unnecessary, but I would prefer that we intentionally keep diffs between Android and mainline libselinux to only necessary differences.",
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "796b8031_89b56b40",
+        "filename": "src/label_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-06-09T21:57:28Z",
+      "side": 1,
+      "message": "free(NULL)?\n\nWon\u0027t context be NULL if items\u003d\u003d2 ?",
+      "range": {
+        "startLine": 400,
+        "startChar": 2,
+        "endLine": 400,
+        "endChar": 16
+      },
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9d41838_3db6047c",
+        "filename": "src/label_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-06-09T21:57:28Z",
+      "side": 1,
+      "message": "free(NULL) if items\u003d\u003d2",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 409,
+        "endChar": 13
+      },
       "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -102,6 +182,144 @@
       "side": 1,
       "message": "Okay I\u0027ll just override the selinux_validate.",
       "parentUuid": "39c4a87c_e819fb38",
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "796b8031_0fd5fb2d",
+        "filename": "utils/sefcontext_compile.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-06-09T21:57:28Z",
+      "side": 1,
+      "message": "You should consider submitting this change to the main libselinux. Much cleaner and it will help reduce the diff between it and Android.",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9d41838_53b1c182",
+        "filename": "utils/sefcontext_compile.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-06-09T21:57:28Z",
+      "side": 1,
+      "message": "Only the last line will be freed.\n\nThis belongs in the while loop.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 16
+      },
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9d41838_33b0754e",
+        "filename": "utils/sefcontext_compile.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-06-09T21:57:28Z",
+      "side": 1,
+      "message": "calloc",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 53
+      },
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9d41838_13b5793d",
+        "filename": "utils/sefcontext_compile.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-06-09T21:57:28Z",
+      "side": 1,
+      "message": "No need if you calloc.",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 30
+      },
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "796b8031_eff5ffc3",
+        "filename": "utils/sefcontext_compile.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-06-09T21:57:28Z",
+      "side": 1,
+      "message": "calloc",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 51
+      },
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "796b8031_4f2c53d3",
+        "filename": "utils/sefcontext_compile.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-06-09T21:57:28Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 284,
+        "startChar": 15,
+        "endLine": 284,
+        "endChar": 16
+      },
       "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
