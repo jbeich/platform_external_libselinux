@@ -69,6 +69,24 @@
       "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39c4a87c_e819fb38",
+        "filename": "src/label_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-06-09T12:30:47Z",
+      "side": 1,
+      "message": "Why can\u0027t you just override selinux_validate callback with a function that does nothing like I suggested above?\nOr, alternatively, change process_line() to take an additional bool argument that enables regex compilation without validation of the contexts.\nI also noticed that apparently at some point we changed these errors from fatal errors to warnings, even with rec-\u003evalidating, which seems odd to me.  I guess setfiles -c or checkfc in Android will still fail if there is an invalid context because they define their own SELINUX_CB_VALIDATE callbacks, but I would have expected label_file.c to treat not only context validation but also regex and type/mode errors as fatal at least when rec-\u003evalidating is set if not always.  Something to take up another time...",
+      "parentUuid": "99ce74a2_7aa6d10f",
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
