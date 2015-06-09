@@ -33,6 +33,24 @@
       "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9cfb89d_3b817f98",
+        "filename": "src/label_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1021859
+      },
+      "writtenOn": "2015-06-09T10:04:57Z",
+      "side": 1,
+      "message": "I did test the option of setting rec-\u003evalidating \u003d 1 to get around changing this but as sefcontext_compile does not have a view of the policy to check against, it always displayed the fail messages as it used the current host policy to validate against. I guess to resolve this sefcontext_compile should have an option pointing to the policy - do you know if there is a way around this (could alway set selinux_log to output to dev/null but yuk)\n\nAnd also the -o option you mentioned for sepolicy Android.mk",
+      "parentUuid": "39c4a87c_7fdb67e6",
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
