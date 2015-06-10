@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3937486d_506e7af5",
+        "filename": "src/label_android_property.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-06-10T15:02:23Z",
+      "side": 1,
+      "message": "Oops, this is old. It showed up in my diff with upstream libselinux. Feel free to ignore",
+      "parentUuid": "796b8031_beddfb53",
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39c4a87c_ff81b7d6",
         "filename": "src/label_file.c",
         "patchSetId": 2
@@ -65,6 +83,24 @@
       "side": 1,
       "message": "I understand MAC OSX does not support this so removed. I don\u0027t have MAC so cannot test.\n\nThe #include \u003cstdio_ext.h\u003e was also removed for the same reason because of: __fsetlocking(fp, FSETLOCKING_BYCALLER); in process_file()",
       "parentUuid": "796b8031_248d7e04",
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d902ac8c_f0966d9e",
+        "filename": "src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-06-10T15:02:23Z",
+      "side": 1,
+      "message": "They definitely don\u0027t have __fsetlock.\n\nI\u0027ve had good luck using Apple\u0027s developer site search:\nhttps://developer.apple.com/search/",
+      "parentUuid": "99ce74a2_0892f7ac",
       "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -336,6 +372,30 @@
       "side": 1,
       "message": "According to getline man page if line_buf \u003d NULL and line_len \u003d 0 (I now specifically set line_len \u003d 0) then will malloc on first call, then realloc on the others, therefore I think the code is correct.\nHowever after some more testing using valgrind I\u0027ve improved the error handling around this, so if process_line errors I close the file and free line_buf.\n\nI\u0027ve done much same in label_file.c - process_file()",
       "parentUuid": "b9d41838_53b1c182",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 16
+      },
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "193e044a_9451545d",
+        "filename": "utils/sefcontext_compile.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-06-10T15:02:23Z",
+      "side": 1,
+      "message": "sgtm",
+      "parentUuid": "79c9c09b_c7aaae8d",
       "range": {
         "startLine": 37,
         "startChar": 0,
