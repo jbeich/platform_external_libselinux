@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b9cfb89d_44f21814",
+        "filename": "src/label_android_property.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1021859
+      },
+      "writtenOn": "2015-06-10T15:40:37Z",
+      "side": 1,
+      "message": "Yes there was a space plus line 115 had blank line - Fixed both in V3",
+      "parentUuid": "3937486d_506e7af5",
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39c4a87c_ff81b7d6",
         "filename": "src/label_file.c",
         "patchSetId": 2
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "They definitely don\u0027t have __fsetlock.\n\nI\u0027ve had good luck using Apple\u0027s developer site search:\nhttps://developer.apple.com/search/",
       "parentUuid": "99ce74a2_0892f7ac",
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79c9c09b_2774c2f3",
+        "filename": "src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1021859
+      },
+      "writtenOn": "2015-06-10T15:40:37Z",
+      "side": 1,
+      "message": "I looked on the site and they don\u0027t mention nano sec fields in stat(2). Anyway as its not much use I thought I would remove it upstream as well and see how it goes.",
+      "parentUuid": "d902ac8c_f0966d9e",
       "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
