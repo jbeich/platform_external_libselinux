@@ -84,7 +84,7 @@ LOCAL_SHARED_LIBRARIES := liblog libpcre
 LOCAL_CFLAGS := -DAUDITD_LOG_TAG=1003
 # mapping.c has redundant check of array p_in->perms.
 LOCAL_CLANG_CFLAGS += -Wno-pointer-bool-conversion
-
+LOCAL_CXX_STL := none
 include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
