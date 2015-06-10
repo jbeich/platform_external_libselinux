@@ -143,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "f94050d5_e57832f3",
+        "filename": "src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-06-10T17:38:54Z",
+      "side": 1,
+      "message": "I tried building upstream libselinux on an old Mac that I borrowed from someone, and found the following to be missing there:\n- stdio_ext.h\n- __fsetlocking\n- sys/vfs.h\n- linux/limits.h\n- mempcpy\n- sscanf %ms (obsoleted by the rewrite to use your helper)\n- st_mtim.tv_nsec\n- fgets_unlocked\n- non-int pthread_once_t, thereby breaking __selinux_once() fallback in the case where the application is not linked to libpthread.\n\nPlus of course the various Linux-specific things like NETLINK socket support.\n\nDon\u0027t know if that is all still true of latest MacOS X or how old of MacOS X one has to support for Android builds.\n\nI don\u0027t think the nsec comparison is needed regardless.  Not sure why Eric put it in there in the first place.",
+      "parentUuid": "79c9c09b_2774c2f3",
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "796b8031_89b56b40",
         "filename": "src/label_file.h",
         "patchSetId": 2
