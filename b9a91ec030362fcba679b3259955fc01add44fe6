@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "99ce74a2_0892f7ac",
+        "filename": "src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1021859
+      },
+      "writtenOn": "2015-06-10T11:25:57Z",
+      "side": 1,
+      "message": "I understand MAC OSX does not support this so removed. I don\u0027t have MAC so cannot test.\n\nThe #include \u003cstdio_ext.h\u003e was also removed for the same reason because of: __fsetlocking(fp, FSETLOCKING_BYCALLER); in process_file()",
+      "parentUuid": "796b8031_248d7e04",
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "796b8031_89b56b40",
         "filename": "src/label_file.h",
         "patchSetId": 2
@@ -76,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "79c9c09b_a70d7241",
+        "filename": "src/label_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1021859
+      },
+      "writtenOn": "2015-06-10T11:25:57Z",
+      "side": 1,
+      "message": "Removed free(context);",
+      "parentUuid": "796b8031_89b56b40",
+      "range": {
+        "startLine": 400,
+        "startChar": 2,
+        "endLine": 400,
+        "endChar": 16
+      },
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9d41838_3db6047c",
         "filename": "src/label_file.h",
         "patchSetId": 2
@@ -87,6 +129,30 @@
       "writtenOn": "2015-06-09T21:57:28Z",
       "side": 1,
       "message": "free(NULL) if items\u003d\u003d2",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 409,
+        "endChar": 13
+      },
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9cfb89d_84cb9093",
+        "filename": "src/label_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1021859
+      },
+      "writtenOn": "2015-06-10T11:25:57Z",
+      "side": 1,
+      "message": "But at this stage there could be 3 items, so I\u0027ve not changed this.",
+      "parentUuid": "b9d41838_3db6047c",
       "range": {
         "startLine": 409,
         "startChar": 0,
@@ -211,6 +277,30 @@
     },
     {
       "key": {
+        "uuid": "79c9c09b_a738d2fe",
+        "filename": "utils/sefcontext_compile.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1021859
+      },
+      "writtenOn": "2015-06-10T11:25:57Z",
+      "side": 1,
+      "message": "I plan to once (if) this work is accepted in Android plus all the other corrections (e.g. fix file label sort and improve error handling)",
+      "parentUuid": "796b8031_0fd5fb2d",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9d41838_53b1c182",
         "filename": "utils/sefcontext_compile.c",
         "patchSetId": 2
@@ -234,6 +324,30 @@
     },
     {
       "key": {
+        "uuid": "79c9c09b_c7aaae8d",
+        "filename": "utils/sefcontext_compile.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1021859
+      },
+      "writtenOn": "2015-06-10T11:25:57Z",
+      "side": 1,
+      "message": "According to getline man page if line_buf \u003d NULL and line_len \u003d 0 (I now specifically set line_len \u003d 0) then will malloc on first call, then realloc on the others, therefore I think the code is correct.\nHowever after some more testing using valgrind I\u0027ve improved the error handling around this, so if process_line errors I close the file and free line_buf.\n\nI\u0027ve done much same in label_file.c - process_file()",
+      "parentUuid": "b9d41838_53b1c182",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 16
+      },
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9d41838_33b0754e",
         "filename": "utils/sefcontext_compile.c",
         "patchSetId": 2
@@ -245,6 +359,30 @@
       "writtenOn": "2015-06-09T21:57:28Z",
       "side": 1,
       "message": "calloc",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 53
+      },
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99ce74a2_08ab17e5",
+        "filename": "utils/sefcontext_compile.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1021859
+      },
+      "writtenOn": "2015-06-10T11:25:57Z",
+      "side": 1,
+      "message": "Changed malloc to calloc etc.",
+      "parentUuid": "b9d41838_33b0754e",
       "range": {
         "startLine": 270,
         "startChar": 0,
