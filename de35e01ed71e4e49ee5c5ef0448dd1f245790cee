@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39c4a87c_38274069",
+        "filename": "src/label_file.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-06-10T14:48:38Z",
+      "side": 1,
+      "message": "Couldn\u0027t we just goto out; here and have out: end with return rc?",
+      "revId": "de35e01ed71e4e49ee5c5ef0448dd1f245790cee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39c4a87c_18635c94",
+        "filename": "utils/sefcontext_compile.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-06-10T14:48:38Z",
+      "side": 1,
+      "message": "Same here, i.e. put an out: label below and just gogo it, and have it return rc there.",
+      "revId": "de35e01ed71e4e49ee5c5ef0448dd1f245790cee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
