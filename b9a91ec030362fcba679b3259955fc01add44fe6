@@ -161,6 +161,24 @@
     },
     {
       "key": {
+        "uuid": "797aa034_ee8c7f3f",
+        "filename": "src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1021859
+      },
+      "writtenOn": "2015-06-11T12:27:36Z",
+      "side": 1,
+      "message": "Thanks for the useful info. The only problem was with linux/limits.h but simple change to limits.h fixed this.\n\nI\u0027ve now uploaded V4 changes that should cover all the outstanding issues.\n\nI\u0027ll now have a go at updating frameworks/base/services/core/java/com/android/server/updates/SELinuxPolicyInstallReceiver.java to support file_contexts.bin",
+      "parentUuid": "f94050d5_e57832f3",
+      "revId": "b9a91ec030362fcba679b3259955fc01add44fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "796b8031_89b56b40",
         "filename": "src/label_file.h",
         "patchSetId": 2
