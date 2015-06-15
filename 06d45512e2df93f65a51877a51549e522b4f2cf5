@@ -1,0 +1,7 @@
+Code-Review+2: Nick Kralevich <nnk@google.com>
+Verified+1: Daniel Cashman <dcashman@google.com>
+Submitted-by: Daniel Cashman <dcashman@google.com>
+Submitted-at: Mon, 15 Jun 2015 21:35:20 +0000
+Reviewed-on: https://android-review.googlesource.com/154756
+Project: platform/external/libselinux
+Branch: refs/heads/master
