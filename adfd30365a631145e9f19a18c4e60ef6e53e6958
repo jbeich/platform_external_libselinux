@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e700ec3_5bf4ce81",
+        "filename": "Android.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-06-19T21:41:44Z",
+      "side": 1,
+      "message": "Need to set host flags below",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 5
+      },
+      "revId": "adfd30365a631145e9f19a18c4e60ef6e53e6958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e67ca0f_4af5d5c2",
+        "filename": "Android.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-06-19T21:41:44Z",
+      "side": 1,
+      "message": "You need to reset the host flags (as above) after clear_vars",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 21
+      },
+      "revId": "adfd30365a631145e9f19a18c4e60ef6e53e6958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e6dc2eb_c4c9df48",
+        "filename": "src/label_android_property.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-06-19T21:41:44Z",
+      "side": 1,
+      "message": "The only difference between this file and the upstream version is this const and one other. Can we remove it (or add it upstream)?",
+      "range": {
+        "startLine": 138,
+        "startChar": 44,
+        "endLine": 138,
+        "endChar": 49
+      },
+      "revId": "adfd30365a631145e9f19a18c4e60ef6e53e6958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e7adaa8_71276fc0",
+        "filename": "src/label_android_property.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-06-19T21:41:44Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 281,
+        "startChar": 5,
+        "endLine": 281,
+        "endChar": 10
+      },
+      "revId": "adfd30365a631145e9f19a18c4e60ef6e53e6958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e9c462a_2e63ca0f",
+        "filename": "src/label_file.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-06-19T21:41:44Z",
+      "side": 1,
+      "message": "Another diff from upstream.",
+      "range": {
+        "startLine": 411,
+        "startChar": 0,
+        "endLine": 413,
+        "endChar": 12
+      },
+      "revId": "adfd30365a631145e9f19a18c4e60ef6e53e6958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e6dc2eb_44370fa0",
+        "filename": "src/label_file.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-06-19T21:41:44Z",
+      "side": 1,
+      "message": "not upstream",
+      "range": {
+        "startLine": 738,
+        "startChar": 50,
+        "endLine": 738,
+        "endChar": 55
+      },
+      "revId": "adfd30365a631145e9f19a18c4e60ef6e53e6958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e6dc2eb_043117a8",
+        "filename": "src/label_internal.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-06-19T21:41:44Z",
+      "side": 1,
+      "message": "not upstream",
+      "range": {
+        "startLine": 20,
+        "startChar": 50,
+        "endLine": 20,
+        "endChar": 55
+      },
+      "revId": "adfd30365a631145e9f19a18c4e60ef6e53e6958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e6dc2eb_242e9b46",
+        "filename": "src/label_internal.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-06-19T21:41:44Z",
+      "side": 1,
+      "message": "ditto and likewise for the next few functions",
+      "range": {
+        "startLine": 22,
+        "startChar": 51,
+        "endLine": 22,
+        "endChar": 56
+      },
+      "revId": "adfd30365a631145e9f19a18c4e60ef6e53e6958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e700ec3_51358f05",
+        "filename": "utils/sefcontext_compile.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-06-19T21:41:44Z",
+      "side": 1,
+      "message": "This seems like something that should never occur, but if context_file is empty, you will never enter this while loop and will return an uninitialized rc.",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 6
+      },
+      "revId": "adfd30365a631145e9f19a18c4e60ef6e53e6958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
