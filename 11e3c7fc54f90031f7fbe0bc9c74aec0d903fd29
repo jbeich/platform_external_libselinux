@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dec53225_373c9a80",
+        "filename": "Android.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1021859
+      },
+      "writtenOn": "2015-06-22T16:56:19Z",
+      "side": 1,
+      "message": "I think I\u0027ll leave this as it is a host binary, therefore be consistant to support MAC builds (unless I get out voted !!!)",
+      "parentUuid": "3ed56ecf_453acaf6",
+      "revId": "11e3c7fc54f90031f7fbe0bc9c74aec0d903fd29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe0af65b_8f58f507",
         "filename": "Android.mk",
         "patchSetId": 7
@@ -30,6 +48,24 @@
       "writtenOn": "2015-06-22T16:20:03Z",
       "side": 1,
       "message": "I don\u0027t think we typically set these in the makefile; leave it to the caller?  Also would override the above definition.",
+      "revId": "11e3c7fc54f90031f7fbe0bc9c74aec0d903fd29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "beecfece_ad305da5",
+        "filename": "Android.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1021859
+      },
+      "writtenOn": "2015-06-22T16:56:19Z",
+      "side": 1,
+      "message": "I\u0027ll remove this on the next version",
+      "parentUuid": "fe0af65b_8f58f507",
       "revId": "11e3c7fc54f90031f7fbe0bc9c74aec0d903fd29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
