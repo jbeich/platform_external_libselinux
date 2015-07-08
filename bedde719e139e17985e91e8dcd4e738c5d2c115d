@@ -16,6 +16,24 @@
       "revId": "bedde719e139e17985e91e8dcd4e738c5d2c115d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93201584_b89da143",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1295,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-07-08T15:23:20Z",
+      "side": 1,
+      "message": "Thanks, I was going to ask that, you read my mind. Even if its not, it would still make sense to add that bypass for tmpfs mounts.",
+      "parentUuid": "b81fb653_d4d1b541",
+      "revId": "bedde719e139e17985e91e8dcd4e738c5d2c115d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
