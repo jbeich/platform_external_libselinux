@@ -1257,8 +1257,6 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
         goto cleanup;
     }
     paths[0] = pathname;
-    issys = (!strcmp(pathname, SYS_PATH)
-            || !strncmp(pathname, SYS_PREFIX, sizeof(SYS_PREFIX)-1)) ? true : false;
 
     if (!recurse) {
         if (lstat(pathname, &sb) < 0) {
@@ -1281,18 +1279,18 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
         !fnmatch(EXPAND_USER_PATH, pathname, FNM_LEADING_DIR|FNM_PATHNAME))
         setrestoreconlast = false;
 
-    /* Also ignore on /sys since it is regenerated on each boot regardless. */
-    if (issys)
-        setrestoreconlast = false;
-
     /* Ignore files on transient filesystems */
     if (statfs(pathname, &sfsb) < 0) {
         error = -1;
         goto cleanup;
     }
 
-    if (sfsb.f_type == RAMFS_MAGIC || sfsb.f_type == TMPFS_MAGIC)
+    if (sfsb.f_type == SYSFS_MAGIC || sfsb.f_type == SELINUX_MAGIC ||
+        sfsb.f_type == RAMFS_MAGIC || sfsb.f_type == TMPFS_MAGIC   ||
+        sfsb.f_type == CGROUP_SUPER_MAGIC)
         setrestoreconlast = false;
+
+    issys = sfsb.f_type == SYSFS_MAGIC;
 
     if (setrestoreconlast) {
         size = getxattr(pathname, RESTORECON_LAST, xattr_value, sizeof fc_digest);
