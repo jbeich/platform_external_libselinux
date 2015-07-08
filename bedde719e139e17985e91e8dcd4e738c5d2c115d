@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b81fb653_d4d1b541",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1295,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-07-08T13:55:30Z",
+      "side": 1,
+      "message": "rootfs can also be tmpfs, depending on configuration/boot options.",
+      "revId": "bedde719e139e17985e91e8dcd4e738c5d2c115d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
