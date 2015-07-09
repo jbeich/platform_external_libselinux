@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b81fb653_438a8522",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1291,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-07-09T13:35:31Z",
+      "side": 1,
+      "message": "Only question I have is whether this should be a hard failure, or just cause us to _not_ apply the next test (i.e. just assume that if we cannot statfs the pathname, e.g. no getattr permission to the filesystem type, then leave setrestoreconlast unchanged and try to proceed with the restorecon operation).  Shouldn\u0027t matter under current policy, which allows domain fs_type:filesystem getattr, but could possibly be an issue if that were ever removed from domain.te.",
+      "revId": "36e96236b4208157db8561f20d780315827bbe87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
