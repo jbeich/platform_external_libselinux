@@ -88,6 +88,24 @@
       "revId": "b93d4d40c817685695c961d09d1f8519c958318f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58115a41_fa701e53",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-07-09T17:00:50Z",
+      "side": 1,
+      "message": "And f2fs, although last I looked, they still didn\u0027t have support in system/extras/f2fs_utils for labeling files, so I don\u0027t quite understand how they can use f2fs currently with SELinux unless they do a post-install restorecon or something.\nOTOH, using a whitelist of f_type values here would mean that we will have to update it whenever a new fs type is introduced for userdata.  With the current blacklist of f_type values the worst that will happen is that it will try to set restorecon_last and fail, but that is not fatal.",
+      "parentUuid": "b3219987_74289612",
+      "revId": "b93d4d40c817685695c961d09d1f8519c958318f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
