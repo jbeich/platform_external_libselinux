@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b81fb653_237f898c",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-07-09T13:52:29Z",
+      "side": 1,
+      "message": "There is also a debugfs mount on /sys/kernel/debug and a pstore mount on /sys/fs/pstore.\nI would tend to parenthesize the boolean expression above even though it isn\u0027t technically required.",
+      "revId": "b93d4d40c817685695c961d09d1f8519c958318f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
