@@ -52,6 +52,24 @@
       "revId": "b93d4d40c817685695c961d09d1f8519c958318f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8246aa6_d36d4bfb",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-07-09T16:36:53Z",
+      "side": 1,
+      "message": "True.  Pity we don\u0027t have something analogous to seclabel mount option output in /proc/self/mounts, which can be used to detect which filesystems support security labeling.  But here we want to know which filesystems support persistent labeling, not just labeling in general.",
+      "parentUuid": "d3260d9c_0c383bda",
+      "revId": "b93d4d40c817685695c961d09d1f8519c958318f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
