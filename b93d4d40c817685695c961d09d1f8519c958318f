@@ -70,6 +70,24 @@
       "revId": "b93d4d40c817685695c961d09d1f8519c958318f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3219987_74289612",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-07-09T16:50:45Z",
+      "side": 1,
+      "message": "I was thinking that the logic would be simpler if flipped. We should say don\u0027t do setlast unless its an fs type that we want to persist and then do the path based exclusion. AFAIK and have seen, that limits us to the EXT family and if we want to hop in the way back machine, yaffs.",
+      "parentUuid": "d8246aa6_d36d4bfb",
+      "revId": "b93d4d40c817685695c961d09d1f8519c958318f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
