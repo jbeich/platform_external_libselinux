@@ -106,6 +106,24 @@
       "revId": "b93d4d40c817685695c961d09d1f8519c958318f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78ca9e3a_8b13ed10",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-07-10T20:02:51Z",
+      "side": 1,
+      "message": "CGROUP is covered by TMPFS\n# /data/statfs /sys/fs/cgroup/memory                                \nf_type: 1021994\n\nWe need DEBUGFS_MAGIC for debugfs. What\u0027s strange is that their is a restorecon_recursive on sys, and I never saw the trigger on setattr for last for that filesystem.",
+      "parentUuid": "58115a41_fa701e53",
+      "revId": "b93d4d40c817685695c961d09d1f8519c958318f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
