@@ -142,6 +142,24 @@
       "revId": "b93d4d40c817685695c961d09d1f8519c958318f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98cf5247_0fd86916",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-07-10T21:08:17Z",
+      "side": 1,
+      "message": "Yeah I assumed it was due to early abort on path lookup (you know what they say about assuming). I still don\u0027t understand why you mentioned CGROUP as being mounted below sysfs then?\n\nmy mount table shows:\nnone on /acct type cgroup (rw,relatime,cpuacct)\nnone on /sys/fs/cgroup type tmpfs (rw,seclabel,relatime,mode\u003d750,gid\u003d1000)\nnone on /dev/cpuctl type cgroup (rw,relatime,cpu)\n\nIs it that you just want me to add CGROUP (which is logical here), if so yes, not a problem. We should skip CGROUP mounts as well.",
+      "parentUuid": "d86c6a17_d99bf7bd",
+      "revId": "b93d4d40c817685695c961d09d1f8519c958318f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
