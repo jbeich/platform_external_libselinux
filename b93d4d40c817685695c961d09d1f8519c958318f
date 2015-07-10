@@ -124,6 +124,24 @@
       "revId": "b93d4d40c817685695c961d09d1f8519c958318f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d86c6a17_d99bf7bd",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-07-10T20:10:46Z",
+      "side": 1,
+      "message": "Don\u0027t confuse the top-level tmpfs mount for an actual cgroup mount.  They have a different magic number.\nAnyway, wrt debugfs, it is likely because of the partial matching logic that prunes the sysfs tree walk if there is no possible match in file_contexts for anything below that point.  We can\u0027t actually assign per-file labels to debugfs until the corresponding kernel patches land in all device kernels.  Also, can do that labeling (and much of sysfs) via genfs_contexts if/when those kernel patches land in all device kernels.",
+      "parentUuid": "78ca9e3a_8b13ed10",
+      "revId": "b93d4d40c817685695c961d09d1f8519c958318f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
