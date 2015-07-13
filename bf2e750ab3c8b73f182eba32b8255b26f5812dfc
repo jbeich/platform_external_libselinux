@@ -51,6 +51,24 @@
       "revId": "bf2e750ab3c8b73f182eba32b8255b26f5812dfc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78e45ef7_fe107d05",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1293,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-07-13T18:52:24Z",
+      "side": 1,
+      "message": "It only makes sense when dealing with a pseudo filesystem.  For conventional filesystems like ext4 on /data, we will always have a regex that will match all files (/data(/.*)?) to ensure complete labeling.  Whereas with the pseudo filesystem files, they will have some kind of label even if we haven\u0027t touched them via restorecon; we only need to restorecon them if they need a more specific label than the filesystem default.  So I guess it ought to be ispseudofs or something rather than issys, except that we only do a restorecon_recursive of /sys today and many pseudo filesystems don\u0027t even support setxattr.",
+      "parentUuid": "3801063e_9492ca5c",
+      "revId": "bf2e750ab3c8b73f182eba32b8255b26f5812dfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
