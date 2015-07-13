@@ -87,6 +87,24 @@
       "revId": "bf2e750ab3c8b73f182eba32b8255b26f5812dfc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1821a2e2_2e53d3e8",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1293,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-07-13T19:03:51Z",
+      "side": 1,
+      "message": "seclabel option in /proc/mounts is the only reliable way to know if the filesystem supports setting SELinux labels.",
+      "parentUuid": "f80a0e5c_d2b2a2cf",
+      "revId": "bf2e750ab3c8b73f182eba32b8255b26f5812dfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
