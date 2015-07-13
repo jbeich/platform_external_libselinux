@@ -123,6 +123,24 @@
       "revId": "bf2e750ab3c8b73f182eba32b8255b26f5812dfc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8c33659_b5c46085",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1293,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-07-13T19:38:18Z",
+      "side": 1,
+      "message": "wrt things under sysfs. Their\u0027s a bunch more filesystem\u0027s that we likely need to have the proper prune logic on as well. functionfs, pstorefs, usbfs (is that even used anymore).",
+      "parentUuid": "389d8670_11b44c22",
+      "revId": "bf2e750ab3c8b73f182eba32b8255b26f5812dfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
