@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "f80a0e5c_92601a05",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-07-13T16:27:40Z",
+      "side": 1,
+      "message": "spelling willfix",
+      "revId": "bf2e750ab3c8b73f182eba32b8255b26f5812dfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1821a2e2_4889df73",
         "filename": "src/android.c",
         "patchSetId": 3
@@ -13,6 +30,24 @@
       "writtenOn": "2015-07-13T14:54:11Z",
       "side": 1,
       "message": "This could yield a change in behavior.\nCurrently, we are using this to decide whether to check for a partial match and prune the tree walk early if there is no possible match for anything under a given directory as an optimization during the restorecon_recursive(\"/sys\").  So, for example, if there are no /sys/kernel/debug entries in file_contexts, then it will skip over the children of /sys/kernel/debug entirely.  As long as we only call it with restorecon_recursive(\"/sys\"), this won\u0027t affect anything as the statfs is done on the top level directory.  But if someone did a restorecon -R /sys/kernel/debug before and after this change, the old logic would have skipped its children while the new logic would walk the entire tree.",
+      "revId": "bf2e750ab3c8b73f182eba32b8255b26f5812dfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3801063e_9492ca5c",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1293,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-07-13T16:27:40Z",
+      "side": 1,
+      "message": "by entire tree you mean the /sys/kernel/debug and children ? Why isn\u0027t that an optimization applied to all restorecon_recursive calls? Why only abort early on sysfs paths?",
+      "parentUuid": "1821a2e2_4889df73",
       "revId": "bf2e750ab3c8b73f182eba32b8255b26f5812dfc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
