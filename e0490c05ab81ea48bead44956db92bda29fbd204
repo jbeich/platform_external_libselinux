@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58279af4_4da72d97",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1261,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-07-13T14:54:11Z",
+      "side": 0,
+      "message": "If we truly are removing this altogether, then we can also drop the SYS_PATH and SYS_PREFIX definitions.  However, see below.",
+      "revId": "e0490c05ab81ea48bead44956db92bda29fbd204",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
