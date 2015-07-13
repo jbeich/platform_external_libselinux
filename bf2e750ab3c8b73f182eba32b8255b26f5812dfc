@@ -105,6 +105,24 @@
       "revId": "bf2e750ab3c8b73f182eba32b8255b26f5812dfc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "389d8670_11b44c22",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1293,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-07-13T19:27:11Z",
+      "side": 1,
+      "message": "ughh parsing, thats no fun. In reality we could change the varname of issys and set it if the ftype is for SYFS and DEBUGFS which seem to be the only 2 that pull a legit starting label from genfscon.\n\nRight now other filesystems are getting skipped if their mounted under sys that shouldn\u0027t be. For instance, you may wish to handle one of the tmpfs\u0027s.",
+      "parentUuid": "1821a2e2_2e53d3e8",
+      "revId": "bf2e750ab3c8b73f182eba32b8255b26f5812dfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
