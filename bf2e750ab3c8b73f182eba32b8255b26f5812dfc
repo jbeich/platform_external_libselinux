@@ -141,6 +141,42 @@
       "revId": "bf2e750ab3c8b73f182eba32b8255b26f5812dfc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "786b7e31_bd926f5c",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1293,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-07-14T13:32:53Z",
+      "side": 1,
+      "message": "That\u0027s why I\u0027m thinking the current test of /sys prefix is better/safer for this purpose than switching over to testing filesystem type.",
+      "parentUuid": "b8c33659_b5c46085",
+      "revId": "bf2e750ab3c8b73f182eba32b8255b26f5812dfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b871761d_eee193be",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1293,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-07-14T13:32:53Z",
+      "side": 1,
+      "message": "The reason that /proc/mounts seclabel is the only reliable means of testing is because even a filesystem that implements support for labeling might have that support overridden via a context\u003d mount option and therefore might not support setxattr for a particular mount.  I don\u0027t think there is anything under /sys that is of concern; even tmpfs inodes are not persistent and have an initial default label (e.g. tmpfs type) and therefore the logic for pruning the walk is fine for those as well if there is no possible matching entry in file_contexts.  Would only matter if someone started mounting ext4 filesystems under /sys, which would be just weird.",
+      "parentUuid": "389d8670_11b44c22",
+      "revId": "bf2e750ab3c8b73f182eba32b8255b26f5812dfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
