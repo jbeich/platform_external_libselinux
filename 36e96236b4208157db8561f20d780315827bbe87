@@ -52,6 +52,24 @@
       "revId": "36e96236b4208157db8561f20d780315827bbe87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5834fa65_85bfe4a8",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1291,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2015-07-15T19:57:33Z",
+      "side": 1,
+      "message": "I don\u0027t see what exiting here buys us, whereas I could see improperly doing so could hurt us, so I\u0027d go towards soft-failure.",
+      "parentUuid": "d8246aa6_f3496783",
+      "revId": "36e96236b4208157db8561f20d780315827bbe87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
