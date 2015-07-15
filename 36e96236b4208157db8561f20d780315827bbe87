@@ -70,6 +70,24 @@
       "revId": "36e96236b4208157db8561f20d780315827bbe87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8d41638_2d570d9f",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1291,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-07-15T20:15:38Z",
+      "side": 1,
+      "message": "yep agreed, will reup a change soon.",
+      "parentUuid": "5834fa65_85bfe4a8",
+      "revId": "36e96236b4208157db8561f20d780315827bbe87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
