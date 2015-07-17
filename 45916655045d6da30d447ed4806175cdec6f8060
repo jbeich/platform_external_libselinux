@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98fd92eb_5cdf5dcb",
+        "filename": "src/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1288,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-07-17T13:26:28Z",
+      "side": 1,
+      "message": "Ignore restorecon_last on in-memory filesystems.",
+      "revId": "45916655045d6da30d447ed4806175cdec6f8060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
