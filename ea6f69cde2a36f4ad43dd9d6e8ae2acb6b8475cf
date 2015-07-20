@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "180362c0_1e930d64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-07-20T13:07:10Z",
+      "side": 1,
+      "message": "do not set security.restorecon_last on ramfs and tmpfs",
+      "revId": "ea6f69cde2a36f4ad43dd9d6e8ae2acb6b8475cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18ea8220_c6f6f68a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-07-20T13:07:10Z",
+      "side": 1,
+      "message": "security.restorecon_last xattr value",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "ea6f69cde2a36f4ad43dd9d6e8ae2acb6b8475cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "387f464e_0180ead0",
         "filename": "/COMMIT_MSG",
         "patchSetId": 6
@@ -13,6 +53,23 @@
       "writtenOn": "2015-07-20T13:04:48Z",
       "side": 1,
       "message": "This avoids triggering a CAP_SYS_ADMIN capability check (SELinux self:capability sys_admin) and a SELinux setattr permission check to the file when applying restorecon to ramfs or tmpfs filesystems.",
+      "revId": "ea6f69cde2a36f4ad43dd9d6e8ae2acb6b8475cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8eed634_430adad9",
+        "filename": "src/android.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1288,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-07-20T13:07:10Z",
+      "side": 1,
+      "message": "in-memory",
       "revId": "ea6f69cde2a36f4ad43dd9d6e8ae2acb6b8475cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
