@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "387f464e_0180ead0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-07-20T13:04:48Z",
+      "side": 1,
+      "message": "This avoids triggering a CAP_SYS_ADMIN capability check (SELinux self:capability sys_admin) and a SELinux setattr permission check to the file when applying restorecon to ramfs or tmpfs filesystems.",
+      "revId": "ea6f69cde2a36f4ad43dd9d6e8ae2acb6b8475cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
