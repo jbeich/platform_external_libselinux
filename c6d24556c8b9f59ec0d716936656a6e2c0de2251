@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8733693_35f7f0cb",
+        "filename": "src/procattr.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-07-20T18:19:00Z",
+      "side": 1,
+      "message": "Why does this duplicate the open, asprintf failure and free code? Couldn\u0027t this be simplified to be only confitional on pid to path creation/assignment?",
+      "revId": "c6d24556c8b9f59ec0d716936656a6e2c0de2251",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
