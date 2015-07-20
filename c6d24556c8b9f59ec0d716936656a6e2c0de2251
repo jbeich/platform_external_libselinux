@@ -16,6 +16,24 @@
       "revId": "c6d24556c8b9f59ec0d716936656a6e2c0de2251",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8884ea6_425bd401",
+        "filename": "src/procattr.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-07-20T18:30:48Z",
+      "side": 1,
+      "message": "Only Linux 3.17 and later have /proc/thread-self, so we have to support falling back to the old path on failure.  Need to open the right path for the current thread/tid as otherwise the kernel will reject any write() attempts.  Could perhaps be refactored but matches upstream.",
+      "parentUuid": "b8733693_35f7f0cb",
+      "revId": "c6d24556c8b9f59ec0d716936656a6e2c0de2251",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
