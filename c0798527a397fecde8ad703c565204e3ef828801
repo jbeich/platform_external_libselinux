@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca4d7087_94db320d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-07-31T18:19:08Z",
+      "side": 1,
+      "message": "What is the space savings as well? Are the savings present for files that have No comments and whitespace?",
+      "revId": "c0798527a397fecde8ad703c565204e3ef828801",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a59ac45_dc8d4dba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-07-31T18:19:08Z",
+      "side": 1,
+      "message": "Do we really need Changes in V*. Gerrit handles diffs between all patchset versions.",
+      "revId": "c0798527a397fecde8ad703c565204e3ef828801",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
