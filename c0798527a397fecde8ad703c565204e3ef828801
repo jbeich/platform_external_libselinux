@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "aaa83c5c_c4b1decd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-07-31T18:52:28Z",
+      "side": 1,
+      "message": "file_contexts.bin is actually larger due to containing the precompiled regexes.  It isn\u0027t about saving space but rather saving time when loading file contexts.  They actually store both the pathname regex string and the precompiled regex in the file_contexts.bin; the former might not be absolutely needed but gets used in certain log messages.",
+      "parentUuid": "ca4d7087_94db320d",
+      "revId": "c0798527a397fecde8ad703c565204e3ef828801",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a59ac45_dc8d4dba",
         "filename": "/COMMIT_MSG",
         "patchSetId": 8
