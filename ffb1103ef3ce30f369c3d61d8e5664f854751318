@@ -22,6 +22,30 @@
       "revId": "ffb1103ef3ce30f369c3d61d8e5664f854751318",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cadad034_8cad8f71",
+        "filename": "Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-08-04T19:56:52Z",
+      "side": 1,
+      "message": "No, libselinux should not be a proxy for libpcre; it just uses it internally.  So this is probably wrong for libpcre too, and was likely just added to \"fix\" linking issues for init as well.",
+      "parentUuid": "aa14bc88_61195108",
+      "range": {
+        "startLine": 53,
+        "startChar": 32,
+        "endLine": 53,
+        "endChar": 38
+      },
+      "revId": "ffb1103ef3ce30f369c3d61d8e5664f854751318",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
