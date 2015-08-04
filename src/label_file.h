@@ -378,7 +378,7 @@ static inline int compile_regex(struct saved_data *data, struct spec *spec,
  * utils/sefcontext_compile.c */
 static inline int process_line(struct selabel_handle *rec,
 			const char *path, const char *prefix,
-			char *line_buf, unsigned lineno)
+			char *line_buf, unsigned lineno, struct m4_context *m4_ctx)
 {
 	int items, len, rc;
 	char *regex = NULL, *type = NULL, *context = NULL;
@@ -387,7 +387,9 @@ static inline int process_line(struct selabel_handle *rec,
 	unsigned int nspec = data->nspec;
 	const char *errbuf = NULL;
 
-	items = read_spec_entries(line_buf, 3, &regex, &type, &context);
+	items = read_spec_entries(m4_ctx, line_buf, 3, &regex, &type, &context);
+	path = m4_ctx->valid ? m4_ctx->path : path;
+	lineno = m4_ctx->valid ? m4_ctx->lineno : lineno;
 	if (items <= 0)
 		return items;
 
