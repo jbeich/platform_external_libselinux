@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ad60c0d_c629363a",
+        "filename": "src/label_support.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-08-04T12:31:46Z",
+      "side": 1,
+      "message": "synclines omit the path if it has not changed since the prior syncline.\n\n$ m4 -s\n\nhappy\n\n#line 1 \"stdin\"\n\nhappy\n\ndefine(`sad\u0027, `not\n\nhappy\u0027)\n\n#line 3",
+      "revId": "cd7881787eaaec261cebd31792435aa4676c34fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
