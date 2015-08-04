@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa14bc88_61195108",
+        "filename": "Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-08-04T18:23:29Z",
+      "side": 1,
+      "message": "Put this into LOCAL_STATIC_LIBRARIES instead. There should be no need to pull in the whole library, libselinux is not a proxy for all the functionality that is contained in liblog; which it is in the case of libpcre though (?)",
+      "range": {
+        "startLine": 53,
+        "startChar": 32,
+        "endLine": 53,
+        "endChar": 38
+      },
+      "revId": "ffb1103ef3ce30f369c3d61d8e5664f854751318",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
