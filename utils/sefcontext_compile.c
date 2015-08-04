@@ -26,6 +26,9 @@ static int process_file(struct selabel_handle *rec, const char *filename)
 	size_t line_len = 0;
 	FILE *context_file;
 	const char *prefix = NULL;
+	struct m4_context m4_ctx;
+
+	memset(&m4_ctx, 0, sizeof(m4_ctx));
 
 	context_file = fopen(filename, "r");
 	if (!context_file) {
@@ -37,9 +40,12 @@ static int process_file(struct selabel_handle *rec, const char *filename)
 	line_num = 0;
 	rc = 0;
 	while (getline(&line_buf, &line_len, context_file) > 0) {
-		rc = process_line(rec, filename, prefix, line_buf, ++line_num);
+		rc = process_line(rec, filename, prefix, line_buf, ++line_num, &m4_ctx);
 		if (rc)
 			goto out;
+
+		if (m4_ctx.valid)
+			m4_ctx.lineno++;
 	}
 out:
 	free(line_buf);

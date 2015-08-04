@@ -404,6 +404,9 @@ static int process_file(const char *path, const char *suffix,
 	char *line_buf = NULL;
 	int rc;
 	char stack_path[PATH_MAX + 1];
+	struct m4_context m4_ctx;
+
+	memset(&m4_ctx, 0, sizeof(m4_ctx));
 
 	/* append the path suffix if we have one */
 	if (suffix) {
@@ -437,9 +440,12 @@ static int process_file(const char *path, const char *suffix,
 	lineno = 0;
 	rc = 0;
 	while (getline(&line_buf, &line_len, fp) > 0) {
-		rc = process_line(rec, path, prefix, line_buf, ++lineno);
+		rc = process_line(rec, path, prefix, line_buf, ++lineno, &m4_ctx);
 		if (rc)
 			goto out;
+
+		if (m4_ctx.valid)
+			m4_ctx.lineno++;
 	}
 
 out:

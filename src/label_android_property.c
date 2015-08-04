@@ -89,8 +89,13 @@ static int process_line(struct selabel_handle *rec,
 	struct saved_data *data = (struct saved_data *)rec->data;
 	spec_t *spec_arr = data->spec_arr;
 	unsigned int nspec = data->nspec;
+	struct m4_context m4_ctx;
 
-	items = read_spec_entries(line_buf, 2, &prop, &context);
+	memset(&m4_ctx, 0, sizeof(m4_ctx));
+
+	items = read_spec_entries(&m4_ctx, line_buf, 2, &prop, &context);
+	path = m4_ctx.valid ? m4_ctx.path : path;
+	lineno = m4_ctx.valid ? m4_ctx.lineno : lineno;
 	if (items <= 0)
 		return items;
 	if (items != 2) {
