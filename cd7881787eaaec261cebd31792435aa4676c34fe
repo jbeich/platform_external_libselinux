@@ -16,6 +16,24 @@
       "revId": "cd7881787eaaec261cebd31792435aa4676c34fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ad9483e_88001b75",
+        "filename": "src/label_support.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-08-04T14:32:00Z",
+      "side": 1,
+      "message": "Thanks",
+      "parentUuid": "2ad60c0d_c629363a",
+      "revId": "cd7881787eaaec261cebd31792435aa4676c34fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
