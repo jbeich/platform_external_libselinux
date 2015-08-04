@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ad60c0d_2665823b",
+        "filename": "src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-08-04T16:01:13Z",
+      "side": 1,
+      "message": "This is kind-of tricky to follow, if the open fails AND the load_map fails it falls below this and exits on the no valid fp check. If the open fails and the mmap succeeds were done and goto out, if the open succeeds and the mmap fails, we faill through the not fp check and process. What happens if they both succeed?",
+      "revId": "bcd374d82d6a55af23c38b6206ba0d09d92907a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
