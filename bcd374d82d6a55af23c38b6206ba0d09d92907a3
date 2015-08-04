@@ -16,6 +16,24 @@
       "revId": "bcd374d82d6a55af23c38b6206ba0d09d92907a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eadf9421_6d768181",
+        "filename": "src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-08-04T16:09:56Z",
+      "side": 1,
+      "message": "If the open of the text file succeeds and load_mmap() succeeds, we still goto out and just close the text file without any further processing of it.  The only reason we open + stat it first is to have the sb.st_mtime for comparison in load_mmap() to verify that the file_contexts.bin file is not stale/older than the file_contexts file.",
+      "parentUuid": "2ad60c0d_2665823b",
+      "revId": "bcd374d82d6a55af23c38b6206ba0d09d92907a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
