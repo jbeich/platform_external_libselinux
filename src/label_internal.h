@@ -10,6 +10,7 @@
 
 #include <stdlib.h>
 #include <stdarg.h>
+#include <linux/limits.h>
 #include <selinux/selinux.h>
 #include <selinux/label.h>
 #include "dso.h"
@@ -75,6 +76,17 @@ struct selabel_handle {
 	struct selabel_sub *subs;
 };
 
+struct m4_context {
+	int valid;
+	/*
+	 * +2 for two quotes surrounding path in m4 sync-line
+	 * and +1 for a null byte
+	 */
+#define M4_PATH_BUFFER_SIZE (PATH_MAX + 3)
+	char path[M4_PATH_BUFFER_SIZE];
+	unsigned long lineno;
+};
+
 /*
  * Validation function
  */
@@ -86,6 +98,6 @@ selabel_validate(struct selabel_handle *rec,
  * The read_spec_entries function may be used to
  * replace sscanf to read entries from spec files.
  */
-extern int read_spec_entries(char *line_buf, int num_args, ...);
+extern int read_spec_entries(struct m4_context *m4_ctx, char *line_buf, int num_args, ...);
 
 #endif				/* _SELABEL_INTERNAL_H_ */
