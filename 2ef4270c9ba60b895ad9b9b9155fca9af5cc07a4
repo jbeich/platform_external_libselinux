@@ -70,6 +70,24 @@
       "revId": "2ef4270c9ba60b895ad9b9b9155fca9af5cc07a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7cf2b9d_fb8307e3",
+        "filename": "src/label_file.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-08-10T19:40:51Z",
+      "side": 0,
+      "message": "Yeah I figured out what you were doing (see above). I wouldn\u0027t consider this common, this seems like a nasty way to do it IMHO. opts[n].value \u0026 0x1; is cleaner and only requires 1 instruction versus 2 instructions.",
+      "parentUuid": "87f7f3e0_03f30e61",
+      "revId": "2ef4270c9ba60b895ad9b9b9155fca9af5cc07a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
