@@ -454,7 +454,7 @@ static int init(struct selabel_handle *rec, const struct selinux_opt *opts,
 	struct saved_data *data = (struct saved_data *)rec->data;
 	const char *path = NULL;
 	const char *prefix = NULL;
-	int status = -1, baseonly = 0;
+	int status = -1;
 
 	/* Process arguments */
 	while (n--)
@@ -466,7 +466,7 @@ static int init(struct selabel_handle *rec, const struct selinux_opt *opts,
 			prefix = opts[n].value;
 			break;
 		case SELABEL_OPT_BASEONLY:
-			baseonly = !!opts[n].value;
+			/* Android only supports a base file */
 			break;
 		}
 
@@ -482,16 +482,6 @@ static int init(struct selabel_handle *rec, const struct selinux_opt *opts,
 	if (rec->validating) {
 		status = nodups_specs(data, path);
 		if (status)
-			goto finish;
-	}
-
-	if (!baseonly) {
-		status = process_file(path, "homedirs", rec, prefix);
-		if (status && errno != ENOENT)
-			goto finish;
-
-		status = process_file(path, "local", rec, prefix);
-		if (status && errno != ENOENT)
 			goto finish;
 	}
 
