@@ -52,6 +52,24 @@
       "revId": "2ef4270c9ba60b895ad9b9b9155fca9af5cc07a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87f7f3e0_03f30e61",
+        "filename": "src/label_file.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-08-10T19:30:49Z",
+      "side": 0,
+      "message": "!! is a common idiom in C to turn an arbitrary integer value into a boolean (0 or 1).  Nothing more.  Might not be strictly required but good practice for argument sanitization.",
+      "parentUuid": "47c41b7d_9fd99b22",
+      "revId": "2ef4270c9ba60b895ad9b9b9155fca9af5cc07a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
