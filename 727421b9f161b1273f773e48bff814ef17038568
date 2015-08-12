@@ -1,0 +1,9 @@
+Code-Review+1: William C Roberts <william.c.roberts@intel.com>
+Code-Review+1: Richard Haines <richard_c_haines@btinternet.com>
+Code-Review+2: Nick Kralevich <nnk@google.com>
+Verified+1: Nick Kralevich <nnk@google.com>
+Submitted-by: Nick Kralevich <nnk@google.com>
+Submitted-at: Wed, 12 Aug 2015 23:46:40 +0000
+Reviewed-on: https://android-review.googlesource.com/163421
+Project: platform/external/libselinux
+Branch: refs/heads/master
