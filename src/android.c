@@ -31,6 +31,7 @@
 #include <limits.h>
 #include <sys/vfs.h>
 #include <linux/magic.h>
+#include <libgen.h>
 
 /*
  * XXX Where should this configuration file be located?
@@ -1231,11 +1232,12 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
     struct statfs sfsb;
     FTS *fts;
     FTSENT *ftsent;
-    char *pathname;
+    char *pathname, *pathdnamec, *pathdname, *pathdnamer, *pathbnamec, *pathbname;
     char * paths[2] = { NULL , NULL };
     int ftsflags = FTS_NOCHDIR | FTS_XDEV | FTS_PHYSICAL;
     int error, sverrno;
     char xattr_value[FC_DIGEST_SIZE];
+    size_t basesize;
     ssize_t size;
 
     if (is_selinux_enabled() <= 0)
@@ -1246,16 +1248,40 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
     if (!fc_sehandle)
         return 0;
 
-    // convert passed-in pathname to canonical pathname
-    pathname = realpath(pathname_orig, NULL);
-    if (!pathname) {
+    /*
+     * Convert passed-in pathname to canonical pathname by resolving realpath of
+     * containing dir, then appending filename.
+     */
+    pathdnamec = strdup(pathname_orig);
+    if (!pathdnamec)
+        goto oom;
+    pathbnamec = strdup(pathname_orig);
+    if (!pathbnamec)
+        goto oom;
+    pathdname = dirname(pathdnamec);
+    pathdnamer = realpath(pathdname, NULL);
+    if (!pathdnamer) {
         sverrno = errno;
-        selinux_log(SELINUX_ERROR, "SELinux: Could not get canonical path %s restorecon: %s.\n",
+        selinux_log(SELINUX_ERROR, "SELinux: Could not get canonical path for %s restorecon: %s.\n",
                 pathname_orig, strerror(errno));
         errno = sverrno;
         error = -1;
         goto cleanup;
     }
+    pathbname = basename(pathbnamec);
+    if (!strcmp(pathbname, "/") || !strcmp(pathbname, ".") || !strcmp(pathbname, ".."))
+        basesize = 0;
+    else
+        basesize = strlen(pathbname);
+    pathname = malloc(strlen(pathdnamer) + basesize + 2);
+    if (!pathname)
+        goto oom;
+    strncpy(pathname, pathdnamer, strlen(pathdnamer) + 1);
+    if (basesize) {
+        strncat(pathname, "/", 1);
+        strncat(pathname, pathbname, basesize);
+    }
+
     paths[0] = pathname;
     issys = (!strcmp(pathname, SYS_PATH)
             || !strncmp(pathname, SYS_PREFIX, sizeof(SYS_PREFIX)-1)) ? true : false;
@@ -1364,8 +1390,17 @@ out:
     (void) fts_close(fts);
     errno = sverrno;
 cleanup:
+    free(pathdnamec);
+    free(pathbnamec);
+    free(pathdnamer);
     free(pathname);
     return error;
+oom:
+    sverrno = errno;
+    selinux_log(SELINUX_ERROR, "%s:  Out of memory\n", __FUNCTION__);
+    errno = sverrno;
+    error = -1;
+    goto cleanup;
 }
 
 int selinux_android_restorecon(const char *file, unsigned int flags)
