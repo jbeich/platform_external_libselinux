@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "447fba21_2cce13b9",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1235,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-10T17:45:46Z",
+      "side": 1,
+      "message": "Initialize to NULL so that we are guaranteed that they are initialized on oom/cleanup exit paths.",
+      "revId": "a255aef3ee769ff9fedcb5ec0c32bb6f17415dc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4842e5f_b4224ee2",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1261,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-10T17:45:46Z",
+      "side": 1,
+      "message": "It appears that bionic\u0027s implementation of dirname/basename take const char * and use thread-local storage for the result, so you don\u0027t need to make copies of the original path for them?",
+      "revId": "a255aef3ee769ff9fedcb5ec0c32bb6f17415dc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04822251_557e7e7a",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1279,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-10T17:45:46Z",
+      "side": 1,
+      "message": "What do we gain here by using strncpy vs just strcpy()?",
+      "revId": "a255aef3ee769ff9fedcb5ec0c32bb6f17415dc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c48baa6e_73ee3af0",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1282,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-10T17:45:46Z",
+      "side": 1,
+      "message": "Ditto for strncat vs just strcat here.",
+      "revId": "a255aef3ee769ff9fedcb5ec0c32bb6f17415dc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
