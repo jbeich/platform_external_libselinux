@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "24c9e69c_1f8346d0",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1261,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-09-10T19:36:11Z",
+      "side": 1,
+      "message": "yes, if this only needs to run on Android, that\u0027s fine. (but note that the gotcha there is that if you call dirname/basename again on the same thread...)\n\n(in the specific case of basename, we support both POSIX and GNU basename, \u003cstring.h\u003e gets you the GNU one, \u003clibgen.h\u003e the POSIX one.)",
+      "parentUuid": "44fdfae7_bf2c9363",
+      "revId": "a255aef3ee769ff9fedcb5ec0c32bb6f17415dc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04822251_557e7e7a",
         "filename": "src/android.c",
         "patchSetId": 1
