@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0465c2c3_2945d935",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2015-09-14T18:34:05Z",
+      "side": 1,
+      "message": "my preference would be to combine these, but I\u0027ll let others weigh in if they so desire.",
+      "range": {
+        "startLine": 1238,
+        "startChar": 7,
+        "endLine": 1238,
+        "endChar": 17
+      },
+      "revId": "af034b2a0ad920066509d6fa162cb9488a6935e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
