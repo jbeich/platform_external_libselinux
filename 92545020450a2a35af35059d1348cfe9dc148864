@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24bf2634_23008a75",
+        "filename": "src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1278,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-14T17:29:03Z",
+      "side": 1,
+      "message": "Alternatively, could use:\nif (!strcmp(pathbname, \"/\") || !strcmp(pathbname, \".\") || !strcmp(pathbname, \"..\")) {\n    pathname \u003d strdup(pathdnamer);\n    if (!pathname)\n        goto oom;  \n} else {\n    rc \u003d asprintf(\u0026pathname, \"%s/%s\", pathdnamer, pathbname);\n    if (rc \u003c 0)\n        goto oom;\n}",
+      "revId": "92545020450a2a35af35059d1348cfe9dc148864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
