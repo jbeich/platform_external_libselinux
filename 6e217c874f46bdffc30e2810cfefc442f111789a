@@ -16,6 +16,24 @@
       "revId": "6e217c874f46bdffc30e2810cfefc442f111789a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c45e4afd_3eeedf80",
+        "filename": "src/android.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1266,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2015-09-16T17:55:35Z",
+      "side": 1,
+      "message": "Apparently I did not consider this check carefully, thank you.  All of these cases refer to dirs rather than symlinks, so I\u0027ve addressed the unusual basename results by simply doing a realpath on pathname_orig, otherwise proceeding as usual.",
+      "parentUuid": "44997af8_df317fd3",
+      "revId": "6e217c874f46bdffc30e2810cfefc442f111789a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
