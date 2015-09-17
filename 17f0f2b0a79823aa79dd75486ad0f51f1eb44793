@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6992d715_80e2f8bc",
+        "filename": "src/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1252,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2015-09-17T16:20:46Z",
+      "side": 1,
+      "message": "true, done.",
+      "parentUuid": "a9b76fb4_a7ae2a62",
+      "range": {
+        "startLine": 1252,
+        "startChar": 38,
+        "endLine": 1252,
+        "endChar": 54
+      },
+      "revId": "17f0f2b0a79823aa79dd75486ad0f51f1eb44793",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "694d7785_65e48653",
         "filename": "src/android.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2015-09-17T14:11:30Z",
       "side": 1,
       "message": "goto realpatherr;",
+      "range": {
+        "startLine": 1258,
+        "startChar": 0,
+        "endLine": 1263,
+        "endChar": 25
+      },
+      "revId": "17f0f2b0a79823aa79dd75486ad0f51f1eb44793",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e96fa7e4_1cd2d993",
+        "filename": "src/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2015-09-17T16:20:46Z",
+      "side": 1,
+      "message": "I considered this but wasn\u0027t sure if it was worth it for only two uses; however, I think I prefer an additional goto: target to duplicated code. Will go with this.",
+      "parentUuid": "694d7785_65e48653",
       "range": {
         "startLine": 1258,
         "startChar": 0,
