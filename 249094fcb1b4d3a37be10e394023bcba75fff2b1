@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6992d715_e07e5c78",
+        "filename": "src/android.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1253,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-09-17T16:38:15Z",
+      "side": 1,
+      "message": "Thanks this makes this dead clear what you want.",
+      "revId": "249094fcb1b4d3a37be10e394023bcba75fff2b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
