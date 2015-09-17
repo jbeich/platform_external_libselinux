@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9b76fb4_a7ae2a62",
+        "filename": "src/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1252,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-17T14:11:30Z",
+      "side": 1,
+      "message": "last component name.\n(could be a directory or a file)",
+      "range": {
+        "startLine": 1252,
+        "startChar": 38,
+        "endLine": 1252,
+        "endChar": 54
+      },
+      "revId": "17f0f2b0a79823aa79dd75486ad0f51f1eb44793",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "694d7785_65e48653",
+        "filename": "src/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-17T14:11:30Z",
+      "side": 1,
+      "message": "goto realpatherr;",
+      "range": {
+        "startLine": 1258,
+        "startChar": 0,
+        "endLine": 1263,
+        "endChar": 25
+      },
+      "revId": "17f0f2b0a79823aa79dd75486ad0f51f1eb44793",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8952ab21_a6704663",
+        "filename": "src/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1274,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-17T14:11:30Z",
+      "side": 1,
+      "message": "goto realpatherr;",
+      "range": {
+        "startLine": 1269,
+        "startChar": 0,
+        "endLine": 1274,
+        "endChar": 25
+      },
+      "revId": "17f0f2b0a79823aa79dd75486ad0f51f1eb44793",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9b76fb4_e7a42288",
+        "filename": "src/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1397,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-17T14:11:30Z",
+      "side": 1,
+      "message": "realpatherr:\n    sverrno \u003d errno;\n    selinux_log(SELINUX_ERR, \"%s: Could not get canonical path for %s restorecon: %s\\n\",\n                pathname_orig, strerror(errno));\n    errno \u003d sverrno;\n    error \u003d -1;\n    goto cleanup;",
+      "revId": "17f0f2b0a79823aa79dd75486ad0f51f1eb44793",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
