@@ -26,7 +26,8 @@ extern int selinux_android_reload_policy(void);
 extern int selinux_android_setcontext(uid_t uid,
 				      bool isSystemServer,
 				      const char *seinfo,
-				      const char *name);
+				      const char *name,
+				      bool isPrivApp);
 
 extern int selinux_android_setfilecon(const char *pkgdir,
 				       const char *pkgname,

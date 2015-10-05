@@ -173,6 +173,8 @@ struct seapp_context {
 	char *seinfo;
 	struct prefix_str name;
 	struct prefix_str path;
+	bool isPrivAppSet;
+	bool isPrivApp;
 	/* outputs */
 	char *domain;
 	char *type;
@@ -264,6 +266,10 @@ static int seapp_context_cmp(const void *A, const void *B)
 		if (s1->path.is_prefix && s1->path.len != s2->path.len)
 			return (s1->path.len > s2->path.len) ? -1 : 1;
 	}
+
+	/* Give precedence to a specified isPrivApp= over an unspecified isPrivApp=. */
+	if (s1->isPrivAppSet != s2->isPrivAppSet)
+		return (s1->isPrivAppSet ? -1 : 1);
 
 	/*
 	 * Check for a duplicated entry on the input selectors.
@@ -505,6 +511,16 @@ int selinux_android_seapp_context_reload(void)
 				cur->path.len = strlen(cur->path.str);
 				if (cur->path.str[cur->path.len-1] == '*')
 					cur->path.is_prefix = 1;
+			} else if (!strcasecmp(name, "isPrivApp")) {
+				cur->isPrivAppSet = true;
+				if (!strcasecmp(value, "true"))
+					cur->isPrivApp = true;
+				else if (!strcasecmp(value, "false"))
+					cur->isPrivApp = false;
+				else {
+					free_seapp_context(cur);
+					goto err;
+				}
 			} else {
 				free_seapp_context(cur);
 				goto err;
@@ -539,14 +555,15 @@ int selinux_android_seapp_context_reload(void)
 		int i;
 		for (i = 0; i < nspec; i++) {
 			cur = seapp_contexts[i];
-			selinux_log(SELINUX_INFO, "%s:  isSystemServer=%s isOwner=%s user=%s seinfo=%s name=%s path=%s -> domain=%s type=%s level=%s levelFrom=%s",
-                        __FUNCTION__,
-                        cur->isSystemServer ? "true" : "false",
-                        cur->isOwnerSet ? (cur->isOwner ? "true" : "false") : "null",
-                        cur->user.str,
-                        cur->seinfo, cur->name.str, cur->path.str, cur->domain,
-                        cur->type, cur->level,
-                        levelFromName[cur->levelFrom]);
+			selinux_log(SELINUX_INFO, "%s:  isSystemServer=%s isOwner=%s user=%s seinfo=%s name=%s path=%s isPrivApp=%s -> domain=%s type=%s level=%s levelFrom=%s",
+				__FUNCTION__,
+				cur->isSystemServer ? "true" : "false",
+				cur->isOwnerSet ? (cur->isOwner ? "true" : "false") : "null",
+				cur->user.str,
+				cur->seinfo, cur->name.str, cur->path.str,
+				cur->isPrivAppSet ? (cur->isPrivApp ? "true" : "false") : "null",
+				cur->domain, cur->type, cur->level,
+				levelFromName[cur->levelFrom]);
 		}
 	}
 #endif
@@ -596,7 +613,8 @@ static int seapp_context_lookup(enum seapp_kind kind,
 				const char *seinfo,
 				const char *pkgname,
 				const char *path,
-				context_t ctx)
+				context_t ctx,
+				bool isPrivApp)
 {
 	bool isOwner;
 	const char *username = NULL;
@@ -680,6 +698,9 @@ static int seapp_context_lookup(enum seapp_kind kind,
 					continue;
 			}
 		}
+
+		if (cur->isPrivAppSet && cur->isPrivApp != isPrivApp)
+			continue;
 
 		if (kind == SEAPP_TYPE && !cur->type)
 			continue;
@@ -769,7 +790,8 @@ int selinux_android_setfilecon(const char *pkgdir,
 	if (!ctx)
 		goto oom;
 
-	rc = seapp_context_lookup(SEAPP_TYPE, uid, 0, seinfo, pkgname, NULL, ctx);
+	rc = seapp_context_lookup(SEAPP_TYPE, uid, false, seinfo, pkgname,
+				NULL, ctx, false);
 	if (rc == -1)
 		goto err;
 	else if (rc == -2)
@@ -808,7 +830,8 @@ oom:
 int selinux_android_setcontext(uid_t uid,
 			       bool isSystemServer,
 			       const char *seinfo,
-			       const char *pkgname)
+			       const char *pkgname,
+			       bool isPrivApp)
 {
 	char *orig_ctx_str = NULL, *ctx_str;
 	context_t ctx = NULL;
@@ -826,7 +849,8 @@ int selinux_android_setcontext(uid_t uid,
 	if (!ctx)
 		goto oom;
 
-	rc = seapp_context_lookup(SEAPP_DOMAIN, uid, isSystemServer, seinfo, pkgname, NULL, ctx);
+	rc = seapp_context_lookup(SEAPP_DOMAIN, uid, isSystemServer, seinfo,
+				pkgname, NULL, ctx, isPrivApp);
 	if (rc == -1)
 		goto err;
 	else if (rc == -2)
@@ -1126,7 +1150,9 @@ static int pkgdir_selabel_lookup(const char *pathname,
         goto err;
 
     rc = seapp_context_lookup(SEAPP_TYPE, pkgInfo ? pkgInfo->uid : uid, 0,
-                              pkgInfo ? pkgInfo->seinfo : seinfo, pkgInfo ? pkgInfo->name : pkgname, pathname, ctx);
+				pkgInfo ? pkgInfo->seinfo : seinfo,
+				pkgInfo ? pkgInfo->name : pkgname,
+				pathname, ctx, false);
     if (rc < 0)
         goto err;
 
