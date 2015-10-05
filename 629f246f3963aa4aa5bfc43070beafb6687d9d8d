@@ -51,6 +51,24 @@
       "revId": "629f246f3963aa4aa5bfc43070beafb6687d9d8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b973455_0ca7d7e7",
+        "filename": "src/avc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-05T20:49:21Z",
+      "side": 1,
+      "message": "Yes.\nkernel logic is effectively:\nif (denied)\n    log(\"permissive\u003d%u\", result ? 0 : 1);\nThere result may be -errno rather than just -1, but that\u0027s not the case in libselinux.",
+      "parentUuid": "6ba1f45d_7f5e6b0a",
+      "revId": "629f246f3963aa4aa5bfc43070beafb6687d9d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
