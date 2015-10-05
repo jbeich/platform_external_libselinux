@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8bc38859_95ba04fc",
+        "filename": "src/avc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-05T20:16:52Z",
+      "side": 1,
+      "message": "On entry we already converted !requested || result to denied \u003d requested, so you don\u0027t need to separately test !requested here.",
+      "revId": "629f246f3963aa4aa5bfc43070beafb6687d9d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bdaa833_3d482f99",
+        "filename": "src/avc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-05T20:16:52Z",
+      "side": 1,
+      "message": "This will only log permissive\u003d1 if the domain is permissive, not if the system is globally permissive.  The kernel reports permissive\u003d1 for either case, and does it based on result (because result is what gets returned to the caller of avc_has_perm, so we can only be permissive if denied was non-zero and result was zero).  Also, format string should be %u rather than %d.",
+      "revId": "629f246f3963aa4aa5bfc43070beafb6687d9d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
