@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "2b6d3ced_0054aa31",
+        "filename": "src/avc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-10-05T21:55:24Z",
+      "side": 1,
+      "message": "I was just following the logic on printing denied versus granted on line 676.",
+      "parentUuid": "cba660c3_efc1a15f",
+      "revId": "629f246f3963aa4aa5bfc43070beafb6687d9d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bdaa833_3d482f99",
         "filename": "src/avc.c",
         "patchSetId": 1
