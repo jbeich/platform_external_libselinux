@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cba660c3_efc1a15f",
+        "filename": "src/avc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-05T20:50:54Z",
+      "side": 1,
+      "message": "Oops, never mind on that one.  My mistake.\nkernel actually does a BUG_ON(!requested) on entry to avc_has_perm, so it doesn\u0027t bother with this.",
+      "parentUuid": "8bc38859_95ba04fc",
+      "revId": "629f246f3963aa4aa5bfc43070beafb6687d9d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bdaa833_3d482f99",
         "filename": "src/avc.c",
         "patchSetId": 1
