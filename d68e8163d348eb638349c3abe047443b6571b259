@@ -33,6 +33,24 @@
       "revId": "d68e8163d348eb638349c3abe047443b6571b259",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab976c01_93480e9b",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-10-06T19:02:42Z",
+      "side": 1,
+      "message": "Will do. Any concerns with the general idea/approach?",
+      "parentUuid": "106269ee_e9e29502",
+      "revId": "d68e8163d348eb638349c3abe047443b6571b259",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
