@@ -51,6 +51,24 @@
       "revId": "d68e8163d348eb638349c3abe047443b6571b259",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "506dc1b2_b3aa38ac",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-07T13:07:03Z",
+      "side": 1,
+      "message": "The alternative would be to indicate isPrivApp through modification of the seinfo string, as in:\nIacc7a5fd7518fcb92d4b029ed4c97c23950038fb",
+      "parentUuid": "ab976c01_93480e9b",
+      "revId": "d68e8163d348eb638349c3abe047443b6571b259",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
