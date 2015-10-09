@@ -87,6 +87,24 @@
       "revId": "d68e8163d348eb638349c3abe047443b6571b259",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "851ff953_d5b53c0a",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-09T17:12:18Z",
+      "side": 1,
+      "message": "Yes, avoids having to re-plumb every time we want to add a new selector.  However, once we have multiple such suffixes for the seinfo string that could possibly be combined, we might want libselinux to actually parse the seinfo string and do a bit smarter matching than always requiring an exact match.  That way if someone doesn\u0027t specify a line with seinfo\u003dplatform:privapp:nx in seapp_contexts and an app is created with both attributes, it will fall back to seinfo\u003dplatform at least.  Although not clear what it should do if there is a seinfo\u003dplatform:privapp and a seinfo\u003dplatform:nx in seapp_contexts and the app has both...",
+      "parentUuid": "105c2963_bf409ff7",
+      "revId": "d68e8163d348eb638349c3abe047443b6571b259",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
