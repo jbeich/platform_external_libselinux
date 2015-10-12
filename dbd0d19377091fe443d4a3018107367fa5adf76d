@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfb7aeb4_f06cd6f3",
+        "filename": "src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-10-12T22:17:09Z",
+      "side": 1,
+      "message": "return strstr() !\u003d 0",
+      "revId": "dbd0d19377091fe443d4a3018107367fa5adf76d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
