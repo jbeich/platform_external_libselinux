@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fa8725b_7e92f198",
+        "filename": "src/android.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-10-13T23:40:52Z",
+      "side": 1,
+      "message": "\"-1\", not \"- 1\"",
+      "range": {
+        "startLine": 631,
+        "startChar": 9,
+        "endLine": 631,
+        "endChar": 12
+      },
+      "revId": "13958dd72ee3b52b1c6b71c472d010cbca6e1d28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
