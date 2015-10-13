@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cbb68a1_6ad0f72f",
+        "filename": "src/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-13T19:43:17Z",
+      "side": 1,
+      "message": "strchr(src, \u0027:\u0027)?",
+      "revId": "96718700e319ab5dd51ca213f4c9385f4d40eb12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ccfa047_2cca137c",
+        "filename": "src/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-13T19:43:17Z",
+      "side": 1,
+      "message": "Could avoid wasted space on stack by making this char *parsedseinfo and allocating it with alloca(strlen(seinfo)+1) below.  Also avoids any possibility of being too small for seinfo.",
+      "revId": "96718700e319ab5dd51ca213f4c9385f4d40eb12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcdedcf4_4fcbcd82",
+        "filename": "src/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-13T19:43:17Z",
+      "side": 1,
+      "message": "Could just set seinfo \u003d parsedseinfo here?",
+      "revId": "96718700e319ab5dd51ca213f4c9385f4d40eb12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
