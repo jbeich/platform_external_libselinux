@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df2c627d_28b40b0a",
+        "filename": "src/android.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-13T15:01:53Z",
+      "side": 1,
+      "message": "Would prefer that we pass in the size of parsedseinfo as an argument and use it here.",
+      "revId": "f6b26bde0121990ed5ef407d91712f197348f8cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
