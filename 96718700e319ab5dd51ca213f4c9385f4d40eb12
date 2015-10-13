@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "bfb7aeb4_5c1b7915",
+        "filename": "src/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-10-13T20:09:10Z",
+      "side": 1,
+      "message": "I specifically chose BUFSIZ because it\u0027s what is used to read in seapp_contexts, so it will be large enough to hold any legitimate seinfo. seinfo strings longer than BUFSIZ will cause issues long before reaching this code (but I\u0027m still checking bounds just in case).\n\nalloca seems nice because it\u0027s a string allocation, but it has some major issues, from man alloca:\n\n\"There is no error indication if the stack frame cannot be extended. (However, after a failed allocation, the program is likely to receive a SIGSEGV signal if it attempts to access the unallocated space.)\"\n\n\"likely\" to sigsegv is inadequate.\n\nAnd I don\u0027t want to malloc this to heap. Malloc can fail, and malloc/free within the same function...\n\ncreating a short-lived reasonable sized buffer on the stack seems like the least likely to fail solution.",
+      "parentUuid": "5ccfa047_2cca137c",
+      "revId": "96718700e319ab5dd51ca213f4c9385f4d40eb12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcdedcf4_4fcbcd82",
         "filename": "src/android.c",
         "patchSetId": 5
