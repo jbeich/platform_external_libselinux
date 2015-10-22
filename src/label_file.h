@@ -274,6 +274,10 @@ static inline int store_stem(struct saved_data *data, char *buf, int stem_len)
 				  sizeof(*tmp_arr) * data->alloc_stems);
 		if (!tmp_arr)
 			return -1;
+
+		/* memset the newly allocated memory so closef() can properly check stem->from_mmap */
+		memset(&tmp_arr[num], 0, sizeof(*tmp_arr) * data->alloc_stems);
+
 		data->stem_arr = tmp_arr;
 	}
 	data->stem_arr[num].len = stem_len;
@@ -431,6 +435,9 @@ static inline int process_line(struct selabel_handle *rec,
 			   "%s:  line %u has invalid regex %s:  %s\n",
 			   path, lineno, regex,
 			   (errbuf ? errbuf : "out of memory"));
+		free(regex);
+		free(type);
+		free(context);
 		errno = EINVAL;
 		return -1;
 	}
@@ -438,6 +445,15 @@ static inline int process_line(struct selabel_handle *rec,
 	/* Convert the type string to a mode format */
 	spec_arr[nspec].type_str = type;
 	spec_arr[nspec].mode = 0;
+
+	spec_arr[nspec].lr.ctx_raw = context;
+
+	/*
+	 * bump data->nspecs to cause closef() to cover it in its free
+	 * but do not bump nspec since its used below.
+	 * */
+	data->nspec++;
+
 	if (type) {
 		mode_t mode = string_to_mode(type);
 
@@ -445,13 +461,10 @@ static inline int process_line(struct selabel_handle *rec,
 			selinux_log(SELINUX_ERROR,
 				   "%s:  line %u has invalid file type %s\n",
 				   path, lineno, type);
-			errno = EINVAL;
 			return -1;
 		}
 		spec_arr[nspec].mode = mode;
 	}
-
-	spec_arr[nspec].lr.ctx_raw = context;
 
 	/* Determine if specification has
 	 * any meta characters in the RE */
@@ -466,8 +479,6 @@ static inline int process_line(struct selabel_handle *rec,
 			return -1;
 		}
 	}
-
-	data->nspec = ++nspec;
 
 	return 0;
 }
