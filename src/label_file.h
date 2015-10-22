@@ -274,6 +274,10 @@ static inline int store_stem(struct saved_data *data, char *buf, int stem_len)
 				  sizeof(*tmp_arr) * data->alloc_stems);
 		if (!tmp_arr)
 			return -1;
+
+		/* memset the newly allocated memory so closef() can properly check stem->from_mmap */
+		memset(&tmp_arr[num], 0, sizeof(*tmp_arr) * data->alloc_stems);
+
 		data->stem_arr = tmp_arr;
 	}
 	data->stem_arr[num].len = stem_len;
@@ -431,6 +435,9 @@ static inline int process_line(struct selabel_handle *rec,
 			   "%s:  line %u has invalid regex %s:  %s\n",
 			   path, lineno, regex,
 			   (errbuf ? errbuf : "out of memory"));
+		free(regex);
+		free(type);
+		free(context);
 		errno = EINVAL;
 		return -1;
 	}
@@ -457,6 +464,12 @@ static inline int process_line(struct selabel_handle *rec,
 	 * any meta characters in the RE */
 	spec_hasMetaChars(&spec_arr[nspec]);
 
+	/*
+	 * bump data->nspecs to cause closef() to cover it in its free
+	 * but do not bump nspec since its used below.
+	 * */
+	data->nspec++;
+
 	if (strcmp(context, "<<none>>") && rec->validating) {
 		if (selabel_validate(rec, &spec_arr[nspec].lr) < 0) {
 			selinux_log(SELINUX_ERROR,
@@ -467,7 +480,8 @@ static inline int process_line(struct selabel_handle *rec,
 		}
 	}
 
-	data->nspec = ++nspec;
+	/* reassign the increment to the local nspec now that all is well */
+	nspec = data->nspec;
 
 	return 0;
 }
