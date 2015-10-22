@@ -1,0 +1,8 @@
+Code-Review+2: Mark Salyzyn <salyzyn@google.com>
+Verified+1: Mark Salyzyn <salyzyn@google.com>
+Code-Review+1: Stephen Smalley <sds@tycho.nsa.gov>
+Submitted-by: Daniel Cashman <dcashman@google.com>
+Submitted-at: Thu, 22 Oct 2015 23:03:52 +0000
+Reviewed-on: https://android-review.googlesource.com/162939
+Project: platform/external/libselinux
+Branch: refs/heads/master
