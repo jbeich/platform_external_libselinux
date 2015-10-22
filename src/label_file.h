@@ -274,6 +274,10 @@ static inline int store_stem(struct saved_data *data, char *buf, int stem_len)
 				  sizeof(*tmp_arr) * data->alloc_stems);
 		if (!tmp_arr)
 			return -1;
+
+		/* memset the newly allocated memory so closef() can properly check stem->from_mmap */
+		memset(&tmp_arr[num], 0, sizeof(*tmp_arr) * data->alloc_stems);
+
 		data->stem_arr = tmp_arr;
 	}
 	data->stem_arr[num].len = stem_len;
@@ -462,6 +466,8 @@ static inline int process_line(struct selabel_handle *rec,
 			selinux_log(SELINUX_ERROR,
 				    "%s:  line %u has invalid context %s\n",
 				    path, lineno, spec_arr[nspec].lr.ctx_raw);
+			/* bump nspecs to cause closef() to cover it in its free */
+			data->nspec++;
 			errno = EINVAL;
 			return -1;
 		}
