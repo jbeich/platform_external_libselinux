@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "56a1415d_85620893",
+        "filename": "src/label_file.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-10-23T17:12:06Z",
+      "side": 1,
+      "message": "Either way promotes a delta between this and upstream, unless we just fix it properly. Ill just move it upstream. Where/who is that maintained at?",
+      "parentUuid": "36f68d9e_6bddc1f3",
+      "revId": "65beb26972a07feaff8a9fdee30494f5368024ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6699de6_c0fd54cc",
         "filename": "src/label_file.h",
         "patchSetId": 3
@@ -48,6 +66,24 @@
       "side": 1,
       "message": "This is for the optional file mode field.  e.g. --, -d, -b, etc. Trigger by specifying a middle field that does not begin with - or that is not two characters or that does not end in one of b, c, d, p, l, s, or -.  Clearly, you leak regex, type, and context here.",
       "parentUuid": "b6699de6_c0fd54cc",
+      "revId": "65beb26972a07feaff8a9fdee30494f5368024ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "968019c6_aa6a7764",
+        "filename": "src/label_file.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-10-23T17:12:06Z",
+      "side": 1,
+      "message": "Yeah I thought that should leak as well.. Ok.",
+      "parentUuid": "b60a7d5b_2f7f499c",
       "revId": "65beb26972a07feaff8a9fdee30494f5368024ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
