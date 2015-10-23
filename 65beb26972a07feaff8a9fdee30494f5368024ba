@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "96f1f9a4_ae3a17ac",
+        "filename": "src/label_file.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-23T19:40:37Z",
+      "side": 1,
+      "message": "No, selabel_handle is common (and \"owned\" by label.c), whereas the -\u003edata field is for the backend-specific data, and owned by each backend.  -\u003espec_file is in the handle to export that information from the backends to label.c for use in the compat_validate() call for lazy validation of contexts when one doesn\u0027t do up-front validation.  It\u0027s kind of weird; allocated in the backends (in upstream, each of them sets it), used and freed in label.c.  Looks like it was introduced by Richard Haines to replace an old hardcoded reference to \"file_contexts\" in the logging; this all goes back to the original matchpathcon code that predates selabel_*.",
+      "parentUuid": "f6b795e1_198c6b0b",
+      "revId": "65beb26972a07feaff8a9fdee30494f5368024ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6699de6_c0fd54cc",
         "filename": "src/label_file.h",
         "patchSetId": 3
