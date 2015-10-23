@@ -55,6 +55,42 @@
     },
     {
       "key": {
+        "uuid": "f6b795e1_198c6b0b",
+        "filename": "src/label_file.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-10-23T19:00:44Z",
+      "side": 1,
+      "message": "Does each backend have its own struct definition for selabel_handle?",
+      "parentUuid": "d620d1e0_687943b3",
+      "revId": "65beb26972a07feaff8a9fdee30494f5368024ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96df3923_1eafed05",
+        "filename": "src/label_file.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-10-23T19:00:44Z",
+      "side": 1,
+      "message": "Does each back-end have its own definition of struct selabel_handle or are you saying just remove the rec-\u003espec_file \u003d strdup() ?",
+      "parentUuid": "d620d1e0_687943b3",
+      "revId": "65beb26972a07feaff8a9fdee30494f5368024ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6699de6_c0fd54cc",
         "filename": "src/label_file.h",
         "patchSetId": 3
