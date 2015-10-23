@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1627c9f5_0a323b2a",
+        "filename": "src/label_file.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-23T15:04:04Z",
+      "side": 1,
+      "message": "This is freed in selabel_close(), so you\u0027ll double free it on a selabel_close() call.",
+      "revId": "c55c6712fda7ffb3abef1b620a85fb0b94c66848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76156582_e561d613",
+        "filename": "src/label_file.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-23T15:04:04Z",
+      "side": 1,
+      "message": "We don\u0027t handle any other error condition in this function this way.  If we really want to handle it this way, then logically we\u0027d just move up the data-\u003enspec \u003d ++nspec;  Even then, we can leak regex, type, context before they get stored from several of the earlier error paths.",
+      "revId": "c55c6712fda7ffb3abef1b620a85fb0b94c66848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
