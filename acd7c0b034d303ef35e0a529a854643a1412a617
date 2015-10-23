@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "f6ceb575_c4b05018",
+        "filename": "src/label.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-10-23T19:49:56Z",
+      "side": 1,
+      "message": "It is valid, but their are other guarded frees in the library.",
+      "parentUuid": "d620d1e0_48c9df3f",
+      "revId": "acd7c0b034d303ef35e0a529a854643a1412a617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1627c9f5_0abfdb9a",
         "filename": "src/label_file.h",
         "patchSetId": 5
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "f6b795e1_1922ab75",
+        "filename": "src/label_file.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-10-23T19:49:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1627c9f5_0abfdb9a",
+      "revId": "acd7c0b034d303ef35e0a529a854643a1412a617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6235deb_87d3c6e5",
         "filename": "src/label_file.h",
         "patchSetId": 5
@@ -64,6 +100,24 @@
       "writtenOn": "2015-10-23T19:42:42Z",
       "side": 1,
       "message": "You don\u0027t need this; nspec is a local variable and it isn\u0027t used again.",
+      "revId": "acd7c0b034d303ef35e0a529a854643a1412a617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6ae1193_d8910dde",
+        "filename": "src/label_file.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-10-23T19:49:56Z",
+      "side": 1,
+      "message": "Yep I see that getting set at the top. For some reason I thought I was in a loop.",
+      "parentUuid": "b6235deb_87d3c6e5",
       "revId": "acd7c0b034d303ef35e0a529a854643a1412a617",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
