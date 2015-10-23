@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "76ec85ce_ed6c25f4",
+        "filename": "src/label_file.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-23T15:20:55Z",
+      "side": 1,
+      "message": "Hmm...it is that way upstream.\nrec-\u003espec_file is actually completely unused in Android, and is only used by a compat function upstream.",
+      "parentUuid": "d6661112_611b2cbb",
+      "revId": "c55c6712fda7ffb3abef1b620a85fb0b94c66848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76156582_e561d613",
         "filename": "src/label_file.h",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Their are tons of leaking paths in this function. However, we can free the individual pieces here, which if IRC didn\u0027t quite work out for me. Ill take a look again though.",
       "parentUuid": "76156582_e561d613",
+      "revId": "c55c6712fda7ffb3abef1b620a85fb0b94c66848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36f68d9e_0b16bd62",
+        "filename": "src/label_file.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-23T15:20:55Z",
+      "side": 1,
+      "message": "You only need to free the individual pieces until they get stored.  But if you are going to increment nspec, just do it once up front.",
+      "parentUuid": "f6d4f5d4_da15390c",
       "revId": "c55c6712fda7ffb3abef1b620a85fb0b94c66848",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
