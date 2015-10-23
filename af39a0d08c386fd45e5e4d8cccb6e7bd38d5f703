@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6a371b1_d0d63c25",
+        "filename": "src/label_file.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-23T20:35:55Z",
+      "side": 1,
+      "message": "Hmm...we could even move these lines up before compiling the regex and then we could increment data-\u003enspec there too, and just let closef handle all of the freeing.",
+      "revId": "af39a0d08c386fd45e5e4d8cccb6e7bd38d5f703",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56c22158_b4d9c056",
+        "filename": "src/label_file.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-23T20:35:55Z",
+      "side": 1,
+      "message": "it is",
+      "range": {
+        "startLine": 453,
+        "startChar": 32,
+        "endLine": 453,
+        "endChar": 35
+      },
+      "revId": "af39a0d08c386fd45e5e4d8cccb6e7bd38d5f703",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76880537_adb07d16",
+        "filename": "src/label_file.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-23T20:35:55Z",
+      "side": 1,
+      "message": "Just */",
+      "range": {
+        "startLine": 454,
+        "startChar": 2,
+        "endLine": 454,
+        "endChar": 6
+      },
+      "revId": "af39a0d08c386fd45e5e4d8cccb6e7bd38d5f703",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
