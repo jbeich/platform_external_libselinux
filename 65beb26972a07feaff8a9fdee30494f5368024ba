@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "36f68d9e_6bddc1f3",
+        "filename": "src/label_file.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-23T16:57:00Z",
+      "side": 1,
+      "message": "Still not a good idea since it is done in selabel_close() upstream, unless you are going to move that too.  I\u0027d just get rid of spec_file altogether since it is unused in Android.",
+      "revId": "65beb26972a07feaff8a9fdee30494f5368024ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6699de6_c0fd54cc",
         "filename": "src/label_file.h",
         "patchSetId": 3
@@ -13,6 +30,41 @@
       "writtenOn": "2015-10-23T16:28:27Z",
       "side": 1,
       "message": "I didn\u0027t see any leaks in valgrind when I tested this case...\n\nTo test it, I modified a line in the fc to be:\n\nu:object_r:fake:s0. Seemed to hit this error message.",
+      "revId": "65beb26972a07feaff8a9fdee30494f5368024ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b60a7d5b_2f7f499c",
+        "filename": "src/label_file.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-23T16:57:00Z",
+      "side": 1,
+      "message": "This is for the optional file mode field.  e.g. --, -d, -b, etc. Trigger by specifying a middle field that does not begin with - or that is not two characters or that does not end in one of b, c, d, p, l, s, or -.  Clearly, you leak regex, type, and context here.",
+      "parentUuid": "b6699de6_c0fd54cc",
+      "revId": "65beb26972a07feaff8a9fdee30494f5368024ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d620d1e0_e8937353",
+        "filename": "src/label_file.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-23T16:57:00Z",
+      "side": 1,
+      "message": "No need; it is local and not used again.",
       "revId": "65beb26972a07feaff8a9fdee30494f5368024ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
