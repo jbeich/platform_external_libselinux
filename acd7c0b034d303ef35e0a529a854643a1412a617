@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f62955cb_a93e9d80",
+        "filename": "src/label.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-23T19:42:42Z",
+      "side": 1,
+      "message": "space after if (keyword not function!)",
+      "revId": "acd7c0b034d303ef35e0a529a854643a1412a617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d620d1e0_48c9df3f",
+        "filename": "src/label.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-23T19:42:42Z",
+      "side": 1,
+      "message": "Actually, you don\u0027t need the if at all; free(NULL) is valid and a no-op.",
+      "revId": "acd7c0b034d303ef35e0a529a854643a1412a617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1627c9f5_0abfdb9a",
+        "filename": "src/label_file.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-23T19:42:42Z",
+      "side": 1,
+      "message": "Could do this immediately after setting type_str and then you don\u0027t need the extra error handling for the mode case.",
+      "revId": "acd7c0b034d303ef35e0a529a854643a1412a617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6235deb_87d3c6e5",
+        "filename": "src/label_file.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-23T19:42:42Z",
+      "side": 1,
+      "message": "You don\u0027t need this; nspec is a local variable and it isn\u0027t used again.",
+      "revId": "acd7c0b034d303ef35e0a529a854643a1412a617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
