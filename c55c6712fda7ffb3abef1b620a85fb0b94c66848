@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d6661112_611b2cbb",
+        "filename": "src/label_file.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-10-23T15:13:13Z",
+      "side": 1,
+      "message": "Not that I see, even looking at the function I don\u0027t see it.\n~/aosp/external/libselinux/src$ grep -rn free * | grep spec_file\nlabel_file.c:597:\tfree(rec-\u003espec_file);\n\nvoid selabel_close(struct selabel_handle *rec)\n{\n\trec-\u003efunc_close(rec);\n\tfree(rec);\n}\n\nthe free func is closef(). Also, valgrind reports on double frees.",
+      "parentUuid": "1627c9f5_0a323b2a",
+      "revId": "c55c6712fda7ffb3abef1b620a85fb0b94c66848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76156582_e561d613",
         "filename": "src/label_file.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-10-23T15:04:04Z",
       "side": 1,
       "message": "We don\u0027t handle any other error condition in this function this way.  If we really want to handle it this way, then logically we\u0027d just move up the data-\u003enspec \u003d ++nspec;  Even then, we can leak regex, type, context before they get stored from several of the earlier error paths.",
+      "revId": "c55c6712fda7ffb3abef1b620a85fb0b94c66848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6d4f5d4_da15390c",
+        "filename": "src/label_file.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-10-23T15:13:13Z",
+      "side": 1,
+      "message": "Their are tons of leaking paths in this function. However, we can free the individual pieces here, which if IRC didn\u0027t quite work out for me. Ill take a look again though.",
+      "parentUuid": "76156582_e561d613",
       "revId": "c55c6712fda7ffb3abef1b620a85fb0b94c66848",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
