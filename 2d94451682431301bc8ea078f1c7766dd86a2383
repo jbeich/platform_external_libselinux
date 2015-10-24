@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56b5c1f6_1cbb55f9",
+        "filename": "src/label_file.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1021859
+      },
+      "writtenOn": "2015-10-24T16:24:34Z",
+      "side": 1,
+      "message": "The memset size calc must be wrong. It works fine on a small file_contexts like Android\u0027s but if you try with large ones (like targeted policy) it core dumps.\n\nTo fix this I just added:\n\tdata-\u003estem_arr[num].from_mmap \u003d 0;\njust before:\n\tdata-\u003enum_stems++;",
+      "range": {
+        "startLine": 279,
+        "startChar": 2,
+        "endLine": 279,
+        "endChar": 64
+      },
+      "revId": "2d94451682431301bc8ea078f1c7766dd86a2383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
