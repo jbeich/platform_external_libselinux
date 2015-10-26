@@ -22,6 +22,30 @@
       "revId": "2d94451682431301bc8ea078f1c7766dd86a2383",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6d8bd3b_d3865418",
+        "filename": "src/label_file.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-10-26T01:24:41Z",
+      "side": 1,
+      "message": "Thanks for the feedback, I will fix this.",
+      "parentUuid": "56b5c1f6_1cbb55f9",
+      "range": {
+        "startLine": 279,
+        "startChar": 2,
+        "endLine": 279,
+        "endChar": 64
+      },
+      "revId": "2d94451682431301bc8ea078f1c7766dd86a2383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
