@@ -46,6 +46,30 @@
       "revId": "2d94451682431301bc8ea078f1c7766dd86a2383",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6b795e1_df64934d",
+        "filename": "src/label_file.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-10-26T02:41:39Z",
+      "side": 1,
+      "message": "Yes this memeset is way off. I would need to specify size on the delta, not the whole thing. Just setting from_mmap to 0 on actual use of the stem is simpler as well.",
+      "parentUuid": "b6d8bd3b_d3865418",
+      "range": {
+        "startLine": 279,
+        "startChar": 2,
+        "endLine": 279,
+        "endChar": 64
+      },
+      "revId": "2d94451682431301bc8ea078f1c7766dd86a2383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
