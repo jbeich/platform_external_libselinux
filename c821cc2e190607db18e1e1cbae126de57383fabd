@@ -1,0 +1,7 @@
+Code-Review+2: Jeffrey Vander Stoep <jeffv@google.com>
+Verified+1: Jeff Sharkey <jsharkey@android.com>
+Submitted-by: Jeff Sharkey <jsharkey@android.com>
+Submitted-at: Wed, 11 Nov 2015 18:49:20 +0000
+Reviewed-on: https://android-review.googlesource.com/182007
+Project: platform/external/libselinux
+Branch: refs/heads/master
