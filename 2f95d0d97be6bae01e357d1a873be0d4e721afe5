@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96d1fa8e_a2959264",
+        "filename": "src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-11-11T18:19:01Z",
+      "side": 1,
+      "message": "We should leave these as-is. A lot of selinux userspace code is shared with the selinux kernel code so we try to comply with the kernel style guide which states: \"Do not unnecessarily use braces where a single statement will do.\"",
+      "range": {
+        "startLine": 1080,
+        "startChar": 34,
+        "endLine": 1080,
+        "endChar": 36
+      },
+      "revId": "2f95d0d97be6bae01e357d1a873be0d4e721afe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
