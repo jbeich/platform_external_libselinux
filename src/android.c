@@ -67,6 +67,12 @@ static const struct selinux_opt seopts_service[] = {
     { 0, NULL }
 };
 
+static const struct selinux_opt seopts_bdr_txn[] = {
+        { SELABEL_OPT_PATH, "/bdr_txn_contexts" },
+        { SELABEL_OPT_PATH, "/data/security/current/bdr_txn_contexts" },
+        { 0, NULL }
+};
+
 enum levelFrom {
 	LEVELFROM_NONE,
 	LEVELFROM_APP,
@@ -122,6 +128,9 @@ static void set_policy_index(void)
 		goto unmap_override;
 
 	if (access(seopts_prop[1].value, R_OK) != 0)
+		goto unmap_override;
+
+    if (access(seopts_bdr_txn[1].value, R_OK) != 0)
 		goto unmap_override;
 
 	if (access(seopts_service[1].value, R_OK) != 0)
@@ -1492,6 +1501,25 @@ struct selabel_handle* selinux_android_service_context_handle(void)
 
     return sehandle;
 }
+
+struct selabel_handle* selinux_android_bdr_txn_context_handle(void)
+{
+    struct selabel_handle* sehandle;
+
+    set_policy_index();
+    sehandle = selabel_open(SELABEL_CTX_ANDROID_BDR_TXN,
+            &seopts_bdr_txn[policy_index], 1);
+    if (!sehandle) {
+        selinux_log(SELINUX_ERROR, "%s: Error getting binder transaction context handle (%s)\n",
+                __FUNCTION__, strerror(errno));
+        return NULL;
+    }
+    selinux_log(SELINUX_INFO, "SELinux: Loaded bdr_txn_contexts from %s.\n",
+            seopts_bdr_txn[policy_index].value);
+
+    return sehandle;
+}
+
 
 void selinux_android_set_sehandle(const struct selabel_handle *hndl)
 {

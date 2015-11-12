@@ -26,6 +26,7 @@ static selabel_initfunc initfuncs[] = {
 	NULL,
 	NULL,
 	&selabel_property_init,
+	&selabel_bdr_txn_init,
 };
 
 /*

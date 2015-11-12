@@ -37,6 +37,7 @@ common_HOST_FILES := \
 	src/init.c \
 	src/label.c \
 	src/label_file.c \
+	src/label_android_bdr_txn.c \
 	src/label_android_property.c \
 	src/label_support.c
 
