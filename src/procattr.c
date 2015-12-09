@@ -8,6 +8,9 @@
 #include "selinux_internal.h"
 #include "policy.h"
 
+#define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
+#include <sys/_system_properties.h>
+
 #ifdef HOST
 static pid_t gettid(void)
 {
@@ -117,6 +120,21 @@ static int setprocattrcon(const char * context,
 		return 0;
 }
 
+int setcon(const char *c)
+{
+	int ret = setprocattrcon(c, 0, "current");
+	if (ret < 0)
+		return -1;
+	/*
+	  System properties must be reinitialized after setcon() otherwise the
+	  previous property files will be leaked since mmap()'ed regions are not
+	  closed as a result of setcon().
+	*/
+
+	__system_properties_init();
+	return 0;
+}
+
 #define getselfattr_def(fn, attr) \
 	int get##fn(char **c) \
 	{ \
@@ -139,7 +157,7 @@ static int setprocattrcon(const char * context,
 		return getprocattrcon(c, pid, #attr); \
 	}
 
-all_selfattr_def(con, current)
+getselfattr_def(con, current)
     getpidattr_def(pidcon, current)
     getselfattr_def(prevcon, prev)
     all_selfattr_def(execcon, exec)
