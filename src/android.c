@@ -34,6 +34,9 @@
 #include <libgen.h>
 #include <packagelistparser/packagelistparser.h>
 
+#define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
+#include <sys/_system_properties.h>
+
 /*
  * XXX Where should this configuration file be located?
  * Needs to be accessible by zygote and installd when
@@ -904,6 +907,14 @@ int selinux_android_setcontext(uid_t uid,
 		if (rc < 0)
 			goto err;
 	}
+
+	/*
+	  System properties must be reinitialized after setcon() otherwise the
+	  previous property files will be leaked since mmap()'ed regions are not
+	  closed as a result of setcon().
+	*/
+
+	__system_properties_init();
 
 	rc = 0;
 out:
