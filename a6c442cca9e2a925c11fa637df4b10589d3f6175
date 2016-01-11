@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c762e2ed_89e2f9ea",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-01-11T17:47:28Z",
+      "side": 1,
+      "message": "You don\u0027t really need a separate bool field, since minTargetSdkVersion \u003d\u003d 0 is illegal in seapp_contexts and therefore a non-zero minTargetSdkVersion can indicate that it was set unambiguously.  The minTargetSdkVersion can also be unsigned.",
+      "revId": "a6c442cca9e2a925c11fa637df4b10589d3f6175",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "474ef283_25bd6ed2",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-01-11T17:47:28Z",
+      "side": 1,
+      "message": "We can then combine these two if statements into a single comparison of the two versions.\nIf the two versions are equal, we should fall through to the check for a duplicated entry below.",
+      "revId": "a6c442cca9e2a925c11fa637df4b10589d3f6175",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
