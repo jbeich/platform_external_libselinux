@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a7bb2ef1_3e9e1127",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1019164
+      },
+      "writtenOn": "2016-01-16T00:02:27Z",
+      "side": 1,
+      "message": "Removed isMinTargetSdkVersionSet.\nChanged minTargetSdkVersion to unsigned int and gave it a default value of 1.\ntargetSdkVersion (passed in the seinfo) also has a default value of 1.",
+      "parentUuid": "c762e2ed_89e2f9ea",
+      "revId": "a6c442cca9e2a925c11fa637df4b10589d3f6175",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "474ef283_25bd6ed2",
         "filename": "src/android.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2016-01-11T17:47:28Z",
       "side": 1,
       "message": "We can then combine these two if statements into a single comparison of the two versions.\nIf the two versions are equal, we should fall through to the check for a duplicated entry below.",
+      "revId": "a6c442cca9e2a925c11fa637df4b10589d3f6175",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "074dda0f_5e053159",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1019164
+      },
+      "writtenOn": "2016-01-16T00:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "474ef283_25bd6ed2",
       "revId": "a6c442cca9e2a925c11fa637df4b10589d3f6175",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
