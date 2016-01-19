@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "074dda0f_618092e3",
+        "filename": "src/android.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-01-19T14:21:58Z",
+      "side": 1,
+      "message": "Why not 0?",
+      "revId": "09d2c9204fa8c78e68b5dff0d467e23a839ea3d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7bb2ef1_c10a986c",
+        "filename": "src/android.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-01-19T14:21:58Z",
+      "side": 1,
+      "message": "Why not leave it as 0?  Then 0 \u003d\u003e unspecified, but also is fine for comparison purposes.",
+      "revId": "09d2c9204fa8c78e68b5dff0d467e23a839ea3d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
