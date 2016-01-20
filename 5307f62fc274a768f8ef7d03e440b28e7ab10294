@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7e3c248_e1c16659",
+        "filename": "src/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-01-20T16:01:48Z",
+      "side": 1,
+      "message": "We already know they are equal since we checked \u003e and \u003c above.",
+      "revId": "5307f62fc274a768f8ef7d03e440b28e7ab10294",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87ed4a3a_9fec33e6",
+        "filename": "src/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-01-20T16:01:48Z",
+      "side": 1,
+      "message": "Unnecessary since we calloc the structure; we don\u0027t initialize the other fields this way.",
+      "revId": "5307f62fc274a768f8ef7d03e440b28e7ab10294",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
