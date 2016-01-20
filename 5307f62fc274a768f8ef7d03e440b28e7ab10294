@@ -33,6 +33,23 @@
       "revId": "5307f62fc274a768f8ef7d03e440b28e7ab10294",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7e0c63e_22d98e47",
+        "filename": "src/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-01-20T16:02:56Z",
+      "side": 1,
+      "message": "Do we want to fail hard here?",
+      "revId": "5307f62fc274a768f8ef7d03e440b28e7ab10294",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
