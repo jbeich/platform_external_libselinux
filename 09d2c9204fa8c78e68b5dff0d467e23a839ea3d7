@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a717aed7_9ee5fd5a",
+        "filename": "src/android.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1019164
+      },
+      "writtenOn": "2016-01-20T04:08:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "074dda0f_618092e3",
+      "revId": "09d2c9204fa8c78e68b5dff0d467e23a839ea3d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7bb2ef1_c10a986c",
         "filename": "src/android.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2016-01-19T14:21:58Z",
       "side": 1,
       "message": "Why not leave it as 0?  Then 0 \u003d\u003e unspecified, but also is fine for comparison purposes.",
+      "revId": "09d2c9204fa8c78e68b5dff0d467e23a839ea3d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47d0b23b_498a3102",
+        "filename": "src/android.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1019164
+      },
+      "writtenOn": "2016-01-20T04:08:59Z",
+      "side": 1,
+      "message": "Done. I left it so if minTargetSdkVersion is explicitly specified in seapp_contexts, then it must be 1 or greater - so 0 always means unspecified. I could change this to allow 0 to be explicitly specified in seapp_contexts if desired.\n\nI also had to change the default targetSdkVersion to 0 - that default is used if there is no seinfo passed in, e.g. for system_server.",
+      "parentUuid": "a7bb2ef1_c10a986c",
       "revId": "09d2c9204fa8c78e68b5dff0d467e23a839ea3d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
