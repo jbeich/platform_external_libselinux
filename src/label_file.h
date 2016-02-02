@@ -1,6 +1,9 @@
 #ifndef _SELABEL_FILE_H_
 #define _SELABEL_FILE_H_
 
+#include <errno.h>
+#include <string.h>
+
 #include <sys/stat.h>
 
 #include "callbacks.h"
@@ -391,7 +394,17 @@ static inline int process_line(struct selabel_handle *rec,
 	const char *errbuf = NULL;
 
 	items = read_spec_entries(line_buf, 3, &regex, &type, &context);
-	if (items <= 0)
+	if (items < 0) {
+		rc = errno;
+		selinux_log(SELINUX_ERROR,
+			"%s:  line %u error due to: %s\n", path,
+			lineno, errno != EINVAL ? strerror(errno) :
+			"Non-ASCII characters found");
+		errno = rc;
+		return -1;
+	}
+
+	if (items == 0)
 		return items;
 
 	if (items < 2) {

@@ -8,6 +8,7 @@
 #include <stdarg.h>
 #include <ctype.h>
 #include <string.h>
+#include <errno.h>
 #include "label_internal.h"
 
 /*
@@ -16,7 +17,15 @@
  * property services now use these.
  */
 
-/* Read an entry from a spec file (e.g. file_contexts) */
+/*
+ * Read an entry from a spec file (e.g. file_contexts)
+ * entry - Buffer to allocate for the entry.
+ * ptr - current location of the line to be processed.
+ * returns  - 0 on success and *entry is set to be a null
+ *            terminated value. On Error it returns -1 and
+              errno will be set.
+ *
+ */
 static inline int read_spec_entry(char **entry, char **ptr, int *len)
 {
 	*entry = NULL;
@@ -29,6 +38,10 @@ static inline int read_spec_entry(char **entry, char **ptr, int *len)
 	*len = 0;
 
 	while (!isspace(**ptr) && **ptr != '\0') {
+                if (!isascii(**ptr)) {
+			errno = EINVAL;
+			return -1;
+		}
 		(*ptr)++;
 		(*len)++;
 	}
@@ -49,6 +62,7 @@ static inline int read_spec_entry(char **entry, char **ptr, int *len)
  * returns  - The number of items processed.
  *
  * This function calls read_spec_entry() to do the actual string processing.
+ * As such, can return anything from that function as well.
  */
 int hidden read_spec_entries(char *line_buf, int num_args, ...)
 {
