@@ -29,6 +29,8 @@ static inline int read_spec_entry(char **entry, char **ptr, int *len)
 	*len = 0;
 
 	while (!isspace(**ptr) && **ptr != '\0') {
+                if (!isascii(**ptr))
+			return -1;
 		(*ptr)++;
 		(*len)++;
 	}
