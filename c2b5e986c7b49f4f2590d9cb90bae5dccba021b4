@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1e0883e_22850ec4",
+        "filename": "src/label_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-02-05T18:41:50Z",
+      "side": 1,
+      "message": "This kind of knows that EINVAL maps to ascii, we can just punt with strerror(errno) here, but this reads a lot better then \"Invalid Argument\". But either way.",
+      "revId": "c2b5e986c7b49f4f2590d9cb90bae5dccba021b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
