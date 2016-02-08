@@ -69,6 +69,29 @@
       "revId": "c2b5e986c7b49f4f2590d9cb90bae5dccba021b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11435c35_cb29b52f",
+        "filename": "src/label_support.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1021859
+      },
+      "writtenOn": "2016-02-08T16:25:18Z",
+      "side": 1,
+      "message": "Minor nit: spaces",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 16
+      },
+      "revId": "c2b5e986c7b49f4f2590d9cb90bae5dccba021b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
