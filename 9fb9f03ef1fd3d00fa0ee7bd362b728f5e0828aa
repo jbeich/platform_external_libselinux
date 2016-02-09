@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddc9d89d_13258cee",
+        "filename": "src/label_android_property.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-02-09T15:13:05Z",
+      "side": 1,
+      "message": "Can be simplified as:\nerrbuf ?: strerror(errno)",
+      "range": {
+        "startLine": 99,
+        "startChar": 11,
+        "endLine": 99,
+        "endChar": 45
+      },
+      "revId": "9fb9f03ef1fd3d00fa0ee7bd362b728f5e0828aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1dd0d03a_15f7b4a2",
+        "filename": "src/label_file.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-02-09T15:13:05Z",
+      "side": 1,
+      "message": "errbuf ?: sterror(errno)",
+      "range": {
+        "startLine": 401,
+        "startChar": 11,
+        "endLine": 401,
+        "endChar": 45
+      },
+      "revId": "9fb9f03ef1fd3d00fa0ee7bd362b728f5e0828aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7dbb8cf2_9841b585",
+        "filename": "src/label_support.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-02-09T15:13:05Z",
+      "side": 1,
+      "message": "specific",
+      "revId": "9fb9f03ef1fd3d00fa0ee7bd362b728f5e0828aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
