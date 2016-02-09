@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5da7a8bf_92175ad8",
+        "filename": "src/label_support.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-02-09T17:55:06Z",
+      "side": 1,
+      "message": "Add *errbuf\u003dNULL here too?",
+      "revId": "35ab80bb23344848fcddc6e583f2c43a23c1a844",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
