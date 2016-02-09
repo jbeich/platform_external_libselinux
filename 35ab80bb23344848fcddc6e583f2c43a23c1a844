@@ -16,6 +16,24 @@
       "revId": "35ab80bb23344848fcddc6e583f2c43a23c1a844",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fdc21c56_77d3aad5",
+        "filename": "src/label_support.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-02-09T17:56:54Z",
+      "side": 1,
+      "message": "Yeah, well were here, do we want to make this optional and guard in the case errbuf \u003d\u003d NULL? I could go either way, do you have a preference?",
+      "parentUuid": "5da7a8bf_92175ad8",
+      "revId": "35ab80bb23344848fcddc6e583f2c43a23c1a844",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
