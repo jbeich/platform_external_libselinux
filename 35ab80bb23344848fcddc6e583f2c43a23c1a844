@@ -34,6 +34,24 @@
       "revId": "35ab80bb23344848fcddc6e583f2c43a23c1a844",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d89b03a_8dde6154",
+        "filename": "src/label_support.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-02-09T18:25:48Z",
+      "side": 1,
+      "message": "I\u0027m fine with unconditionally setting it to null. I don\u0027t think it\u0027s necessary to make this optional...",
+      "parentUuid": "fdc21c56_77d3aad5",
+      "revId": "35ab80bb23344848fcddc6e583f2c43a23c1a844",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
