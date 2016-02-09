@@ -52,6 +52,24 @@
       "revId": "35ab80bb23344848fcddc6e583f2c43a23c1a844",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ddbd58cb_7323c03f",
+        "filename": "src/label_support.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-02-09T18:40:07Z",
+      "side": 1,
+      "message": "fbm, with respect *errbuf \u003d\u003d NULL on line 34, why don\u0027t we just do it once, here and drop the other one? Considering the other function is only called by this function.",
+      "parentUuid": "1d89b03a_8dde6154",
+      "revId": "35ab80bb23344848fcddc6e583f2c43a23c1a844",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
