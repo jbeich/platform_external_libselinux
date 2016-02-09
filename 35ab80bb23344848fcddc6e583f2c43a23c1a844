@@ -70,6 +70,24 @@
       "revId": "35ab80bb23344848fcddc6e583f2c43a23c1a844",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5da7a8bf_3535b8d7",
+        "filename": "src/label_support.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-02-09T19:27:42Z",
+      "side": 1,
+      "message": "dropping the other one sounds fine to me.",
+      "parentUuid": "ddbd58cb_7323c03f",
+      "revId": "35ab80bb23344848fcddc6e583f2c43a23c1a844",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
