@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3df4b401_01628c14",
+        "filename": "src/procattr.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-02-18T13:41:08Z",
+      "side": 1,
+      "message": "pid \u003d\u003d 0 is legitimate (getcon or setcon call).\nAnd why do we need this separate check when you already handle this in openattr?  Why can\u0027t we leave getprocattrcon and setprocattrcon unchanged and only deal with this in openattr()?",
+      "revId": "e409963f70060e9a72ab1a290fd5b30f8de959bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
