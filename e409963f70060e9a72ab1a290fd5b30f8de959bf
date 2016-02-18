@@ -16,6 +16,24 @@
       "revId": "e409963f70060e9a72ab1a290fd5b30f8de959bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d0cc0ef_9c844936",
+        "filename": "src/procattr.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-02-18T13:43:59Z",
+      "side": 1,
+      "message": "It would be an ABI break to suddenly start returning errors on getpidcon(0, \u0026scon) when it used to work (as identical to getcon(\u0026scon)).  I don\u0027t believe we\u0027d take this upstream.",
+      "parentUuid": "3df4b401_01628c14",
+      "revId": "e409963f70060e9a72ab1a290fd5b30f8de959bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
