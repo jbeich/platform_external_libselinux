@@ -21,9 +21,9 @@ static int openattr(pid_t pid, const char *attr, int flags)
 	char *path;
 	pid_t tid;
 
-	if (pid > 0)
+    if (pid > 0) {
 		rc = asprintf(&path, "/proc/%d/attr/%s", pid, attr);
-	else {
+	} else if (pid == 0) {
 		rc = asprintf(&path, "/proc/thread-self/attr/%s", attr);
 		if (rc < 0)
 			return -1;
@@ -33,6 +33,9 @@ static int openattr(pid_t pid, const char *attr, int flags)
 		free(path);
 		tid = gettid();
 		rc = asprintf(&path, "/proc/self/task/%d/attr/%s", tid, attr);
+	} else {
+        errno = -EINVAL;
+        return -1;
 	}
 	if (rc < 0)
 		return -1;
@@ -43,7 +46,7 @@ out:
 	return fd;
 }
 
-static int getprocattrcon(char ** context,
+static int getprocattrcon_common(char ** context,
 			  pid_t pid, const char *attr)
 {
 	char *buf;
@@ -90,7 +93,7 @@ static int getprocattrcon(char ** context,
 	return ret;
 }
 
-static int setprocattrcon(const char * context,
+static int setprocattrcon_common(const char * context,
 			  pid_t pid, const char *attr)
 {
 	int fd;
@@ -117,16 +120,38 @@ static int setprocattrcon(const char * context,
 		return 0;
 }
 
+static int getprocattrcon(char ** context,
+			  pid_t pid, const char *attr)
+{
+    if (pid <= 0) {
+        errno = -EINVAL;
+        return -1;
+    } else {
+        return getprocattrcon_common(context, pid, attr);
+    }
+}
+
+static int setprocattrcon(const char * context,
+			  pid_t pid, const char *attr)
+{
+    if (pid <= 0) {
+        errno = -EINVAL;
+        return -1;
+    } else {
+        return setprocattrcon_common(context, pid, attr);
+    }
+}
+
 #define getselfattr_def(fn, attr) \
 	int get##fn(char **c) \
 	{ \
-		return getprocattrcon(c, 0, #attr); \
+		return getprocattrcon_common(c, 0, #attr); \
 	}
 
 #define setselfattr_def(fn, attr) \
 	int set##fn(const char * c) \
 	{ \
-		return setprocattrcon(c, 0, #attr); \
+		return setprocattrcon_common(c, 0, #attr); \
 	}
 
 #define all_selfattr_def(fn, attr) \
