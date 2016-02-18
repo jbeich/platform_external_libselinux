@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9dc4c07e_f64f9907",
+        "filename": "src/android.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-02-18T21:22:30Z",
+      "side": 1,
+      "message": "As with the prior version, we already know that they are equal since we would have returned above otherwise.",
+      "revId": "d00a9fb0459fca01cddac8d8cd568fe0d8c7f7e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
