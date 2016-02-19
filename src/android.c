@@ -179,6 +179,7 @@ struct seapp_context {
 	struct prefix_str path;
 	bool isPrivAppSet;
 	bool isPrivApp;
+        int minTargetSdkVersion;
 	/* outputs */
 	char *domain;
 	char *type;
@@ -275,6 +276,14 @@ static int seapp_context_cmp(const void *A, const void *B)
 	if (s1->isPrivAppSet != s2->isPrivAppSet)
 		return (s1->isPrivAppSet ? -1 : 1);
 
+        /* Give precedence to a higher minTargetSdkVersion= over a lower minTargetSdkVersion=.
+         * If unspecified, minTargetSdkVersion has a default value of 0.
+         */
+        if (s1->minTargetSdkVersion > s2->minTargetSdkVersion)
+                return -1;
+        else if (s1->minTargetSdkVersion < s2->minTargetSdkVersion)
+                return 1;
+
 	/*
 	 * Check for a duplicated entry on the input selectors.
 	 * We already compared isSystemServer, isOwnerSet, and isOwner above.
@@ -296,6 +305,7 @@ static int seapp_context_cmp(const void *A, const void *B)
 			selinux_log(SELINUX_ERROR, " name=%s\n", s1->name.str);
 		if (s1->path.str)
 			selinux_log(SELINUX_ERROR, " path=%s\n", s1->path.str);
+                selinux_log(SELINUX_ERROR, " minTargetSdkVersion=%d\n", s1->minTargetSdkVersion);
 	}
 
 	/* Anything else has equal precedence. */
@@ -318,6 +328,17 @@ static void free_seapp_contexts(void)
 	free(seapp_contexts);
 	seapp_contexts = NULL;
 	nspec = 0;
+}
+
+static int get_minTargetSdkVersion(const char *value)
+{
+        char *endptr;
+        long minTargetSdkVersion;
+        minTargetSdkVersion = strtol(value, &endptr, 10);
+        if (('\0' != *endptr) || (minTargetSdkVersion < 0) || (minTargetSdkVersion > INT_MAX))
+            return -1; /* error parsing minTargetSdkVersion */
+        else
+            return (int) minTargetSdkVersion;
 }
 
 int selinux_android_seapp_context_reload(void)
@@ -529,6 +550,12 @@ int selinux_android_seapp_context_reload(void)
 					free_seapp_context(cur);
 					goto err;
 				}
+                        } else if (!strcasecmp(name, "minTargetSdkVersion")) {
+                                cur->minTargetSdkVersion = get_minTargetSdkVersion(value);
+                                if (cur->minTargetSdkVersion < 0) {
+                                        free_seapp_context(cur);
+                                        goto err;
+                                }
 			} else {
 				free_seapp_context(cur);
 				goto err;
@@ -563,13 +590,14 @@ int selinux_android_seapp_context_reload(void)
 		int i;
 		for (i = 0; i < nspec; i++) {
 			cur = seapp_contexts[i];
-			selinux_log(SELINUX_INFO, "%s:  isSystemServer=%s isOwner=%s user=%s seinfo=%s name=%s path=%s isPrivApp=%s -> domain=%s type=%s level=%s levelFrom=%s",
+			selinux_log(SELINUX_INFO, "%s:  isSystemServer=%s isOwner=%s user=%s seinfo=%s name=%s path=%s isPrivApp=%s minTargetSdkVersion=%d -> domain=%s type=%s level=%s levelFrom=%s",
 				__FUNCTION__,
 				cur->isSystemServer ? "true" : "false",
 				cur->isOwnerSet ? (cur->isOwner ? "true" : "false") : "null",
 				cur->user.str,
 				cur->seinfo, cur->name.str, cur->path.str,
 				cur->isPrivAppSet ? (cur->isPrivApp ? "true" : "false") : "null",
+                                cur->minTargetSdkVersion,
 				cur->domain, cur->type, cur->level,
 				levelFromName[cur->levelFrom]);
 		}
@@ -621,6 +649,25 @@ static bool is_app_privileged(const char *seinfo)
 	return strstr(seinfo, PRIVILEGED_APP_STR) != NULL;
 }
 
+#define TARGETSDKVERSION_STR ":targetSdkVersion="
+static int get_app_targetSdkVersion(const char *seinfo)
+{
+        char *substr = strstr(seinfo, TARGETSDKVERSION_STR);
+        long targetSdkVersion;
+        char *endptr;
+        if (substr != NULL) {
+            substr = substr + strlen(TARGETSDKVERSION_STR);
+            if (substr != NULL) {
+                targetSdkVersion = strtol(substr, &endptr, 10);
+                if (('\0' != *endptr) || (targetSdkVersion < 0) || (targetSdkVersion > INT_MAX))
+                    return -1; /* malformed targetSdkVersion value in seinfo */
+                else
+                    return (int) targetSdkVersion;
+            }
+        }
+        return 0; /* default to 0 when targetSdkVersion= is not present in seinfo */
+}
+
 static int seinfo_parse(char *dest, const char *src, size_t size)
 {
 	size_t len;
@@ -656,6 +703,7 @@ static int seapp_context_lookup(enum seapp_kind kind,
 	uid_t userid;
 	uid_t appid;
 	bool isPrivApp = false;
+        int targetSdkVersion = 0;
 	char parsedseinfo[BUFSIZ];
 
 	__selinux_once(once, seapp_context_init);
@@ -664,6 +712,13 @@ static int seapp_context_lookup(enum seapp_kind kind,
 		if (seinfo_parse(parsedseinfo, seinfo, BUFSIZ))
 			goto err;
 		isPrivApp = is_app_privileged(seinfo);
+                targetSdkVersion = get_app_targetSdkVersion(seinfo);
+                if (targetSdkVersion < 0) {
+                        selinux_log(SELINUX_ERROR,
+                            "%s:  Invalid targetSdkVersion passed for app with uid %d, seinfo %s, name %s\n",
+                            __FUNCTION__, uid, seinfo, pkgname);
+                        goto err;
+                }
 		seinfo = parsedseinfo;
 	}
 
@@ -729,6 +784,9 @@ static int seapp_context_lookup(enum seapp_kind kind,
 
 		if (cur->isPrivAppSet && cur->isPrivApp != isPrivApp)
 			continue;
+
+                if (cur->minTargetSdkVersion > targetSdkVersion)
+                        continue;
 
 		if (cur->path.str) {
 			if (!path)
