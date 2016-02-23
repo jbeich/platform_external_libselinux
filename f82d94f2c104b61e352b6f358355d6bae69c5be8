@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02714d1c_2d01f59d",
+        "filename": "src/android.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-02-23T13:25:57Z",
+      "side": 1,
+      "message": "We don\u0027t need this line either, as it wasn\u0027t part of the comparison above.  I suppose one could argue that we ought to be logging all of the fields here in order to identify the unique entry that was duplicated, but we aren\u0027t doing that for isSystemServer, isOwner, etc currently, and if we were to do so, we should only include the field if it was actually specified (e.g. non-zero) as otherwise it will just confuse the user.  I would just drop this line.",
+      "revId": "f82d94f2c104b61e352b6f358355d6bae69c5be8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
