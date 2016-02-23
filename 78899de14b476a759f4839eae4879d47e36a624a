@@ -16,6 +16,24 @@
       "revId": "78899de14b476a759f4839eae4879d47e36a624a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02e4ed24_938e1be9",
+        "filename": "src/procattr.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-02-23T17:09:24Z",
+      "side": 1,
+      "message": "follow-up: https://android-review.googlesource.com/#/c/204533/",
+      "parentUuid": "c2c1f56d_d125b8a3",
+      "revId": "78899de14b476a759f4839eae4879d47e36a624a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
