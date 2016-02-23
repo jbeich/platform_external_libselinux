@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2c1f56d_d125b8a3",
+        "filename": "src/procattr.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-02-23T16:46:17Z",
+      "side": 1,
+      "message": "should be:\n\n  errno \u003d EINVAL\n\nnot negative errno",
+      "revId": "78899de14b476a759f4839eae4879d47e36a624a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
