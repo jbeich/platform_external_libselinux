@@ -16,6 +16,24 @@
       "revId": "f82d94f2c104b61e352b6f358355d6bae69c5be8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62804914_b01ffe3e",
+        "filename": "src/android.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1019164
+      },
+      "writtenOn": "2016-02-23T15:43:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02714d1c_2d01f59d",
+      "revId": "f82d94f2c104b61e352b6f358355d6bae69c5be8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
