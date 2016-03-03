@@ -1574,33 +1574,7 @@ int selinux_android_reload_policy(void)
 
 int selinux_android_load_policy(void)
 {
-	const char *mnt = SELINUXMNT;
-	int rc;
-	rc = mount(SELINUXFS, mnt, SELINUXFS, 0, NULL);
-	if (rc < 0) {
-		if (errno == ENODEV) {
-			/* SELinux not enabled in kernel */
-			return -1;
-		}
-		if (errno == ENOENT) {
-			/* Fall back to legacy mountpoint. */
-			mnt = OLDSELINUXMNT;
-			rc = mkdir(mnt, 0755);
-			if (rc == -1 && errno != EEXIST) {
-				selinux_log(SELINUX_ERROR,"SELinux:  Could not mkdir:  %s\n",
-					strerror(errno));
-				return -1;
-			}
-			rc = mount(SELINUXFS, mnt, SELINUXFS, 0, NULL);
-		}
-	}
-	if (rc < 0) {
-		selinux_log(SELINUX_ERROR,"SELinux:  Could not mount selinuxfs:  %s\n",
-				strerror(errno));
-		return -1;
-	}
-	set_selinuxmnt(mnt);
-
+    set_selinuxmnt(SELINUXMNT);
     return selinux_android_load_policy_helper(false);
 }
 
