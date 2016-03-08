@@ -21,8 +21,6 @@ extern void selinux_android_set_sehandle(const struct selabel_handle *hndl);
 
 extern int selinux_android_load_policy(void);
 
-extern int selinux_android_reload_policy(void);
-
 extern int selinux_android_setcon(const char *con);
 
 extern int selinux_android_setcontext(uid_t uid,
