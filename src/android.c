@@ -45,29 +45,53 @@
  */
 static char const * const seapp_contexts_file[] = {
 	"/seapp_contexts",
+	"/vendor/seapp_contexts",
+	"/odm/seapp_contexts",
 	"/data/security/current/seapp_contexts",
 	NULL };
 
 static const struct selinux_opt seopts[] = {
 	{ SELABEL_OPT_PATH, "/file_contexts.bin" },
+	{ SELABEL_OPT_PATH, "/vendor/file_contexts.bin" },
+	{ SELABEL_OPT_PATH, "/odm/file_contexts.bin" },
 	{ SELABEL_OPT_PATH, "/data/security/current/file_contexts.bin" },
 	{ 0, NULL } };
 
 static const char *const sepolicy_file[] = {
 	"/sepolicy",
+	"/vendor/sepolicy",
+	"/odm/sepolicy",
 	"/data/security/current/sepolicy",
 	NULL };
 
 static const struct selinux_opt seopts_prop[] = {
-        { SELABEL_OPT_PATH, "/property_contexts" },
-        { SELABEL_OPT_PATH, "/data/security/current/property_contexts" },
-        { 0, NULL }
+	{ SELABEL_OPT_PATH, "/property_contexts" },
+	{ SELABEL_OPT_PATH, "/vendor/property_contexts" },
+	{ SELABEL_OPT_PATH, "/odm/property_contexts" },
+	{ SELABEL_OPT_PATH, "/data/security/current/property_contexts" },
+	{ 0, NULL }
 };
 
 static const struct selinux_opt seopts_service[] = {
-    { SELABEL_OPT_PATH, "/service_contexts" },
-    { SELABEL_OPT_PATH, "/data/security/current/service_contexts" },
-    { 0, NULL }
+	{ SELABEL_OPT_PATH, "/service_contexts" },
+	{ SELABEL_OPT_PATH, "/vendor/service_contexts" },
+	{ SELABEL_OPT_PATH, "/odm/service_contexts" },
+	{ SELABEL_OPT_PATH, "/data/security/current/service_contexts" },
+	{ 0, NULL }
+};
+
+static const char *const selinux_version_file[] = {
+	"/selinux_version",
+	"/vendor/selinux_version",
+	"/odm/selinux_version",
+	"/data/security/current/selinux_version",
+	NULL };
+
+enum PolicyIndex {
+	ROOT_POLICY,
+	VENDOR_POLICY,
+	ODM_POLICY,
+	DATA_POLICY
 };
 
 enum levelFrom {
@@ -77,27 +101,61 @@ enum levelFrom {
 	LEVELFROM_ALL
 };
 
-#define POLICY_OVERRIDE_VERSION    "/data/security/current/selinux_version"
-#define POLICY_BASE_VERSION        "/selinux_version"
-static int policy_index = 0;
+static int policy_index = ROOT_POLICY;
 
-static void set_policy_index(void)
+static int test_policy_files_access(enum PolicyIndex policy_index)
+{
+	int ret;
+
+	if ((ret = access(selinux_version_file[policy_index], R_OK)) != 0)
+		return ret;
+
+	if ((ret = access(sepolicy_file[policy_index], R_OK)) != 0)
+		return ret;
+
+	if ((ret = access(seopts[policy_index].value, R_OK)) != 0)
+		return ret;
+
+	if ((ret = access(seopts_prop[policy_index].value, R_OK)) != 0)
+		return ret;
+
+	if ((ret = access(seopts_service[policy_index].value, R_OK)) != 0)
+		return ret;
+
+	if ((ret = access(seapp_contexts_file[policy_index], R_OK)) != 0)
+		return ret;
+
+	return 0;
+}
+
+static void set_base_policy_index(void)
+{
+	int i;
+
+	policy_index = ROOT_POLICY;
+	for (i = ODM_POLICY; i > ROOT_POLICY; --i)
+		if (test_policy_files_access(i) == 0) {
+			policy_index = i;
+			selinux_log(SELINUX_INFO, "%s: policy_index=%d\n", __FUNCTION__, policy_index);
+			break;
+		}
+}
+
+static void set_override_policy_index(void)
 {
 	int fd_base = -1, fd_override = -1;
 	struct stat sb_base;
 	struct stat sb_override;
 	void *map_base, *map_override;
 
-	policy_index = 0;
-
-	fd_base = open(POLICY_BASE_VERSION, O_RDONLY | O_NOFOLLOW);
+	fd_base = open(selinux_version_file[policy_index], O_RDONLY | O_NOFOLLOW);
 	if (fd_base < 0)
 		return;
 
 	if (fstat(fd_base, &sb_base) < 0)
 		goto close_base;
 
-	fd_override = open(POLICY_OVERRIDE_VERSION, O_RDONLY | O_NOFOLLOW);
+	fd_override = open(selinux_version_file[DATA_POLICY], O_RDONLY | O_NOFOLLOW);
 	if (fd_override < 0)
 		goto close_base;
 
@@ -118,22 +176,11 @@ static void set_policy_index(void)
 	if (memcmp(map_base, map_override, sb_base.st_size) != 0)
 		goto unmap_override;
 
-	if (access(sepolicy_file[1], R_OK) != 0)
+	if (test_policy_files_access(DATA_POLICY) != 0)
 		goto unmap_override;
 
-	if (access(seopts[1].value, R_OK) != 0)
-		goto unmap_override;
-
-	if (access(seopts_prop[1].value, R_OK) != 0)
-		goto unmap_override;
-
-	if (access(seopts_service[1].value, R_OK) != 0)
-		goto unmap_override;
-
-	if (access(seapp_contexts_file[1], R_OK) != 0)
-		goto unmap_override;
-
-	policy_index = 1;
+	policy_index = DATA_POLICY;
+	selinux_log(SELINUX_INFO, "%s: policy_index=%d\n", __FUNCTION__, policy_index);
 
 unmap_override:
 	munmap(map_override, sb_override.st_size);
@@ -144,6 +191,15 @@ close_override:
 close_base:
 	close(fd_base);
 	return;
+}
+
+static pthread_once_t policy_once = PTHREAD_ONCE_INIT;
+
+static void set_policy_index(void)
+{
+	/* Base policy files are in immutable partitions, just need to set once. */
+	__selinux_once(policy_once, set_base_policy_index);
+	set_override_policy_index();
 }
 
 #if DEBUG
