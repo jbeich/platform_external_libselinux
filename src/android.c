@@ -43,18 +43,43 @@
  * setting credentials for app processes and setting permissions
  * on app data directories.
  */
-static char const * const seapp_contexts_file = "/seapp_contexts";
+static char const * const seapp_contexts_file[] = {
+	"/seapp_contexts",
+	"/vendor/seapp_contexts",
+	"/odm/seapp_contexts",
+	NULL };
 
-static const struct selinux_opt seopts =
-    { SELABEL_OPT_PATH, "/file_contexts.bin" };
+static const struct selinux_opt seopts[] = {
+	{ SELABEL_OPT_PATH, "/file_contexts.bin" },
+	{ SELABEL_OPT_PATH, "/vendor/file_contexts.bin" },
+	{ SELABEL_OPT_PATH, "/odm/file_contexts.bin" },
+	{ 0, NULL } };
 
-static const char *const sepolicy_file = "/sepolicy";
+static const char *const sepolicy_file[] = {
+	"/sepolicy",
+	"/vendor/sepolicy",
+	"/odm/sepolicy",
+	NULL };
 
-static const struct selinux_opt seopts_prop =
-    { SELABEL_OPT_PATH, "/property_contexts" };
+static const struct selinux_opt seopts_prop[] = {
+	{ SELABEL_OPT_PATH, "/property_contexts" },
+	{ SELABEL_OPT_PATH, "/vendor/property_contexts" },
+	{ SELABEL_OPT_PATH, "/odm/property_contexts" },
+	{ 0, NULL }
+};
 
-static const struct selinux_opt seopts_service =
-    { SELABEL_OPT_PATH, "/service_contexts" };
+static const struct selinux_opt seopts_service[] = {
+	{ SELABEL_OPT_PATH, "/service_contexts" },
+	{ SELABEL_OPT_PATH, "/vendor/service_contexts" },
+	{ SELABEL_OPT_PATH, "/odm/service_contexts" },
+	{ 0, NULL }
+};
+
+enum PolicyIndex {
+	ROOT_POLICY,
+	VENDOR_POLICY,
+	ODM_POLICY,
+};
 
 enum levelFrom {
 	LEVELFROM_NONE,
@@ -62,6 +87,51 @@ enum levelFrom {
 	LEVELFROM_USER,
 	LEVELFROM_ALL
 };
+
+static int policy_index = ROOT_POLICY;
+
+static int test_policy_files_access(enum PolicyIndex policy_index)
+{
+	int ret;
+
+	if ((ret = access(sepolicy_file[policy_index], R_OK)) != 0)
+		return ret;
+
+	if ((ret = access(seopts[policy_index].value, R_OK)) != 0)
+		return ret;
+
+	if ((ret = access(seopts_prop[policy_index].value, R_OK)) != 0)
+		return ret;
+
+	if ((ret = access(seopts_service[policy_index].value, R_OK)) != 0)
+		return ret;
+
+	if ((ret = access(seapp_contexts_file[policy_index], R_OK)) != 0)
+		return ret;
+
+	return 0;
+}
+
+static void policy_index_init(void)
+{
+	int i;
+
+	policy_index = ROOT_POLICY;
+	for (i = ODM_POLICY; i > ROOT_POLICY; i--)
+		if (test_policy_files_access(i) == 0) {
+			policy_index = i;
+			selinux_log(SELINUX_INFO, "%s: policy_index=%d\n", __FUNCTION__, policy_index);
+			break;
+		}
+}
+
+static pthread_once_t policy_once = PTHREAD_ONCE_INIT;
+
+static void set_policy_index(void)
+{
+	/* Policy files are in immutable partitions, just need to set once. */
+	__selinux_once(policy_once, policy_index_init);
+}
 
 #if DEBUG
 static char const * const levelFromName[] = {
@@ -248,7 +318,9 @@ int selinux_android_seapp_context_reload(void)
 	size_t len;
 	int n, ret;
 
-	fp = fopen(seapp_contexts_file, "re");
+	set_policy_index();
+
+	fp = fopen(seapp_contexts_file[policy_index], "re");
 	if (!fp) {
 		selinux_log(SELINUX_ERROR, "%s:  could not open any seapp_contexts file", __FUNCTION__);
 		return -1;
@@ -457,7 +529,7 @@ int selinux_android_seapp_context_reload(void)
 		if (cur->name.str &&
 		    (!cur->seinfo || !strcmp(cur->seinfo, "default"))) {
 			selinux_log(SELINUX_ERROR, "%s:  No specific seinfo value specified with name=\"%s\", on line %u:  insecure configuration!\n",
-				    seapp_contexts_file, cur->name.str, lineno);
+				    seapp_contexts_file[policy_index], cur->name.str, lineno);
 			free_seapp_context(cur);
 			goto err;
 		}
@@ -499,12 +571,12 @@ out:
 
 err:
 	selinux_log(SELINUX_ERROR, "%s:  Invalid entry on line %u\n",
-		    seapp_contexts_file, lineno);
+		    seapp_contexts_file[policy_index], lineno);
 	free_seapp_contexts();
 	ret = -1;
 	goto out;
 oom:
-	selinux_log(SELINUX_ERROR, 
+	selinux_log(SELINUX_ERROR,
 		    "%s:  Out of memory\n", __FUNCTION__);
 	free_seapp_contexts();
 	ret = -1;
@@ -847,7 +919,7 @@ err:
 		selinux_log(SELINUX_ERROR,
 				"%s:  Error setting context for system server: %s\n",
 				__FUNCTION__, strerror(errno));
-	else 
+	else
 		selinux_log(SELINUX_ERROR,
 				"%s:  Error setting context for app with uid %d, seinfo %s: %s\n",
 				__FUNCTION__, uid, seinfo, strerror(errno));
@@ -870,22 +942,22 @@ static bool compute_file_contexts_hash(uint8_t c_digest[])
     struct stat sb;
     void *map;
 
-    fd = open(seopts.value, O_CLOEXEC | O_RDONLY | O_NOFOLLOW);
+    fd = open(seopts[policy_index].value, O_CLOEXEC | O_RDONLY | O_NOFOLLOW);
     if (fd < 0) {
         selinux_log(SELINUX_ERROR, "SELinux:  Could not open %s:  %s\n",
-                    seopts.value, strerror(errno));
+                    seopts[policy_index].value, strerror(errno));
         return false;
     }
     if (fstat(fd, &sb) < 0) {
         selinux_log(SELINUX_ERROR, "SELinux:  Could not stat %s:  %s\n",
-                    seopts.value, strerror(errno));
+                    seopts[policy_index].value, strerror(errno));
         close(fd);
         return false;
     }
     map = mmap(NULL, sb.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
     if (map == MAP_FAILED) {
         selinux_log(SELINUX_ERROR, "SELinux:  Could not map %s:  %s\n",
-                    seopts.value, strerror(errno));
+                    seopts[policy_index].value, strerror(errno));
         close(fd);
         return false;
     }
@@ -1367,7 +1439,8 @@ struct selabel_handle* selinux_android_file_context_handle(void)
         { SELABEL_OPT_BASEONLY, (char *)1 }
     };
 
-    fc_opts[0].value = seopts.value;
+    set_policy_index();
+    fc_opts[0].value = seopts[policy_index].value;
 
     sehandle = selabel_open(SELABEL_CTX_FILE, fc_opts, 2);
 
@@ -1390,15 +1463,16 @@ struct selabel_handle* selinux_android_prop_context_handle(void)
 {
     struct selabel_handle* sehandle;
 
+    set_policy_index();
     sehandle = selabel_open(SELABEL_CTX_ANDROID_PROP,
-            &seopts_prop, 1);
+            &seopts_prop[policy_index], 1);
     if (!sehandle) {
         selinux_log(SELINUX_ERROR, "%s: Error getting property context handle (%s)\n",
                 __FUNCTION__, strerror(errno));
         return NULL;
     }
     selinux_log(SELINUX_INFO, "SELinux: Loaded property_contexts from %s.\n",
-            seopts_prop.value);
+            seopts_prop[policy_index].value);
 
     return sehandle;
 }
@@ -1407,8 +1481,9 @@ struct selabel_handle* selinux_android_service_context_handle(void)
 {
     struct selabel_handle* sehandle;
 
+    set_policy_index();
     sehandle = selabel_open(SELABEL_CTX_ANDROID_PROP,
-            &seopts_service, 1);
+            &seopts_service[policy_index], 1);
 
     if (!sehandle) {
         selinux_log(SELINUX_ERROR, "%s: Error getting service context handle (%s)\n",
@@ -1416,7 +1491,7 @@ struct selabel_handle* selinux_android_service_context_handle(void)
         return NULL;
     }
     selinux_log(SELINUX_INFO, "SELinux: Loaded service_contexts from %s.\n",
-            seopts_service.value);
+            seopts_service[policy_index].value);
 
     return sehandle;
 }
@@ -1444,8 +1519,10 @@ int selinux_android_load_policy(void)
 	  return 0;
 	}
 
+	set_policy_index();
 	set_selinuxmnt(SELINUXMNT);
-	fd = open(sepolicy_file, O_RDONLY | O_NOFOLLOW | O_CLOEXEC);
+
+	fd = open(sepolicy_file[policy_index], O_RDONLY | O_NOFOLLOW | O_CLOEXEC);
 	if (fd < 0) {
 		selinux_log(SELINUX_ERROR, "SELinux:  Could not open sepolicy:  %s\n",
 				strerror(errno));
@@ -1453,14 +1530,14 @@ int selinux_android_load_policy(void)
 	}
 	if (fstat(fd, &sb) < 0) {
 		selinux_log(SELINUX_ERROR, "SELinux:  Could not stat %s:  %s\n",
-				sepolicy_file, strerror(errno));
+				sepolicy_file[policy_index], strerror(errno));
 		close(fd);
 		return -1;
 	}
 	map = mmap(NULL, sb.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
 	if (map == MAP_FAILED) {
 		selinux_log(SELINUX_ERROR, "SELinux:  Could not map %s:  %s\n",
-				sepolicy_file, strerror(errno));
+				sepolicy_file[policy_index], strerror(errno));
 		close(fd);
 		return -1;
 	}
@@ -1476,7 +1553,7 @@ int selinux_android_load_policy(void)
 
 	munmap(map, sb.st_size);
 	close(fd);
-	selinux_log(SELINUX_INFO, "SELinux: Loaded policy from %s\n", sepolicy_file);
+	selinux_log(SELINUX_INFO, "SELinux: Loaded policy from %s\n", sepolicy_file[policy_index]);
 	load_successful = 1;
 	return 0;
 }
