@@ -1,7 +1,7 @@
 LOCAL_PATH:= $(call my-dir)
 
 # uncomment to build libselinux and related artifacts against PCRE2
-# common_USE_PCRE2 := 1
+common_USE_PCRE2 := 1
 
 ifeq ($(common_USE_PCRE2), 1)
 common_LIBRARIES := libpcre2
