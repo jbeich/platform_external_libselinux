@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "ee6b482f_0f117b76",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-04-07T23:46:25Z",
+      "side": 1,
+      "message": "this is Android-only code, so take advantage of the fact that our getpwuid is safe. *this* is why we made it safe --- because all the other choices are terrible and verbose and hard to write.",
+      "parentUuid": "ee6b482f_a4ddee5e",
+      "revId": "7711addc3100894e6f572a4e04c974e64bdd44ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee6b482f_2970f714",
         "filename": "src/android.c",
         "patchSetId": 3
