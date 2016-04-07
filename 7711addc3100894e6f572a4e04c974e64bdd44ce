@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee6b482f_29971774",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-04-07T21:49:10Z",
+      "side": 1,
+      "message": "I really hate this hard-coded buffer, should we actually implement ERANGE case?",
+      "revId": "7711addc3100894e6f572a4e04c974e64bdd44ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee6b482f_2970f714",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-04-07T21:49:10Z",
+      "side": 1,
+      "message": "Maybe this is more readable then LOGD?\npwd \u003d NULL;\nrc \u003d getpwduid_r();\nif (rc || !pwd)\n  goto err;",
+      "revId": "7711addc3100894e6f572a4e04c974e64bdd44ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
