@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "ee6b482f_8fb2cbc1",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-04-07T23:48:58Z",
+      "side": 1,
+      "message": "I will defer to enh@ judgement, will redo logd CL tomorrow to use getpwuid as well. Thanks.",
+      "parentUuid": "ee6b482f_0f117b76",
+      "revId": "7711addc3100894e6f572a4e04c974e64bdd44ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee6b482f_2970f714",
         "filename": "src/android.c",
         "patchSetId": 3
