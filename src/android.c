@@ -571,6 +571,9 @@ static int seapp_context_lookup(enum seapp_kind kind,
 	uid_t userid;
 	uid_t appid;
 	bool isPrivApp = false;
+	struct passwd *pwd;
+	struct passwd _pwd;
+	char _buf[256];
 	char parsedseinfo[BUFSIZ];
 
 	__selinux_once(once, seapp_context_init);
@@ -586,14 +589,10 @@ static int seapp_context_lookup(enum seapp_kind kind,
 	isOwner = (userid == 0);
 	appid = uid % AID_USER;
 	if (appid < AID_APP) {
-		for (n = 0; n < android_id_count; n++) {
-			if (android_ids[n].aid == appid) {
-				username = android_ids[n].name;
-				break;
-			}
-		}
-		if (!username)
+		if (getpwuid_r(appid, &_pwd, _buf, sizeof(_buf), &pwd) || !pwd)
 			goto err;
+
+		username = pwd->pw_name;
 	} else if (appid < AID_ISOLATED_START) {
 		username = "_app";
 		appid -= AID_APP;
