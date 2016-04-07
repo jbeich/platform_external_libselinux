@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ee6b482f_49853336",
+        "filename": "src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2016-04-07T21:48:03Z",
+      "side": 1,
+      "message": "hackbod added AID_USER in ca185abcb58582ab58805f792eb868681ebdb55e, I\u0027m not sure of the specific rules here or if there are macros or helpers that could be used here rather than baking this in.",
+      "parentUuid": "ee6b482f_09197b5d",
+      "range": {
+        "startLine": 588,
+        "startChar": 0,
+        "endLine": 589,
+        "endChar": 23
+      },
+      "revId": "6df107d85bf4b7cd7254c04a6be1fd1bbd92551a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee6b482f_490b730a",
         "filename": "src/android.c",
         "patchSetId": 2
