@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee6b482f_09197b5d",
+        "filename": "src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-04-07T21:16:00Z",
+      "side": 1,
+      "message": "I am not sure this is correct, @nnk@? @bcd@?",
+      "range": {
+        "startLine": 588,
+        "startChar": 0,
+        "endLine": 589,
+        "endChar": 23
+      },
+      "revId": "6df107d85bf4b7cd7254c04a6be1fd1bbd92551a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee6b482f_490b730a",
+        "filename": "src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-04-07T21:16:00Z",
+      "side": 1,
+      "message": "getpwuid_r because we may be called in a threaded context.\n\nNB: getpwuid is thread-safe in bionic, but this is not a POSIX guarantee.",
+      "range": {
+        "startLine": 590,
+        "startChar": 8,
+        "endLine": 590,
+        "endChar": 16
+      },
+      "revId": "6df107d85bf4b7cd7254c04a6be1fd1bbd92551a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
