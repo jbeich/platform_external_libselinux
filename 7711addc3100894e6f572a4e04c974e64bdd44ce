@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ee6b482f_04f6c2eb",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-04-07T22:52:48Z",
+      "side": 1,
+      "message": "If packaglist is integrated, homedir would include the pkgname which is super long, also at that point wouldn\u0027t name be the pkgname? Not this app_ stuff?",
+      "parentUuid": "ee6b482f_848e321f",
+      "revId": "7711addc3100894e6f572a4e04c974e64bdd44ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee6b482f_2970f714",
         "filename": "src/android.c",
         "patchSetId": 3
