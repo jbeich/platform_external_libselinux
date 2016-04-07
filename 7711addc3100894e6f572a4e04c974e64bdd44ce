@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ee6b482f_848e321f",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-04-07T22:05:59Z",
+      "side": 1,
+      "message": "I hate it too :-( and I wrote it ;-\u003e but the good news is by having uid \u003c AID_APP [((uid % AID_USER) \u003c AID_APP) not so much] you will never exceed the longest name in android_ids (or in /system/etc/passwd when implemented).\n\nBravery? calloc might be our friend here? You can calloc 8MB, every one of them point to the zero page until a COW happens when it is written.\n\n@bdc@ is there a limit in Android user id naming, or is packagelist (representing a possible future) basically unlimited?",
+      "parentUuid": "ee6b482f_29971774",
+      "revId": "7711addc3100894e6f572a4e04c974e64bdd44ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee6b482f_2970f714",
         "filename": "src/android.c",
         "patchSetId": 3
