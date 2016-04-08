@@ -199,6 +199,24 @@
     },
     {
       "key": {
+        "uuid": "ee42682f_71f5106d",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-04-08T18:42:06Z",
+      "side": 1,
+      "message": "So just to be crystal clear, restore version 1 of this patch? (I think modified with a big fat comment on it)\n\nAlso, is this the guidance I should follow on all android specific code like liblog/logprint.c?",
+      "parentUuid": "ee42682f_b17138e2",
+      "revId": "7711addc3100894e6f572a4e04c974e64bdd44ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee6b482f_2970f714",
         "filename": "src/android.c",
         "patchSetId": 3
