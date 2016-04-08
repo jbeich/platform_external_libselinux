@@ -145,6 +145,24 @@
     },
     {
       "key": {
+        "uuid": "ee42682f_31d1c818",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-04-08T18:24:37Z",
+      "side": 1,
+      "message": "\u003e This code is thread safe, I don\u0027t want to implement anything that isn\u0027t we made sure to use strtok_r, etc. Also, I know of OEMS that use these calls, and their code may be threaded.\n\nyou\u0027re missing the point... this code is Android-only. only Android, getpwuid (and friends) are all thread-safe. the simple, obvious, clean code is correct and thread-safe on Android. you\u0027re just adding places for bugs to hide here.",
+      "parentUuid": "ee6b482f_2aa8e5e1",
+      "revId": "7711addc3100894e6f572a4e04c974e64bdd44ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee6b482f_2970f714",
         "filename": "src/android.c",
         "patchSetId": 3
