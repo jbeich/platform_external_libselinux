@@ -235,6 +235,24 @@
     },
     {
       "key": {
+        "uuid": "ee42682f_11920c16",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-04-08T18:54:03Z",
+      "side": 1,
+      "message": "Just as an addition do we perhaps want to throw in a compile time error (something like):\n\n#ifndef __ANDROID__\n #error \"Uses bionic getpwnam() assumed to be thread safe!\"\n#endif",
+      "parentUuid": "ee42682f_71a35071",
+      "revId": "7711addc3100894e6f572a4e04c974e64bdd44ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee6b482f_2970f714",
         "filename": "src/android.c",
         "patchSetId": 3
