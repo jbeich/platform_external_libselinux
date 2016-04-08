@@ -127,6 +127,24 @@
     },
     {
       "key": {
+        "uuid": "ee6b482f_2aa8e5e1",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-04-08T03:51:51Z",
+      "side": 1,
+      "message": "@enh This re-entrant version takes the cake for shudder factor, the fact the caller has to guess the buffer size is unreal. I should be able to pass NULL and it tell me the size (granted the file could change underneath me), it would be slightly better or better yet, just malloc up he struct and give me a free routine... legacy is fun. I really hope we can use the gecos field!",
+      "parentUuid": "ee6b482f_cab03153",
+      "revId": "7711addc3100894e6f572a4e04c974e64bdd44ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee6b482f_2970f714",
         "filename": "src/android.c",
         "patchSetId": 3
