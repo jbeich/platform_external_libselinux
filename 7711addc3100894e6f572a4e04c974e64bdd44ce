@@ -253,6 +253,24 @@
     },
     {
       "key": {
+        "uuid": "ee42682f_d12ec483",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-04-08T19:07:17Z",
+      "side": 1,
+      "message": "if it makes you feel better. you probably want __BIONIC__ rather than __ANDROID__ though.",
+      "parentUuid": "ee42682f_11920c16",
+      "revId": "7711addc3100894e6f572a4e04c974e64bdd44ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee6b482f_2970f714",
         "filename": "src/android.c",
         "patchSetId": 3
