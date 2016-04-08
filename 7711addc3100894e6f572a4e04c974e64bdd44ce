@@ -163,6 +163,24 @@
     },
     {
       "key": {
+        "uuid": "ee42682f_51549446",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-04-08T18:30:08Z",
+      "side": 1,
+      "message": "I did miss the point, If I can just assume that our version is thread safe (which I initially was doing), I will use it, but Mark was against that. Just let me know, I prefer the simpler version myself.\n\nIf not, I will change this to malloc() up a buffer based on ERANGE.",
+      "parentUuid": "ee42682f_31d1c818",
+      "revId": "7711addc3100894e6f572a4e04c974e64bdd44ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee6b482f_2970f714",
         "filename": "src/android.c",
         "patchSetId": 3
