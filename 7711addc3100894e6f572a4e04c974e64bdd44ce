@@ -181,6 +181,24 @@
     },
     {
       "key": {
+        "uuid": "ee42682f_b17138e2",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-04-08T18:37:32Z",
+      "side": 1,
+      "message": "bionic\u0027s version is thread safe, and will always be so, specifically so folks don\u0027t have to write more/worse code to do simple things like this.",
+      "parentUuid": "ee42682f_51549446",
+      "revId": "7711addc3100894e6f572a4e04c974e64bdd44ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee6b482f_2970f714",
         "filename": "src/android.c",
         "patchSetId": 3
