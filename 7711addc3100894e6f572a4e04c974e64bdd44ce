@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "ee6b482f_cab03153",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-04-08T03:48:05Z",
+      "side": 1,
+      "message": "This code is thread safe, I don\u0027t want to implement anything that isn\u0027t we made sure to use strtok_r, etc. Also, I know of OEMS that use these calls, and their code may be threaded.\n\nIll defer to what Nick wants, but I think sds would want to keep this thread safe. I\u0027d like to get him to weigh in since the bulk of this code was authored by him.",
+      "parentUuid": "ee6b482f_0f117b76",
+      "revId": "7711addc3100894e6f572a4e04c974e64bdd44ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee6b482f_2970f714",
         "filename": "src/android.c",
         "patchSetId": 3
