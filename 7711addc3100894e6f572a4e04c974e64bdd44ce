@@ -217,6 +217,24 @@
     },
     {
       "key": {
+        "uuid": "ee42682f_71a35071",
+        "filename": "src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-04-08T18:47:06Z",
+      "side": 1,
+      "message": "yes. the only place it gets interesting is if you have code that runs on the host too, where you\u0027re using glibc or whatever the Mac libc is called (or even running on Windows!). but for code that only runs on Android, yes.",
+      "parentUuid": "ee42682f_71f5106d",
+      "revId": "7711addc3100894e6f572a4e04c974e64bdd44ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee6b482f_2970f714",
         "filename": "src/android.c",
         "patchSetId": 3
