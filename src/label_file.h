@@ -6,6 +6,14 @@
 
 #include <sys/stat.h>
 
+/*
+ * Android: regex.h/c was introduced to hold all dependencies on the regular
+ * expression back-end when we started supporting PCRE2. regex.h defines a
+ * minimal interface required by libselinux, so that the remaining code
+ * can be agnostic about the underlying implementation.
+ */
+#include "regex.h"
+
 #include "callbacks.h"
 #include "label_internal.h"
 
@@ -19,21 +27,12 @@
 
 #define SELINUX_COMPILED_FCONTEXT_MAX_VERS     SELINUX_COMPILED_FCONTEXT_PREFIX_LEN
 
-/* Prior to version 8.20, libpcre did not have pcre_free_study() */
-#if (PCRE_MAJOR < 8 || (PCRE_MAJOR == 8 && PCRE_MINOR < 20))
-#define pcre_free_study  pcre_free
-#endif
-
 /* A file security context specification. */
 struct spec {
 	struct selabel_lookup_rec lr;	/* holds contexts for lookup result */
 	char *regex_str;	/* regular expession string for diagnostics */
 	char *type_str;		/* type string for diagnostic messages */
-	pcre *regex;		/* compiled regular expression */
-	union {
-		pcre_extra *sd;	/* pointer to extra compiled stuff */
-		pcre_extra lsd;	/* used to hold the mmap'd version */
-	};
+	struct regex_data * regex; /* backend dependent regular expression data */
 	mode_t mode;		/* mode format value */
 	int matches;		/* number of matching pathnames */
 	int stem_id;		/* indicates which stem-compression item */
@@ -77,14 +76,6 @@ struct saved_data {
 	int alloc_stems;
 	struct mmap_area *mmap_areas;
 };
-
-static inline pcre_extra *get_pcre_extra(struct spec *spec)
-{
-	if (spec->from_mmap)
-		return &spec->lsd;
-	else
-		return spec->sd;
-}
 
 static inline mode_t string_to_mode(char *mode)
 {
@@ -328,13 +319,12 @@ static inline int next_entry(void *buf, struct mmap_area *fp, size_t bytes)
 }
 
 static inline int compile_regex(struct saved_data *data, struct spec *spec,
-					    const char **errbuf)
+					    struct regex_error_data * error_data)
 {
-	const char *tmperrbuf;
 	char *reg_buf, *anchored_regex, *cp;
 	struct stem *stem_arr = data->stem_arr;
 	size_t len;
-	int erroff;
+	int rc;
 
 	if (spec->regcomp)
 		return 0; /* already done */
@@ -358,19 +348,9 @@ static inline int compile_regex(struct saved_data *data, struct spec *spec,
 	*cp = '\0';
 
 	/* Compile the regular expression. */
-	spec->regex = pcre_compile(anchored_regex, PCRE_DOTALL, &tmperrbuf,
-						    &erroff, NULL);
+	rc = regex_prepare_data(&spec->regex, anchored_regex, error_data);
 	free(anchored_regex);
-	if (!spec->regex) {
-		if (errbuf)
-			*errbuf = tmperrbuf;
-		return -1;
-	}
-
-	spec->sd = pcre_study(spec->regex, 0, &tmperrbuf);
-	if (!spec->sd && tmperrbuf) {
-		if (errbuf)
-			*errbuf = tmperrbuf;
+	if (rc < 0) {
 		return -1;
 	}
 
@@ -391,7 +371,8 @@ static inline int process_line(struct selabel_handle *rec,
 	struct saved_data *data = (struct saved_data *)rec->data;
 	struct spec *spec_arr;
 	unsigned int nspec = data->nspec;
-	const char *errbuf = NULL;
+	char const *errbuf;
+	struct regex_error_data error_data;
 
 	items = read_spec_entries(line_buf, &errbuf, 3, &regex, &type, &context);
 	if (items < 0) {
@@ -451,7 +432,7 @@ static inline int process_line(struct selabel_handle *rec,
 	data->nspec++;
 
 	if (rec->validating &&
-			    compile_regex(data, &spec_arr[nspec], &errbuf)) {
+			    compile_regex(data, &spec_arr[nspec], &error_data)) {
 		selinux_log(SELINUX_ERROR,
 			   "%s:  line %u has invalid regex %s:  %s\n",
 			   path, lineno, regex,

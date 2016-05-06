@@ -1,6 +1,5 @@
 #include <ctype.h>
 #include <errno.h>
-#include <pcre.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
@@ -12,6 +11,7 @@
 #include <selinux/selinux.h>
 
 #include "../src/label_file.h"
+#include "../src/regex.h"
 
 static int validate_context(char __attribute__ ((unused)) **ctx)
 {
@@ -101,12 +101,14 @@ static int write_binary_file(struct saved_data *data, int fd)
 	if (len != 1)
 		goto err;
 
-	/* write the pcre version */
-	section_len = strlen(pcre_version());
+	/* write version of the regex back-end */
+	if (!regex_version())
+		goto err;
+	section_len = strlen(regex_version());
 	len = fwrite(&section_len, sizeof(uint32_t), 1, bin_file);
 	if (len != 1)
 		goto err;
-	len = fwrite(pcre_version(), sizeof(char), section_len, bin_file);
+	len = fwrite(regex_version(), sizeof(char), section_len, bin_file);
 	if (len != section_len)
 		goto err;
 
@@ -144,8 +146,7 @@ static int write_binary_file(struct saved_data *data, int fd)
 		mode_t mode = specs[i].mode;
 		size_t prefix_len = specs[i].prefix_len;
 		int32_t stem_id = specs[i].stem_id;
-		pcre *re = specs[i].regex;
-		pcre_extra *sd = get_pcre_extra(&specs[i]);
+		struct regex_data *re = specs[i].regex;
 		uint32_t to_write;
 		size_t size;
 
@@ -194,36 +195,9 @@ static int write_binary_file(struct saved_data *data, int fd)
 		if (len != 1)
 			goto err;
 
-		/* determine the size of the pcre data in bytes */
-		rc = pcre_fullinfo(re, NULL, PCRE_INFO_SIZE, &size);
+		/* Write regex related data */
+		rc = regex_writef(re, bin_file);
 		if (rc < 0)
-			goto err;
-
-		/* write the number of bytes in the pcre data */
-		to_write = size;
-		len = fwrite(&to_write, sizeof(uint32_t), 1, bin_file);
-		if (len != 1)
-			goto err;
-
-		/* write the actual pcre data as a char array */
-		len = fwrite(re, 1, to_write, bin_file);
-		if (len != to_write)
-			goto err;
-
-		/* determine the size of the pcre study info */
-		rc = pcre_fullinfo(re, sd, PCRE_INFO_STUDYSIZE, &size);
-		if (rc < 0)
-			goto err;
-
-		/* write the number of bytes in the pcre study data */
-		to_write = size;
-		len = fwrite(&to_write, sizeof(uint32_t), 1, bin_file);
-		if (len != 1)
-			goto err;
-
-		/* write the actual pcre study data as a char array */
-		len = fwrite(sd->study_data, 1, to_write, bin_file);
-		if (len != to_write)
 			goto err;
 	}
 
@@ -247,8 +221,7 @@ static void free_specs(struct saved_data *data)
 		free(specs[i].lr.ctx_trans);
 		free(specs[i].regex_str);
 		free(specs[i].type_str);
-		pcre_free(specs[i].regex);
-		pcre_free_study(specs[i].sd);
+		regex_data_free(specs[i].regex);
 	}
 	free(specs);
 
