@@ -14,7 +14,6 @@
 #include <errno.h>
 #include <limits.h>
 #include <stdint.h>
-#include <pcre.h>
 #include <unistd.h>
 #include <sys/mman.h>
 #include <sys/types.h>
@@ -174,7 +173,10 @@ static int load_mmap(struct selabel_handle *rec, const char *path,
 		return -1;
 
 	if (version >= SELINUX_COMPILED_FCONTEXT_PCRE_VERS) {
-		len = strlen(pcre_version());
+		if (!regex_version()) {
+			return -1;
+		}
+		len = strlen(regex_version());
 
 		rc = next_entry(&entry_len, mmap_area, sizeof(uint32_t));
 		if (rc < 0)
@@ -196,7 +198,7 @@ static int load_mmap(struct selabel_handle *rec, const char *path,
 		}
 
 		str_buf[entry_len] = '\0';
-		if ((strcmp(str_buf, pcre_version()) != 0)) {
+		if ((strcmp(str_buf, regex_version()) != 0)) {
 			free(str_buf);
 			return -1;
 		}
@@ -362,46 +364,18 @@ static int load_mmap(struct selabel_handle *rec, const char *path,
                        spec->prefix_len = prefix_len;
                }
 
-		/* Process regex and study_data entries */
-		rc = next_entry(&entry_len, mmap_area, sizeof(uint32_t));
-		if (rc < 0 || !entry_len) {
-			rc = -1;
-			goto err;
-		}
-		spec->regex = (pcre *)mmap_area->next_addr;
-		rc = next_entry(NULL, mmap_area, entry_len);
+		rc = regex_load_mmap(mmap_area, &spec->regex);
 		if (rc < 0)
 			goto err;
-
-		/* Check that regex lengths match. pcre_fullinfo()
-		 * also validates its magic number. */
-		rc = pcre_fullinfo(spec->regex, NULL, PCRE_INFO_SIZE, &len);
-		if (rc < 0 || len != entry_len) {
-			rc = -1;
-			goto err;
-		}
-
-		rc = next_entry(&entry_len, mmap_area, sizeof(uint32_t));
-		if (rc < 0 || !entry_len) {
-			rc = -1;
-			goto err;
-		}
-		spec->lsd.study_data = (void *)mmap_area->next_addr;
-		spec->lsd.flags |= PCRE_EXTRA_STUDY_DATA;
-		rc = next_entry(NULL, mmap_area, entry_len);
-		if (rc < 0)
-			goto err;
-
-		/* Check that study data lengths match. */
-		rc = pcre_fullinfo(spec->regex, &spec->lsd,
-				    PCRE_INFO_STUDYSIZE, &len);
-		if (rc < 0 || len != entry_len) {
-			rc = -1;
-			goto err;
-		}
+#ifndef NO_PERSISTENTLY_STORED_PATTERNS
+		spec->regcomp = 1;
+#else
+		spec->regcomp = 0;
+#endif
 
 		data->nspec++;
 	}
+
 	/* win */
 	rc = 0;
 err:
@@ -569,10 +543,7 @@ static void closef(struct selabel_handle *rec)
 			continue;
 		free(spec->regex_str);
 		free(spec->type_str);
-		if (spec->regcomp) {
-			pcre_free(spec->regex);
-			pcre_free_study(spec->sd);
-		}
+		regex_data_free(spec->regex);
 	}
 
 	for (i = 0; i < (unsigned int)data->num_stems; i++) {
@@ -604,13 +575,14 @@ static struct spec *lookup_common(struct selabel_handle *rec,
 {
 	struct saved_data *data = (struct saved_data *)rec->data;
 	struct spec *spec_arr = data->spec_arr;
-	int i, rc, file_stem, pcre_options = 0;
+	int i, rc, file_stem;
 	mode_t mode = (mode_t)type;
 	const char *buf;
 	struct spec *ret = NULL;
 	char *clean_key = NULL;
 	const char *prev_slash, *next_slash;
 	unsigned int sofar = 0;
+	struct regex_error_data regex_error_data;
 
 	if (!data->nspec) {
 		errno = ENOENT;
@@ -637,9 +609,6 @@ static struct spec *lookup_common(struct selabel_handle *rec,
 	file_stem = find_stem_from_file(data, &buf);
 	mode &= S_IFMT;
 
-	if (partial)
-		pcre_options |= PCRE_PARTIAL_SOFT;
-
 	/*
 	 * Check for matching specifications in reverse order, so that
 	 * the last matching specification is used.
@@ -652,25 +621,19 @@ static struct spec *lookup_common(struct selabel_handle *rec,
 		 * a regex check        */
 		if ((spec->stem_id == -1 || spec->stem_id == file_stem) &&
 		    (!mode || !spec->mode || mode == spec->mode)) {
-			if (compile_regex(data, spec, NULL) < 0)
+			if (compile_regex(data, spec, &regex_error_data) < 0)
 				goto finish;
 			if (spec->stem_id == -1)
-				rc = pcre_exec(spec->regex,
-						    get_pcre_extra(spec),
-						    key, strlen(key), 0,
-						    pcre_options, NULL, 0);
+				rc = regex_match(spec->regex, key, partial);
 			else
-				rc = pcre_exec(spec->regex,
-						    get_pcre_extra(spec),
-						    buf, strlen(buf), 0,
-						    pcre_options, NULL, 0);
-			if (rc == 0) {
+				rc = regex_match(spec->regex, buf, partial);
+			if (rc == REGEX_MATCH) {
 				spec->matches++;
 				break;
-			} else if (partial && rc == PCRE_ERROR_PARTIAL)
+			} else if (partial && rc == REGEX_MATCH_PARTIAL)
 				break;
 
-			if (rc == PCRE_ERROR_NOMATCH)
+			if (rc == REGEX_NO_MATCH)
 				continue;
 
 			errno = ENOENT;
@@ -810,16 +773,9 @@ static enum selabel_cmp_result cmp(struct selabel_handle *h1,
 		}
 
 		if (spec1->regcomp && spec2->regcomp) {
-			size_t len1, len2;
-			int rc;
-
-			rc = pcre_fullinfo(spec1->regex, NULL, PCRE_INFO_SIZE, &len1);
-			assert(rc == 0);
-			rc = pcre_fullinfo(spec2->regex, NULL, PCRE_INFO_SIZE, &len2);
-			assert(rc == 0);
-			if (len1 != len2 ||
-			    memcmp(spec1->regex, spec2->regex, len1))
+			if (regex_cmp(spec1->regex, spec2->regex) == SELABEL_INCOMPARABLE){
 				return incomp(spec1, spec2, "regex", i, j);
+			}
 		} else {
 			if (strcmp(spec1->regex_str, spec2->regex_str))
 				return incomp(spec1, spec2, "regex_str", i, j);
