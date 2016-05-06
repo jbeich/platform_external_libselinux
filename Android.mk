@@ -1,5 +1,23 @@
 LOCAL_PATH:= $(call my-dir)
 
+# uncomment to build libselinux and related artifacts against PCRE2
+# common_USE_PCRE2 := 1
+
+ifeq ($(common_USE_PCRE2), 1)
+common_LIBRARIES := libpcre2
+common_C_INCLUDES :=
+common_CFLAGS := -DUSE_PCRE2
+
+# Persistently stored patterns (pcre2) are architecture dependent.
+# In particular paterns built on amd64 can not run on devices with armv7
+# (32bit). Therefore, this feature stays off for now.
+common_CFLAGS += -DNO_PERSISTENTLY_STORED_PATTERNS
+else
+common_LIBRARIES := libpcre
+common_C_INCLUDES := external/pcre
+common_CFLAGS :=
+endif
+
 common_SRC_FILES := \
 	src/booleans.c \
 	src/canonicalize_context.c \
@@ -38,6 +56,7 @@ common_HOST_FILES := \
 	src/label.c \
 	src/label_file.c \
 	src/label_android_property.c \
+	src/regex.c \
 	src/label_support.c
 
 
@@ -47,9 +66,10 @@ LOCAL_MODULE:= libselinux
 LOCAL_MODULE_TAGS := eng
 LOCAL_STATIC_LIBRARIES := libcrypto_static
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/include
-LOCAL_WHOLE_STATIC_LIBRARIES := libpcre libpackagelistparser
+LOCAL_WHOLE_STATIC_LIBRARIES := $(common_LIBRARIES)
+LOCAL_WHOLE_STATIC_LIBRARIES += libpackagelistparser
 # 1003 corresponds to auditd, from system/core/logd/event.logtags
-LOCAL_CFLAGS := -DAUDITD_LOG_TAG=1003
+LOCAL_CFLAGS := -DAUDITD_LOG_TAG=1003 $(common_CFLAGS)
 # mapping.c has redundant check of array p_in->perms.
 LOCAL_CLANG_CFLAGS += -Wno-pointer-bool-conversion
 LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/include
@@ -57,7 +77,7 @@ LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/include
 include $(BUILD_STATIC_LIBRARY)
 
 include $(CLEAR_VARS)
-LOCAL_CFLAGS := -DHOST
+LOCAL_CFLAGS := -DHOST $(common_CFLAGS)
 
 ifeq ($(HOST_OS),darwin)
 LOCAL_CFLAGS += -DDARWIN
@@ -66,7 +86,7 @@ endif
 LOCAL_SRC_FILES := $(common_HOST_FILES)
 LOCAL_MODULE:= libselinux
 LOCAL_MODULE_TAGS := eng
-LOCAL_WHOLE_STATIC_LIBRARIES := libpcre
+LOCAL_WHOLE_STATIC_LIBRARIES := $(common_LIBRARIES)
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/include
 LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/include
 include $(BUILD_HOST_STATIC_LIBRARY)
@@ -76,9 +96,10 @@ LOCAL_SRC_FILES := $(common_SRC_FILES) $(common_HOST_FILES) src/android.c
 LOCAL_MODULE:= libselinux
 LOCAL_MODULE_TAGS := eng
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/include
-LOCAL_SHARED_LIBRARIES := libcrypto liblog libpcre libpackagelistparser
+LOCAL_SHARED_LIBRARIES := $(common_LIBRARIES)
+LOCAL_SHARED_LIBRARIES += libcrypto liblog libpackagelistparser
 # 1003 corresponds to auditd, from system/core/logd/event.logtags
-LOCAL_CFLAGS := -DAUDITD_LOG_TAG=1003
+LOCAL_CFLAGS := -DAUDITD_LOG_TAG=1003  $(common_CFLAGS)
 # mapping.c has redundant check of array p_in->perms.
 LOCAL_CLANG_CFLAGS += -Wno-pointer-bool-conversion
 LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/include
@@ -86,7 +107,7 @@ LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/include
 include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
-LOCAL_CFLAGS := -DHOST
+LOCAL_CFLAGS := -DHOST  $(common_CFLAGS)
 
 ifeq ($(HOST_OS),darwin)
 LOCAL_CFLAGS += -DDARWIN
@@ -95,14 +116,14 @@ endif
 LOCAL_SRC_FILES := $(common_HOST_FILES)
 LOCAL_MODULE:= libselinux
 LOCAL_MODULE_TAGS := eng
-LOCAL_WHOLE_STATIC_LIBRARIES := libpcre
+LOCAL_WHOLE_STATIC_LIBRARIES := $(common_LIBRARIES)
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/include
 LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/include
 include $(BUILD_HOST_SHARED_LIBRARY)
 
 #################################
 include $(CLEAR_VARS)
-LOCAL_CFLAGS := -DHOST
+LOCAL_CFLAGS := -DHOST  $(common_CFLAGS)
 
 ifeq ($(HOST_OS),darwin)
 LOCAL_CFLAGS += -DDARWIN
@@ -113,6 +134,6 @@ LOCAL_MODULE_TAGS := eng
 LOCAL_C_INCLUDES := ../src/label_file.h
 LOCAL_SRC_FILES := utils/sefcontext_compile.c
 LOCAL_STATIC_LIBRARIES := libselinux
-LOCAL_WHOLE_STATIC_LIBRARIES := libpcre
-LOCAL_C_INCLUDES := external/pcre
+LOCAL_WHOLE_STATIC_LIBRARIES := $(common_LIBRARIES)
+LOCAL_C_INCLUDES := $(common_C_INCLUDES)
 include $(BUILD_HOST_EXECUTABLE)
