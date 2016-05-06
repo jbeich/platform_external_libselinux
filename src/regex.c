@@ -327,10 +327,12 @@ void regex_format_error(struct regex_error_data const * error_data,
 	if (!buffer || !buf_size)
 		return;
 	rc = snprintf(buffer, buf_size, "REGEX back-end error: ");
-	if (rc < 0) {
-		buffer[0] = '\0';
-		return;
-	}
+	if (rc < 0)
+		/* If snprintf fails it constitutes a logical error that needs
+		 * fixing.
+		 */
+		abort();
+
 	pos += rc;
 	if (pos >= buf_size)
 		goto truncated;
@@ -343,10 +345,9 @@ void regex_format_error(struct regex_error_data const * error_data,
 		rc = snprintf(buffer + pos, buf_size - pos, "At offset %d: ",
 				error_data->error_offset);
 #endif
-		if (rc < 0) {
-			buffer[0] = '\0';
-			return;
-		}
+		if (rc < 0)
+			abort();
+
 	}
 	pos += rc;
 	if (pos >= buf_size)
@@ -361,13 +362,16 @@ void regex_format_error(struct regex_error_data const * error_data,
 #else
 	rc = snprintf(buffer + pos, buf_size - pos, "%s",
 			error_data->error_buffer);
-	if (rc < strlen(error_data->error_buffer))
+	if (rc < 0)
+		abort();
+
+	if ((size_t)rc < strlen(error_data->error_buffer))
 		goto truncated;
 #endif
 
 	return;
 
-	truncated:
+truncated:
 	/* replace end of string with "..." to indicate that it was truncated */
 	switch (the_end_length) {
 		/* no break statements, fall-through is intended */
@@ -382,5 +386,5 @@ void regex_format_error(struct regex_error_data const * error_data,
 		default:
 			break;
 	}
-
+	return;
 }
