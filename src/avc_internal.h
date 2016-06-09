@@ -136,7 +136,7 @@ static inline void avc_free_lock(void *lock)
 #define avc_cache_stats_incr(field) \
   cache_stats.field ++;
 #define avc_cache_stats_add(field, num) \
-  cache_stats.field += num;
+  cache_stats.field += (num);
 
 #else
 
@@ -150,7 +150,7 @@ static inline void avc_free_lock(void *lock)
 
 /* again, we need the variadic capability here */
 #define log_append(buf,format...) \
-  snprintf(buf+strlen(buf), AVC_AUDIT_BUFSIZE-strlen(buf), format)
+  snprintf((buf)+strlen(buf), AVC_AUDIT_BUFSIZE-strlen(buf), format)
 
 /* internal callbacks */
 int avc_ss_grant(security_id_t ssid, security_id_t tsid,
