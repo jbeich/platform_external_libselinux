@@ -1,0 +1,8 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Verified+1: Dan Willemsen <dwillemsen@google.com>
+Submitted-by: Dan Willemsen <dwillemsen@google.com>
+Submitted-at: Fri, 22 Jul 2016 19:24:09 +0000
+Reviewed-on: https://android-review.googlesource.com/249246
+Project: platform/external/libselinux
+Branch: refs/heads/master
