@@ -1,16 +1,16 @@
-// uncomment to build libselinux and related artifacts against PCRE2
-//common_LIBRARIES = ["libpcre2"]
-//common_CFLAGS = [
-//    "-DUSE_PCRE2",
-//
-//    // Persistently stored patterns (pcre2) are architecture dependent.
-//    // In particular paterns built on amd64 can not run on devices with armv7
-//    // (32bit). Therefore, this feature stays off for now.
-//    "-DNO_PERSISTENTLY_STORED_PATTERNS",
-//]
+common_LIBRARIES = ["libpcre2"]
+common_CFLAGS = [
+    "-DUSE_PCRE2",
 
-common_LIBRARIES = ["libpcre"]
-common_CFLAGS = []
+    // Persistently stored patterns (pcre2) are architecture dependent.
+    // In particular paterns built on amd64 can not run on devices with armv7
+    // (32bit). Therefore, this feature stays off for now.
+    "-DNO_PERSISTENTLY_STORED_PATTERNS",
+]
+
+// uncomment to build libselinux and related artifacts against PCRE
+// common_LIBRARIES = ["libpcre"]
+// common_CFLAGS = []
 
 cc_defaults {
     name: "libselinux_flags",
