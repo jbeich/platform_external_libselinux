@@ -83,6 +83,7 @@ static int write_binary_file(struct saved_data *data, int fd)
 	uint32_t section_len;
 	uint32_t i;
 	int rc;
+	const char *reg_version;
 
 	bin_file = fdopen(fd, "w");
 	if (!bin_file) {
@@ -102,13 +103,14 @@ static int write_binary_file(struct saved_data *data, int fd)
 		goto err;
 
 	/* write version of the regex back-end */
-	if (!regex_version())
+	reg_version = regex_version();
+	if (!reg_version)
 		goto err;
-	section_len = strlen(regex_version());
+	section_len = strlen(reg_version);
 	len = fwrite(&section_len, sizeof(uint32_t), 1, bin_file);
 	if (len != 1)
 		goto err;
-	len = fwrite(regex_version(), sizeof(char), section_len, bin_file);
+	len = fwrite(reg_version, sizeof(char), section_len, bin_file);
 	if (len != section_len)
 		goto err;
 

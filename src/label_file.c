@@ -109,6 +109,7 @@ static int load_mmap(struct selabel_handle *rec, const char *path,
 	struct mmap_area *mmap_area;
 	uint32_t i, magic, version;
 	uint32_t entry_len, stem_map_len, regex_array_len;
+	const char *reg_version;
 
 	if (isbinary) {
 		len = strlen(path);
@@ -172,11 +173,13 @@ static int load_mmap(struct selabel_handle *rec, const char *path,
 	if (rc < 0 || version > SELINUX_COMPILED_FCONTEXT_MAX_VERS)
 		return -1;
 
+	reg_version = regex_version();
+	if (!reg_version)
+		return -1;
+
 	if (version >= SELINUX_COMPILED_FCONTEXT_PCRE_VERS) {
-		if (!regex_version()) {
-			return -1;
-		}
-		len = strlen(regex_version());
+
+		len = strlen(reg_version);
 
 		rc = next_entry(&entry_len, mmap_area, sizeof(uint32_t));
 		if (rc < 0)
@@ -198,7 +201,7 @@ static int load_mmap(struct selabel_handle *rec, const char *path,
 		}
 
 		str_buf[entry_len] = '\0';
-		if ((strcmp(str_buf, regex_version()) != 0)) {
+		if ((strcmp(str_buf, reg_version) != 0)) {
 			free(str_buf);
 			return -1;
 		}
