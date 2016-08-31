@@ -49,19 +49,13 @@ err:	regex_data_free(*regex);
 
 char const * regex_version() {
 #ifdef USE_PCRE2
-	static int initialized = 0;
-	static char * version_string = NULL;
-	size_t version_string_len;
-	if (!initialized) {
-		version_string_len = pcre2_config(PCRE2_CONFIG_VERSION, NULL);
-		version_string = (char*) malloc(version_string_len);
-		if (!version_string) {
-			return NULL;
-		}
-		pcre2_config(PCRE2_CONFIG_VERSION, version_string);
-		initialized = 1;
-	}
-	return version_string;
+	static char version_buf[256];
+	size_t len = pcre2_config(PCRE2_CONFIG_VERSION, NULL);
+	if (len <= 0 || len > sizeof(version_buf))
+		return NULL;
+
+	pcre2_config(PCRE2_CONFIG_VERSION, version_buf);
+	return version_buf;
 #else
 	return pcre_version();
 #endif
