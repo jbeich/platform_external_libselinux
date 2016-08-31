@@ -164,6 +164,7 @@ int regex_writef(struct regex_data * regex, FILE * fp) {
 		return -1;
 
 #else
+	(void)regex; // silence unused parameter warning
 	to_write = 0;
 #endif
 	/* write serialized pattern's size */
@@ -339,7 +340,7 @@ void regex_format_error(struct regex_error_data const * error_data,
 
 	if (error_data->error_offset > 0) {
 #ifdef USE_PCRE2
-		rc = snprintf(buffer + pos, buf_size - pos, "At offset %lu: ",
+		rc = snprintf(buffer + pos, buf_size - pos, "At offset %zu: ",
 				error_data->error_offset);
 #else
 		rc = snprintf(buffer + pos, buf_size - pos, "At offset %d: ",
