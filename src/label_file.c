@@ -105,10 +105,11 @@ static int load_mmap(struct selabel_handle *rec, const char *path,
 	struct stat mmap_stat;
 	char *addr, *str_buf;
 	size_t len;
-	int *stem_map;
+	int *stem_map = NULL;
 	struct mmap_area *mmap_area;
 	uint32_t i, magic, version;
 	uint32_t entry_len, stem_map_len, regex_array_len;
+	const char *regex_ver = NULL;
 
 	if (isbinary) {
 		len = strlen(path);
@@ -172,35 +173,42 @@ static int load_mmap(struct selabel_handle *rec, const char *path,
 	if (rc < 0 || version > SELINUX_COMPILED_FCONTEXT_MAX_VERS)
 		return -1;
 
+	regex_ver = regex_version();
+	if (!regex_ver)
+		return -1;
+
 	if (version >= SELINUX_COMPILED_FCONTEXT_PCRE_VERS) {
-		if (!regex_version()) {
-			return -1;
-		}
-		len = strlen(regex_version());
+
+		len = strlen(regex_ver);
 
 		rc = next_entry(&entry_len, mmap_area, sizeof(uint32_t));
 		if (rc < 0)
-			return -1;
+			goto err;
 
 		/* Check version lengths */
-		if (len != entry_len)
-			return -1;
+		if (len != entry_len) {
+			rc = -1;
+			goto err;
+		}
 
 		/* Check if pcre version mismatch */
 		str_buf = malloc(entry_len + 1);
-		if (!str_buf)
-			return -1;
+		if (!str_buf) {
+			rc = -1;
+			goto err;
+		}
 
 		rc = next_entry(str_buf, mmap_area, entry_len);
 		if (rc < 0) {
 			free(str_buf);
-			return -1;
+			goto err;
 		}
 
 		str_buf[entry_len] = '\0';
-		if ((strcmp(str_buf, regex_version()) != 0)) {
+		if ((strcmp(str_buf, regex_ver) != 0)) {
 			free(str_buf);
-			return -1;
+			rc = -1;
+			goto err;
 		}
 		free(str_buf);
 	}
@@ -208,15 +216,17 @@ static int load_mmap(struct selabel_handle *rec, const char *path,
 	/* allocate the stems_data array */
 	rc = next_entry(&stem_map_len, mmap_area, sizeof(uint32_t));
 	if (rc < 0 || !stem_map_len)
-		return -1;
+		goto err;
 
 	/*
 	 * map indexed by the stem # in the mmap file and contains the stem
 	 * number in the data stem_arr
 	 */
 	stem_map = calloc(stem_map_len, sizeof(*stem_map));
-	if (!stem_map)
-		return -1;
+	if (!stem_map) {
+		rc = -1;
+		goto err;
+	}
 
 	for (i = 0; i < stem_map_len; i++) {
 		char *buf;
@@ -380,6 +390,7 @@ static int load_mmap(struct selabel_handle *rec, const char *path,
 	rc = 0;
 err:
 	free(stem_map);
+	free (regex_ver);
 
 	return rc;
 }

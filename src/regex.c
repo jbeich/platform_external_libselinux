@@ -47,7 +47,7 @@ err:	regex_data_free(*regex);
 	return -1;
 }
 
-char const * regex_version() {
+const char *regex_version() {
 #ifdef USE_PCRE2
 	static int initialized = 0;
 	static char * version_string = NULL;
@@ -63,7 +63,7 @@ char const * regex_version() {
 	}
 	return version_string;
 #else
-	return pcre_version();
+	return strdup(pcre_version());
 #endif
 }
 
