@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f1efc9c0_3007a624",
+        "filename": "src/regex.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2016-09-01T12:19:28Z",
+      "side": 1,
+      "message": "That would be more accurate, indeed. Thanks for pointing it out.",
+      "parentUuid": "519fb579_8056d622",
+      "revId": "31f5cd6e3ea8ed34a35bf43bf135565301ad7062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31b161f2_9a93095c",
         "filename": "src/regex.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-08-31T20:13:45Z",
       "side": 1,
       "message": "strdup this so you always return a pointer to be passed to free, and update the code to free it.",
+      "revId": "31f5cd6e3ea8ed34a35bf43bf135565301ad7062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7104b94d_d169048d",
+        "filename": "src/regex.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2016-09-01T12:19:28Z",
+      "side": 1,
+      "message": "The result is not to be freed. The returned pointer has static life time.",
+      "parentUuid": "31b161f2_9a93095c",
       "revId": "31f5cd6e3ea8ed34a35bf43bf135565301ad7062",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
