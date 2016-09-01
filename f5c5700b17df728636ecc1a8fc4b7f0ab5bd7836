@@ -46,6 +46,30 @@
       "revId": "f5c5700b17df728636ecc1a8fc4b7f0ab5bd7836",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1c8f199_3c5cd078",
+        "filename": "src/regex.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-09-01T15:20:45Z",
+      "side": 1,
+      "message": "This is hacky, and it is a memory leak, let\u0027s be clear there. I submitted a patch to correct this, but I think its overly complicated, and still not 100% correct. I think we should just return a pointer to a static buffer and memcpy it in, this preserves the existing work paradigm.",
+      "parentUuid": "91ff6d6b_950ac67c",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 23
+      },
+      "revId": "f5c5700b17df728636ecc1a8fc4b7f0ab5bd7836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
