@@ -22,6 +22,30 @@
       "revId": "f5c5700b17df728636ecc1a8fc4b7f0ab5bd7836",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91ff6d6b_950ac67c",
+        "filename": "src/regex.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2016-09-01T06:06:51Z",
+      "side": 1,
+      "message": "You could change semantics to return ownership to the caller in both cases (not only for PCRE). I decided against it because it would mean that the caller has to call free explicitly, which in turn, is prone to memory leak. This is at the cost of a single lingering buffer.\n\nA fix for the raciness of the PCRE2 case could be to factor out the initialization into a function. I think this guaranties that it is done only once. Like so: static char * version_sting \u003d initialize_pcre2_version_string();",
+      "parentUuid": "91ff6d6b_75f48272",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 23
+      },
+      "revId": "f5c5700b17df728636ecc1a8fc4b7f0ab5bd7836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
