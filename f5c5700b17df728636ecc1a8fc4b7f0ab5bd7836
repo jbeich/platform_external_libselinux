@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91ff6d6b_75f48272",
+        "filename": "src/regex.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2016-09-01T05:43:55Z",
+      "side": 1,
+      "message": "regex_version keeps ownership of the version string buffer. It is never freed, alright. But that does not make it a memory leak because the amount of memory allocated is constant. The patch however creates a potential \"use after free\" condition which is dangerous. I know this looks  hacky. I wrote it to harmonize the version string retrieval of pcre and pcre2. I lament that it is not thread save and that there is a heap buffer that is not explicitly cleaned up. So I welcome a  better solution, but this is not it.",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 23
+      },
+      "revId": "f5c5700b17df728636ecc1a8fc4b7f0ab5bd7836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
