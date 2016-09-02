@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b1a5511d_df9ceb5f",
+        "filename": "src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-09-02T16:56:33Z",
+      "side": 1,
+      "message": "I didn\u0027t think the C compilers would support this conflict on variable name to function name, so it will have to be something else:\n\nexternal/libselinux/src/label_file.c:176:31: error: called object type \u0027const char *\u0027 is not a function or function pointer\n        regex_version \u003d regex_version();",
+      "parentUuid": "b1a5511d_1f88331d",
+      "range": {
+        "startLine": 112,
+        "startChar": 13,
+        "endLine": 112,
+        "endChar": 17
+      },
+      "revId": "7fa3638da6ba94447a7018e6072311f66c46d7eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "312fa172_87f9666f",
         "filename": "utils/sefcontext_compile.c",
         "patchSetId": 2
