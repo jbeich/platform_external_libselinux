@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b11ab155_a3c9fa4f",
+        "filename": "src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2016-09-02T09:38:55Z",
+      "side": 1,
+      "message": "Nit: I would prefer this to be called regex_version, so as to be as agnostic about the regex backend as possible.",
+      "range": {
+        "startLine": 112,
+        "startChar": 13,
+        "endLine": 112,
+        "endChar": 17
+      },
+      "revId": "7fa3638da6ba94447a7018e6072311f66c46d7eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "312fa172_87f9666f",
+        "filename": "utils/sefcontext_compile.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2016-09-02T09:38:55Z",
+      "side": 1,
+      "message": "Nit: see above",
+      "range": {
+        "startLine": 86,
+        "startChar": 13,
+        "endLine": 86,
+        "endChar": 17
+      },
+      "revId": "7fa3638da6ba94447a7018e6072311f66c46d7eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
