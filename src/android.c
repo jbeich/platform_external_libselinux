@@ -1435,7 +1435,7 @@ struct selabel_handle* selinux_android_service_context_handle(void)
 {
     struct selabel_handle* sehandle;
 
-    sehandle = selabel_open(SELABEL_CTX_ANDROID_PROP,
+    sehandle = selabel_open(SELABEL_CTX_ANDROID_SERVICE,
             &seopts_service, 1);
 
     if (!sehandle) {
