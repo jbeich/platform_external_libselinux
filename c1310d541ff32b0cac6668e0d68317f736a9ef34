@@ -1,0 +1,9 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Jeffrey Vander Stoep <jeffv@google.com>
+Code-Review+2: Daniel Cashman <dcashman@google.com>
+Verified+1: Janis Danisevskis <jdanis@google.com>
+Submitted-by: Janis Danisevskis <jdanis@google.com>
+Submitted-at: Wed, 05 Oct 2016 14:43:08 +0000
+Reviewed-on: https://android-review.googlesource.com/280861
+Project: platform/external/libselinux
+Branch: refs/heads/master
