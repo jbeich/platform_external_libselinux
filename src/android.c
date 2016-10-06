@@ -88,8 +88,8 @@ static void free_prefix_str(struct prefix_str *p)
 struct seapp_context {
 	/* input selectors */
 	bool isSystemServer;
-	bool isAutoPlayAppSet;
-	bool isAutoPlayApp;
+	bool isEphemeralAppSet;
+	bool isEphemeralApp;
 	bool isOwnerSet;
 	bool isOwner;
 	struct prefix_str user;
@@ -132,10 +132,10 @@ static int seapp_context_cmp(const void *A, const void *B)
 	if (s1->isSystemServer != s2->isSystemServer)
 		return (s1->isSystemServer ? -1 : 1);
 
-	/* Give precedence to a specified isAutoPlayApp= over an
-	 * unspecified isAutoPlayApp=. */
-	if (s1->isAutoPlayAppSet != s2->isAutoPlayAppSet)
-		return (s1->isAutoPlayAppSet ? -1 : 1);
+	/* Give precedence to a specified isEphemeral= over an
+	 * unspecified isEphemeral=. */
+	if (s1->isEphemeralAppSet != s2->isEphemeralAppSet)
+		return (s1->isEphemeralAppSet ? -1 : 1);
 
 
 	/* Give precedence to a specified isOwner= over an unspecified isOwner=. */
@@ -319,12 +319,12 @@ int selinux_android_seapp_context_reload(void)
 					free_seapp_context(cur);
 					goto err;
 				}
-			} else if (!strcasecmp(name, "isAutoPlayApp")) {
-				cur->isAutoPlayAppSet = true;
+			} else if (!strcasecmp(name, "isEphemeralApp")) {
+				cur->isEphemeralAppSet = true;
 				if (!strcasecmp(value, "true"))
-					cur->isAutoPlayApp = true;
+					cur->isEphemeralApp = true;
 				else if (!strcasecmp(value, "false"))
-					cur->isAutoPlayApp = false;
+					cur->isEphemeralApp = false;
 				else {
 					free_seapp_context(cur);
 					goto err;
@@ -496,11 +496,11 @@ int selinux_android_seapp_context_reload(void)
 		int i;
 		for (i = 0; i < nspec; i++) {
 			cur = seapp_contexts[i];
-			selinux_log(SELINUX_INFO, "%s:  isSystemServer=%s  isAutoPlayApp=%s isOwner=%s user=%s seinfo=%s "
+			selinux_log(SELINUX_INFO, "%s:  isSystemServer=%s  isEphemeralApp=%s isOwner=%s user=%s seinfo=%s "
 					"name=%s path=%s isPrivApp=%s -> domain=%s type=%s level=%s levelFrom=%s",
 				__FUNCTION__,
 				cur->isSystemServer ? "true" : "false",
-				cur->isAutoPlayAppSet ? (cur->isAutoPlayApp ? "true" : "false") : "null",
+				cur->isEphemeralAppSet ? (cur->isEphemeralApp ? "true" : "false") : "null",
 				cur->isOwnerSet ? (cur->isOwner ? "true" : "false") : "null",
 				cur->user.str,
 				cur->seinfo, cur->name.str, cur->path.str,
@@ -551,7 +551,7 @@ enum seapp_kind {
 };
 
 #define PRIVILEGED_APP_STR ":privapp"
-#define AUTOPLAY_APP_STR ":autoplayapp"
+#define EPHEMERAL_APP_STR ":ephemeralapp"
 
 static int seinfo_parse(char *dest, const char *src, size_t size)
 {
@@ -589,7 +589,7 @@ static int seapp_context_lookup(enum seapp_kind kind,
 	uid_t userid;
 	uid_t appid;
 	bool isPrivApp = false;
-	bool isAutoPlayApp = false;
+	bool isEphemeralApp = false;
 	char parsedseinfo[BUFSIZ];
 
 	__selinux_once(once, seapp_context_init);
@@ -598,7 +598,7 @@ static int seapp_context_lookup(enum seapp_kind kind,
 		if (seinfo_parse(parsedseinfo, seinfo, BUFSIZ))
 			goto err;
 		isPrivApp = strstr(seinfo, PRIVILEGED_APP_STR) ? true : false;
-		isAutoPlayApp = strstr(seinfo, AUTOPLAY_APP_STR) ? true : false;
+		isEphemeralApp = strstr(seinfo, EPHEMERAL_APP_STR) ? true : false;
 		seinfo = parsedseinfo;
 	}
 
@@ -636,7 +636,7 @@ static int seapp_context_lookup(enum seapp_kind kind,
 		if (cur->isSystemServer != isSystemServer)
 			continue;
 
-		if (cur->isAutoPlayAppSet && cur->isAutoPlayApp != isAutoPlayApp)
+		if (cur->isEphemeralAppSet && cur->isEphemeralApp != isEphemeralApp)
 			continue;
 
 		if (cur->isOwnerSet && cur->isOwner != isOwner)
